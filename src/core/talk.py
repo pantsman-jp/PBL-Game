@@ -5,18 +5,11 @@ dialogues.json を読み込み、Z で進行、Q で離脱、矢印で選択、�
 """
 
 import os
-from ..ui import draw_window
-from ..utils import load_json
+from src.ui import draw_window
+from src.utils import load_json
 
 
 class Talk:
-    """
-    会話およびクイズ管理クラス
-    - プレイヤー位置に応じて会話開始
-    - クイズモード管理
-    - 報酬アイテム付与
-    """
-
     def __init__(self, app):
         self.app = app
         BASE_DIR = os.path.abspath(

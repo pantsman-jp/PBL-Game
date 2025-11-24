@@ -3,7 +3,7 @@
 セーブ/ロードおよびBGM制御を提供
 """
 
-from ..utils import save_json, load_json, SAVEFILE
+from src.utils import save_json, load_json, SAVEFILE
 import pygame
 import os
 
