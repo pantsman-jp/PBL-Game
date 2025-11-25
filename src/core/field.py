@@ -150,7 +150,25 @@ class Field:
             if not pos or len(pos) < 2:
                 continue
             nx, ny = pos[0], pos[1]
-            screen_x = SCREEN_CENTER_X + (nx - self.app.x) * TILE + ox
+
+            # NPC の左右移動パラメータ初期化
+            movement_config = data.get("movement_x", {})
+            if "offset_x" not in data and movement_config.get("enabled", False):
+                data["offset_x"] = 0
+                data["NPC_speed"] = movement_config.get("speed", 0.5)
+                data["max_offset_x"] = movement_config.get("max_offset", 8)
+
+            # 移動が有効な場合のみ更新
+            if "offset_x" in data:
+                data["offset_x"] += data["NPC_speed"]
+                if abs(data["offset_x"]) > data["max_offset_x"]:
+                    data["NPC_speed"] *= -1
+                screen_x = (
+                    SCREEN_CENTER_X + (nx - self.app.x) * TILE + ox + data["offset_x"]
+                )
+            else:
+                screen_x = SCREEN_CENTER_X + (nx - self.app.x) * TILE + ox
+
             screen_y = SCREEN_CENTER_Y + (ny - self.app.y) * TILE + oy
 
             npc_size = 12

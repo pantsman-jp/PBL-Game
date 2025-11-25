@@ -1,5 +1,11 @@
 # CHANGELOG of PBL-Game
 
+## v0.18.0 (2025-11-25)
+- NPC_1のみが左右に動くように
+- 移動させるかどうか,速度(speed),距離(max_offset),はdialogues.jsonでNPCごとにパラメータ管理
+- 移動方向はfield.pyのscreen_x,screen_yの部分で管理
+- 現在は左右移動のみ、今後はNPCごとに異なる動きを実装予定
+
 ## v0.17.1 (2025-11-24)
 - バージョン表記方法の変更
 - `src/` 下のファイルにおいて、相対 import を絶対 import に変更
