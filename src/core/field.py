@@ -1,12 +1,12 @@
 """
-フィールド管理 | core/field.py
+フィールド管理 | src/core/field.py
 プレイヤー移動、NPC描画、マップ遷移、画面遷移時アニメーション、BGM管理
 """
 
 import pygame
 import os
 import math
-from ..utils import load_json  # JSON読み込み用
+from src.utils import load_json  # JSON読み込み用
 
 TILE = 16
 SCREEN_CENTER_X = 320

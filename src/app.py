@@ -4,12 +4,12 @@
 """
 
 import os
-import sys
 import pygame
-from .utils import KeyTracker
-from .core.system import System
-from .core.field import Field
-from .core.talk import Talk
+import sys
+from src.utils import KeyTracker
+from src.core.system import System
+from src.core.field import Field
+from src.core.talk import Talk
 
 WIDTH, HEIGHT = 900, 700
 FPS = 60

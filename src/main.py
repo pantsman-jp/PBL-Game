@@ -1,10 +1,10 @@
 """
-メインエントリポイント | main.py
+メインエントリポイント | src/main.py
 
 ゲームの起動処理は app.py に任せる
 """
 
-from .app import App
+from src.app import App
 import traceback
 
 if __name__ == "__main__":
