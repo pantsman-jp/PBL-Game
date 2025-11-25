@@ -9,6 +9,11 @@
             "よく来たな！",
             "z キーを押したらクイズが始まるぞ！"
         ],
+        "movement_x": {
+            "enabled": true,
+            "speed": 0.5,
+            "max_offset": 16
+        },
         "quiz": {
             "question": "このゲームは何の言語で書かれている？",
             "choices": [
@@ -28,6 +33,11 @@
         "map_id": "world",
         "lines": [
             "Hello, world!"
-        ]
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.5,
+            "max_offset": 16
+        }
     }
 }
