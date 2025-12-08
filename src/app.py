@@ -28,8 +28,6 @@ class App:
 
         self.system = System(self)
 
-        # --- BGM初期再生（タイトル用や初期マップ用） ---
-        # マップごとにBGMは Field.load_map で再生されます
         self.key_tracker = KeyTracker()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("Tiny Quiz Field - pygame")

@@ -1,6 +1,5 @@
 """
 会話・クイズ管理 | src/core/talk.py
-
 dialogues.json を読み込み、Z で進行、Q で離脱、矢印で選択、正解で報酬を付与
 """
 
@@ -12,9 +11,8 @@ from src.utils import load_json, resource_path
 class Talk:
     def __init__(self, app):
         self.app = app
-        BASE_DIR = resource_path("assets")
         dialogues_path = resource_path(
-            os.path.join(BASE_DIR, "dialogues", "dialogues.json")
+            os.path.join("assets", "dialogues", "dialogues.json")
         )
         self.dialogues = load_json(dialogues_path) or {}
         self.active = None
@@ -53,7 +51,6 @@ class Talk:
             if self.line_index < len(self.window_lines):
                 pass
             else:
-                # 会話終了後、クイズ開始可能
                 if self.current_quiz:
                     self.window_lines = []
                     self.quiz_mode = True
@@ -69,7 +66,6 @@ class Talk:
         screen: pygame.Surface
         font: pygame.font.Font
         """
-        # --- クイズ描画優先 ---
         if self.quiz_mode and self.current_quiz:
             q = self.current_quiz
             lines = [q.get("question", "")]
@@ -79,7 +75,6 @@ class Talk:
             draw_window(screen, font, lines)
             return
 
-        # --- 通常会話描画 ---
         if self.window_lines:
             idx = min(self.line_index, max(0, len(self.window_lines) - 1))
             lines = [self.window_lines[idx]]
@@ -94,7 +89,7 @@ class Talk:
             pos = data.get("position")
             if pos:
                 nx, ny = pos[0], pos[1]
-                if abs(nx - px) + abs(ny - py) == 1:  # 四近傍判定
+                if abs(nx - px) + abs(ny - py) == 1:
                     self.active = key
                     self.open_dialog(data)
                     return
@@ -109,7 +104,7 @@ class Talk:
         self.current_quiz = data.get("quiz")
         self.quiz_mode = False
         self.quiz_choice = 0
-        self.wait_frames = 10  # 押しっぱなし防止の待機フレーム
+        self.wait_frames = 10
 
     def is_active(self):
         """
@@ -128,7 +123,6 @@ class Talk:
         elif keys.get("down"):
             self.quiz_choice = (self.quiz_choice + 1) % len(q["choices"])
         elif keys.get("z"):
-            # 決定
             correct = q.get("answer", 0)
             if self.quiz_choice == correct:
                 reward = q.get("reward")
@@ -137,7 +131,6 @@ class Talk:
                 self.window_lines = ["Correct!", f"Reward: {reward}"]
             else:
                 self.window_lines = ["Wrong.", f"Answer: {q['choices'][correct]}"]
-            # クイズ終了
             self.current_quiz = None
             self.quiz_mode = False
             self.active = None

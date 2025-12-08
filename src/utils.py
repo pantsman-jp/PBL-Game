@@ -1,6 +1,6 @@
 """
-汎用ユーティリティ | utils.py
-キー状態取得、JSON save/load
+汎用ユーティリティ | src/utils.py
+キー状態取得、JSON save/load、リソースパス解決
 """
 
 import pygame
@@ -22,7 +22,7 @@ class KeyTracker:
     def update(self):
         cur = pygame.key.get_pressed()
         pressed_once = {}
-        for [name, key] in {
+        for name, key in {
             "up": pygame.K_UP,
             "down": pygame.K_DOWN,
             "left": pygame.K_LEFT,
@@ -50,6 +50,7 @@ def load_json(path):
 
 
 def resource_path(relative_path):
+    """PyInstaller 実行時にもリソースファイルにアクセス可能にする"""
     try:
         base_path = sys._MEIPASS
     except AttributeError:
