@@ -1,10 +1,10 @@
 # CHANGELOG of PBL-Game
 
 ## v0.18.1 (2025-12-08)
-- `src/utils.py` に `resource_path` 関数を追加し、PyInstaller 実行時のリソースパス解決に対応
-- App クラスおよび `field.py` 内で `BASE_DIR` を `resource_path("assets")` を利用する形に変更
+- `src/utils.py` に `resource_path` 関数を追加し、PyInstaller 実行時にファイルが見つからない問題に対応
+- `app.py` および `field.py` 内で `BASE_DIR` を `resource_path("assets")` を利用する形に変更
 - BGM 再生処理を `resource_path` を経由してファイルパスを取得するよう修正
-- 画像や JSON など外部リソース読み込み箇所も同様に `resource_path` を利用するよう統一
+  - 画像や JSON など外部リソース読み込み箇所も同様
 - `docs/` に免責事項を追加
 
 ## v0.18.0 (2025-11-25)
