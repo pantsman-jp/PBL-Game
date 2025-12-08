@@ -6,16 +6,16 @@ dialogues.json を読み込み、Z で進行、Q で離脱、矢印で選択、�
 
 import os
 from src.ui import draw_window
-from src.utils import load_json
+from src.utils import load_json, resource_path
 
 
 class Talk:
     def __init__(self, app):
         self.app = app
-        BASE_DIR = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "..", "..", "assets")
+        BASE_DIR = resource_path("assets")
+        dialogues_path = resource_path(
+            os.path.join(BASE_DIR, "dialogues", "dialogues.json")
         )
-        dialogues_path = os.path.join(BASE_DIR, "dialogues", "dialogues.json")
         self.dialogues = load_json(dialogues_path) or {}
         self.active = None
         self.window_lines = []

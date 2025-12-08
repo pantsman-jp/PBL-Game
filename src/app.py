@@ -6,7 +6,7 @@
 import os
 import pygame
 import sys
-from src.utils import KeyTracker
+from src.utils import KeyTracker, resource_path
 from src.core.system import System
 from src.core.field import Field
 from src.core.talk import Talk
@@ -15,7 +15,7 @@ WIDTH, HEIGHT = 900, 700
 FPS = 60
 SCENE_TITLE = 0
 SCENE_GAME = 1
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets"))
+BASE_DIR = resource_path("assets")
 
 
 class App:
@@ -36,7 +36,9 @@ class App:
         self.clock = pygame.time.Clock()
 
         # --- フォント設定 ---
-        font_path = os.path.join(BASE_DIR, "fonts", "NotoSansJP-Regular.otf")
+        font_path = resource_path(
+            os.path.join(BASE_DIR, "fonts", "NotoSansJP-Regular.otf")
+        )
         if os.path.isfile(font_path):
             self.font = pygame.font.Font(font_path, 16)
             self.title_font = pygame.font.Font(font_path, 32)
@@ -47,7 +49,7 @@ class App:
             self.prompt_font = pygame.font.SysFont("meiryo", 20)
 
         # --- タイトル画像 ---
-        title_img_path = os.path.join(BASE_DIR, "img", "title.jpg")
+        title_img_path = resource_path(os.path.join(BASE_DIR, "img", "title.jpg"))
         self.title_image = (
             pygame.image.load(title_img_path).convert()
             if os.path.isfile(title_img_path)
@@ -69,7 +71,7 @@ class App:
 
         # --- 効果音ロード ---
         def _load_sound(name):
-            p = os.path.join(BASE_DIR, "sounds", name)
+            p = resource_path(os.path.join(BASE_DIR, "sounds", name))
             if os.path.isfile(p):
                 try:
                     return pygame.mixer.Sound(p)

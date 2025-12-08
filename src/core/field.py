@@ -6,7 +6,7 @@
 import pygame
 import os
 import math
-from src.utils import load_json  # JSON読み込み用
+from src.utils import load_json, resource_path
 
 TILE = 16
 SCREEN_CENTER_X = 320
@@ -32,12 +32,10 @@ class Field:
         self.transition_max_radius = math.hypot(SCREEN_CENTER_X, SCREEN_CENTER_Y)
         self.transition_speed = 4
         # -----------------------------
-        self.BASE_DIR = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "..", "..", "assets")
-        )
+        self.BASE_DIR = resource_path("assets")
 
         # --- マップデータの読み込み ---
-        maps_path = os.path.join(self.BASE_DIR, "data", "maps.json")
+        maps_path = resource_path(os.path.join(self.BASE_DIR, "data", "maps.json"))
         self.map_data = load_json(maps_path) or {}
 
         self.current_map_id = None
@@ -261,7 +259,7 @@ class Field:
 
         # 画像ロード
         img_name = data.get("image", "world_map.png")
-        path = os.path.join(self.BASE_DIR, "img", img_name)
+        path = resource_path(os.path.join(self.BASE_DIR, "img", img_name))
 
         if os.path.isfile(path):
             self.map_image = pygame.image.load(path).convert()
@@ -287,7 +285,7 @@ class Field:
         # --- BGM再生 ---
         bgm_file = data.get("bgm", "")
         if bgm_file:
-            bgm_path = os.path.join(self.BASE_DIR, "sounds", bgm_file)
+            bgm_path = resource_path(os.path.join(self.BASE_DIR, "sounds", bgm_file))
             if os.path.isfile(bgm_path):
                 try:
                     self.app.system.play_bgm(bgm_path)
@@ -295,9 +293,9 @@ class Field:
                     print("BGM再生エラー:", e)
 
     def load_player(self):
-        front = os.path.join(self.BASE_DIR, "img", "player_front.png")
-        back = os.path.join(self.BASE_DIR, "img", "player_back.png")
-        right = os.path.join(self.BASE_DIR, "img", "player_right.png")
+        front = resource_path(os.path.join(self.BASE_DIR, "img", "player_front.png"))
+        back = resource_path(os.path.join(self.BASE_DIR, "img", "player_back.png"))
+        right = resource_path(os.path.join(self.BASE_DIR, "img", "player_right.png"))
 
         if os.path.isfile(front):
             self.player_front = pygame.image.load(front).convert_alpha()
