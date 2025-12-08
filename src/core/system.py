@@ -3,7 +3,7 @@
 セーブ/ロードおよびBGM制御を提供
 """
 
-from src.utils import save_json, load_json, SAVEFILE
+from src.utils import save_json, load_json, SAVEFILE, resource_path
 import pygame
 import os
 
@@ -29,7 +29,10 @@ class System:
         return False
 
     def play_bgm(self, path):
-        if path is None or not os.path.isfile(path):
+        if path is None:
+            return
+        path = resource_path(path)
+        if not os.path.isfile(path):
             return
         try:
             pygame.mixer.music.stop()
