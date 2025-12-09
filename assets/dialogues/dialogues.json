@@ -38,7 +38,7 @@
         ],
         "reward": [
             "part1"
-        ]
+        ],
         "movement_x": {
             "enabled": false,
             "speed": 0.5,
