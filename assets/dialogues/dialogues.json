@@ -22,7 +22,9 @@
                 "日本語"
             ],
             "answer": 0,
-            "reward": "key"
+            "reward": [
+                "key"
+            ]
         }
     },
     "npc_2": {
@@ -34,6 +36,9 @@
         "lines": [
             "Hello, world!"
         ],
+        "reward": [
+            "part1"
+        ]
         "movement_x": {
             "enabled": false,
             "speed": 0.5,

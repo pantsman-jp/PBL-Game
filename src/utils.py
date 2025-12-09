@@ -14,7 +14,11 @@ DIALOGUES = "assets/dialogues/dialogues.json"
 
 
 class KeyTracker:
-    """押下タイミングを検出するキー入力管理"""
+    """
+    
+    押下タイミングを検出するキー入力管理
+    
+    """
 
     def __init__(self):
         self.prev = pygame.key.get_pressed()

@@ -1,5 +1,13 @@
 # CHANGELOG of PBL-Game
 
+## v0.19.0 (2025-12-09-issa)
+- 所持アイテムの欄と、座標の表示を重ならないようにしました
+- NPCと話しただけでitemがもらえる機能追加
+  - npc2でpart1を入手
+- rewardを`[item1],[item2]`のようにリスト形式に
+- itemの重複取得禁止
+  > NPCからitemを取得したら、json上のデータをdeleteすることで、二回以上話しかけてもアイテムの重複取得が行われないようにする
+
 ## v0.18.1 (2025-12-08)
 - `src/utils.py` に `resource_path` 関数を追加し、PyInstaller 実行時にファイルが見つからない問題に対応
 - `app.py` および `field.py` 内で `BASE_DIR` を `resource_path("assets")` を利用する形に変更
