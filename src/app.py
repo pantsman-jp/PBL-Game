@@ -133,6 +133,9 @@ class App:
             self.field.update(keys)
 
     def _draw(self):
+        """
+        画面描画
+        """
         if self.scene_state == SCENE_TITLE:
             if self.title_image:
                 rect = self.title_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))
@@ -152,13 +155,19 @@ class App:
                 rect = prompt_surf.get_rect(center=(WIDTH // 2, HEIGHT - 80))
                 self.screen.blit(prompt_surf, rect)
         elif self.scene_state == SCENE_GAME:
-            self.screen.fill((50, 50, 80))
+            # --- ゲーム本編描画 (既存の描画処理) ---
+            self.screen.fill((50, 50, 80))  # 背景色
             self.field.draw(self.screen)
+
+            # UI（所持アイテム）
             items_text = "ITEMS: " + ", ".join(self.items) if self.items else "ITEMS: -"
             surf = self.font.render(items_text, True, (255, 255, 255))
-            self.screen.blit(surf, (8, 8))
+            
+            self.screen.blit(surf, (8, 40))
+
             self.talk.draw(self.screen, self.font)
 
+            # インベントリ表示（Iでトグル）
             if self.inventory_open:
                 overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
                 overlay.fill((0, 0, 0, 150))

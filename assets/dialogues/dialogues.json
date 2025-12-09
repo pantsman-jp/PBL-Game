@@ -17,7 +17,9 @@
                 "日本語"
             ],
             "answer": 0,
-            "reward": "key"
+            "reward": [
+                "key"
+            ]
         }
     },
     "npc_2": {
@@ -28,6 +30,9 @@
         "map_id": "world",
         "lines": [
             "Hello, world!"
+        ],
+        "reward": [
+            "part1"
         ]
     }
 }

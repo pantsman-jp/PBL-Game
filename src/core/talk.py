@@ -60,6 +60,24 @@ class Talk:
                     self.quiz_choice = 0
                     self.wait_frames = 10
                 else:
+                    # クイズがない場合、ここで会話終了時の報酬処理を行う
+                    if self.active:
+                        """
+                        クイズ正解時の報酬処理（リスト統一版）by issa1125/2025
+                        JSON側でitemをリストにしたので、そのまま extend で一括追加する
+                        重複取得防止
+                        """
+                        npc_data = self.dialogues.get(self.active, {})
+                        reward = npc_data.get("reward")
+                        if reward:
+                            self.app.items.extend(reward)
+
+                            # ログ表示用: 報酬内容を表示して待機
+                            self.window_lines = [f"Got items: {', '.join(reward)}"]
+
+                            del npc_data["reward"]
+                            return
+
                     self.window_lines = []
                     self.active = None
 
@@ -132,9 +150,22 @@ class Talk:
             correct = q.get("answer", 0)
             if self.quiz_choice == correct:
                 reward = q.get("reward")
-                if reward and reward not in self.app.items:
-                    self.app.items.append(reward)
-                self.window_lines = ["Correct!", f"Reward: {reward}"]
+
+                if reward:
+                    """
+                    クイズ正解時の報酬処理（リスト統一版）by issa
+                    JSON側でitemをリストにしたので、そのまま extend で一括追加する
+                    重複取得防止
+                    """
+                    self.app.items.extend(reward)
+                    msg = f"Reward: {', '.join(reward)}"
+
+                    # 重複取得防止: メモリ上のデータから reward を削除
+                    del q["reward"]
+                else:
+                    msg = "Correct!"
+
+                self.window_lines = ["Correct!", msg]
             else:
                 self.window_lines = ["Wrong.", f"Answer: {q['choices'][correct]}"]
             # クイズ終了
