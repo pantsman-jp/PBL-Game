@@ -23,19 +23,27 @@ python -m src.main
 ```
 
 ## 実行ファイル化の方法
-`Pyinstaller` が必要。以下でインストール。
+### Windows
+`Pyinstaller` が必要。以下のコマンドを実行してインストールする。
 
 ```
 pip install pyinstaller
 ```
 
-`PBL-Game` 直下で以下を実行。
+`PBL-Game/` 直下にて以下を実行し、実行ファイルを作成する。
 
 ```
 pyinstaller --onefile --windowed --add-data "assets;assets" src\main.py
 ```
 
-`dist/main.exe` が生成される。
+実行ファイルは `dist/` 直下に作成される。
+
+### macOS
+`Pyinstaller` インストールまでは同じ。コマンドは以下。
+
+```
+pyinstaller --onefile --windowed --add-data "assets:assets" src/main.py
+```
 
 ---
 Copyright © 2025 pantsman, ISSA-Motomu, tanosou, osato03, nagata
