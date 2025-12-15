@@ -7,7 +7,7 @@ This game was created to **introduce high school students
 to the exciting fields of space engineering and space science**.
 
 ## Disclaimer
-Please review the [disclaimer](docs/disclaimer.en.md) before using this project.
+Please review the [disclaimer](docs/disclaimer.en.md) before using this game.
 
 ## Installation
 ```
