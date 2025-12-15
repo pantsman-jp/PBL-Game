@@ -1,51 +1,29 @@
 # PBL-Game
 
-## 概要
-このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されています。
+[日本語](README.ja.md)
 
-## 免責事項
-本プロジェクトの利用に際しては [免責事項](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/disclaimer.ja.md) をご確認ください。 
+## Overview
+This game was created to **introduce high school students
+to the exciting fields of space engineering and space science**.
 
-## インストール方法
+## Disclaimer
+Please review the [disclaimer](docs/disclaimer.en.md) before using this project.
+
+## Installation
 ```
 git clone https://github.com/pantsman-jp/PBL-Game
 ```
 
-## 使い方
-`Python3.13.9`, `Pygame2.6.1` が必要。
-
-`Pygame` は以下でインストール。
+## Usage
+Require `Python3.13.9`, `Pygame2.6.1`.
 
 ```
 pip install pygame
 ```
 
-実行方法は以下。
+To run,
 ```
 python -m src.main
-```
-
-## 実行ファイル化の方法
-### Windows
-`Pyinstaller` が必要。以下のコマンドを実行してインストールする。
-
-```
-pip install pyinstaller
-```
-
-`PBL-Game/` 直下にて以下を実行し、実行ファイルを作成する。
-
-```
-pyinstaller --onefile --windowed --add-data "assets;assets" src\main.py
-```
-
-実行ファイルは `dist/` 直下に作成される。
-
-### macOS
-`Pyinstaller` インストールまでは同じ。コマンドは以下。
-
-```
-pyinstaller --onefile --windowed --add-data "assets:assets" src/main.py
 ```
 
 ---
