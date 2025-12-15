@@ -3,6 +3,9 @@
 ## 概要
 このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されています。
 
+## 免責事項
+本プロジェクトの利用に際しては [免責事項](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/disclaimer.ja.md) をご確認ください。 
+
 ## インストール方法
 ```
 git clone https://github.com/pantsman-jp/PBL-Game
