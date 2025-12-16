@@ -12,8 +12,8 @@ Please review the [disclaimer](docs/disclaimer.en.md) before using this game.
 ## Source of Materials
 | Area | Source |
 | :---: | :---: |
-| Player | <https://pipoya.net/sozai/terms-of-use/> |
-| Title Screen | <https://aipict.com/terms-of-use/> |
+| Player | <https://pipoya.net/sozai/> |
+| Title Screen | <https://aipict.com/> |
 | Map of Fukuoka | <https://rpgmap.hatenablog.com/> |
 | BGM | <https://dova-s.jp/> |
 | SE | <https://soundeffect-lab.info/> |
