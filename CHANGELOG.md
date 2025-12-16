@@ -10,6 +10,7 @@
 | タイトル | <https://aipict.com/terms-of-use/> |
 | 福岡県マップ | <https://rpgmap.hatenablog.com/> |
 | マップ BGM | <https://dova-s.jp/> |
+| 効果音 | <https://soundeffect-lab.info/> |
 
 ## v0.19.0 (2025-12-09-issa)
 - 所持アイテムの欄と、座標の表示を重ならないようにしました
