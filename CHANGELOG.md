@@ -1,5 +1,16 @@
 # CHANGELOG of PBL-Game
 
+## v0.19.1 (2025-12-16)
+- `assets/` 内の素材の変更
+- `maps.json` の `walls` の書き方は要検討
+
+| 使用箇所 | 出典 |
+| :---: | :---: |
+| プレイヤー | <https://pipoya.net/sozai/terms-of-use/> |
+| タイトル | <https://aipict.com/terms-of-use/> |
+| 福岡県マップ | <https://rpgmap.hatenablog.com/> |
+| マップ BGM | <https://dova-s.jp/> |
+
 ## v0.19.0 (2025-12-09-issa)
 - 所持アイテムの欄と、座標の表示を重ならないようにしました
 - NPCと話しただけでitemがもらえる機能追加

@@ -55,8 +55,8 @@ class App:
         )
 
         # --- プレイヤー初期座標とインベントリ ---
-        self.x = 8
-        self.y = 8
+        self.x = 80
+        self.y = 80
         self.items = []
         self.inventory_open = False
 
@@ -162,7 +162,7 @@ class App:
             # UI（所持アイテム）
             items_text = "ITEMS: " + ", ".join(self.items) if self.items else "ITEMS: -"
             surf = self.font.render(items_text, True, (255, 255, 255))
-            
+
             self.screen.blit(surf, (8, 40))
 
             self.talk.draw(self.screen, self.font)
