@@ -8,6 +8,15 @@
 ## 免責事項
 本ゲームの利用に際しては [免責事項](docs/disclaimer.ja.md) をご確認ください。
 
+## 素材出典
+| 使用箇所 | 出典 |
+| :---: | :---: |
+| プレイヤー | <https://pipoya.net/sozai/terms-of-use/> |
+| タイトル | <https://aipict.com/terms-of-use/> |
+| 福岡県マップ | <https://rpgmap.hatenablog.com/> |
+| マップ BGM | <https://dova-s.jp/> |
+| 効果音 | <https://soundeffect-lab.info/> |
+
 ## インストール方法
 ```
 git clone https://github.com/pantsman-jp/PBL-Game
