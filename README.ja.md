@@ -11,8 +11,8 @@
 ## 素材出典
 | 使用箇所 | 出典 |
 | :---: | :---: |
-| プレイヤー | <https://pipoya.net/sozai/terms-of-use/> |
-| タイトル | <https://aipict.com/terms-of-use/> |
+| プレイヤー | <https://pipoya.net/sozai/> |
+| タイトル | <https://aipict.com/> |
 | 福岡県マップ | <https://rpgmap.hatenablog.com/> |
 | マップ BGM | <https://dova-s.jp/> |
 | 効果音 | <https://soundeffect-lab.info/> |
