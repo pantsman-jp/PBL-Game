@@ -1,6 +1,7 @@
 <!--
 以下のフォーマットに従って PR を書いてください。
 コメントアウト部分を削除する必要はありません。
+<https://github.com/pantsman-jp/PBL-Game/issues/40>
 -->
 
 ## 概要
