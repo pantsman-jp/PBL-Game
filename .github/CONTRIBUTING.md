@@ -1,8 +1,10 @@
 # CONTRIBUTING.md
 
-参考 Issues [#12](https://github.com/pantsman-jp/PBL-Game/issues/12)
+Issues [#12](https://github.com/pantsman-jp/PBL-Game/issues/12) も参考してください。
 
 ## 開発フロー
+参考 Issues [#47](https://github.com/pantsman-jp/PBL-Game/issues/47)
+
 - ブランチを切って作業
 - PR を出し、レビュー後にマージ
 
@@ -18,6 +20,8 @@
   - ex) `refactor/remove-unused-code`
 
 ## コミットメッセージ
+参考 Issues [#47](https://github.com/pantsman-jp/PBL-Game/issues/47)
+
 - 作業内容を簡潔に示す
 - 日本語でも英語でもいいです
 
