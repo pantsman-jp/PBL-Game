@@ -1,5 +1,7 @@
 # CONTRIBUTING.md
 
+参考 Issues [#12](https://github.com/pantsman-jp/PBL-Game/issues/12)
+
 ## 開発フロー
 - ブランチを切って作業
 - PR を出し、レビュー後にマージ
