@@ -1,36 +1,35 @@
 # PBL-Game
 
-[日本語](README.ja.md)
+## 概要
+このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されています。
 
-## Overview
-This game was created to **introduce high school students
-to the exciting fields of space engineering and space science**.
+## 免責事項
+本ゲームの利用に際しては [免責事項](docs/disclaimer.ja.md) をご確認ください。
 
-## Disclaimer
-Please review the [disclaimer](docs/disclaimer.en.md) before using this game.
-
-## Source of Materials
-| Area | Source |
+## 素材出典
+| 使用箇所 | 出典 |
 | :---: | :---: |
-| Player | <https://pipoya.net/sozai/> |
-| Title Screen | <https://aipict.com/> |
-| Map of Fukuoka | <https://rpgmap.hatenablog.com/> |
-| BGM | <https://dova-s.jp/> |
-| SE | <https://soundeffect-lab.info/> |
+| プレイヤー | <https://pipoya.net/sozai/> |
+| タイトル | <https://aipict.com/> |
+| 福岡県マップ | <https://rpgmap.hatenablog.com/> |
+| マップ BGM | <https://dova-s.jp/> |
+| 効果音 | <https://soundeffect-lab.info/> |
 
-## Installation
+## インストール方法
 ```
 git clone https://github.com/pantsman-jp/PBL-Game
 ```
 
-## Usage
-Require `Python3.13.9`, `Pygame2.6.1`.
+## 使い方
+`Python3.13.9`, `Pygame2.6.1` が必要。
+
+`Pygame` は以下でインストール。
 
 ```
 pip install pygame
 ```
 
-To run,
+実行方法は以下。
 ```
 python -m src.main
 ```
