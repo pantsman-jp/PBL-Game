@@ -1,5 +1,11 @@
 # CHANGELOG of PBL-Game
 
+## v0.20.0 (2025-12-20-issa)
+- visual_novel.pyの新規作成
+- app.pyの変更
+- novel_script.jsonの新規作成
+  > 会話の内容を書く
+
 ## v0.19.1 (2025-12-16)
 - `assets/` 内の素材の変更
 - `maps.json` の `walls` の書き方は要検討
