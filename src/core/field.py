@@ -133,10 +133,22 @@ class Field:
             else:
                 screen_x = SCREEN_CENTER_X + (nx - self.app.x) * TILE + ox
             screen_y = SCREEN_CENTER_Y + (ny - self.app.y) * TILE + oy
-            npc_size = 12
-            pygame.draw.rect(
-                screen, (200, 120, 80), (screen_x, screen_y, npc_size, npc_size)
-            )
+            img_name = data.get("image")
+            if img_name:
+                if "image_surface" not in data:
+                    img_path = resource_path(
+                        os.path.join(self.BASE_DIR, "img", img_name)
+                    )
+                    if os.path.isfile(img_path):
+                        surf = pygame.image.load(img_path).convert_alpha()
+                        data["image_surface"] = pygame.transform.scale(
+                            surf, (TILE, TILE)
+                        )
+                    else:
+                        data["image_surface"] = None
+                npc_image = data.get("image_surface")
+                if npc_image:
+                    screen.blit(npc_image, (screen_x, screen_y))
             lines = data.get("lines", [""])
             if lines:
                 label_surf = self.app.font.render(lines[0][:12], True, (255, 255, 255))
