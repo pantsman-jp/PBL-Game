@@ -12,6 +12,21 @@ TILE = 16
 SCREEN_CENTER_X = 320
 SCREEN_CENTER_Y = 200
 
+PLAYER_SIZE = 10
+PLAYER_HALF = PLAYER_SIZE // 2
+
+PLAYER_SAMPLE_OFFSETS = [
+    (-PLAYER_HALF, -PLAYER_HALF),
+    (0, -PLAYER_HALF),
+    (PLAYER_HALF, -PLAYER_HALF),
+    (-PLAYER_HALF, 0),
+    (0, 0),
+    (PLAYER_HALF, 0),
+    (-PLAYER_HALF, PLAYER_HALF),
+    (0, PLAYER_HALF),
+    (PLAYER_HALF, PLAYER_HALF),
+]
+
 
 class Field:
     def __init__(self, app):
@@ -22,6 +37,9 @@ class Field:
         self.offset = 0
         self.speed = 4
         self.map_image = None
+        self.map_pixels = None
+        self.map_pixel_w = 0
+        self.map_pixel_h = 0
         self.transitioning = False
         self.transition_radius = 0
         self.transition_target_map_id = None
@@ -33,11 +51,26 @@ class Field:
         maps_path = resource_path(os.path.join(self.BASE_DIR, "data", "maps.json"))
         self.map_data = load_json(maps_path) or {}
         self.current_map_id = None
-        self.current_walls = set()
         self.current_exits = {}
         self.load_map("world")
         self.load_player()
         self.dir = "front"
+
+    def _is_sea_color(self, r, g, b):
+        return b > r and b > g and b > 100
+
+    def _can_move_pixel(self, world_px, world_py):
+        if self.map_pixels is None:
+            return True
+        for dx, dy in PLAYER_SAMPLE_OFFSETS:
+            sx = int(world_px + dx)
+            sy = int(world_py + dy)
+            if sx < 0 or sy < 0 or sx >= self.map_pixel_w or sy >= self.map_pixel_h:
+                return False
+            r, g, b = self.map_pixels[sx][sy]
+            if self._is_sea_color(r, g, b):
+                return False
+        return True
 
     def update(self, keys):
         if self.transitioning:
@@ -69,15 +102,17 @@ class Field:
         ny = self.app.y + dy
         if nx < 0 or ny < 0 or nx >= self.map_w or ny >= self.map_h:
             return
-        if (nx, ny) in self.current_walls:
-            self._update_dir(dx, dy)
-            return
         for _, data in self.app.talk.dialogues.items():
             if data.get("map_id") == self.current_map_id:
                 pos = data.get("position")
                 if pos and pos[0] == nx and pos[1] == ny:
                     self._update_dir(dx, dy)
                     return
+        world_px = nx * TILE + TILE // 2
+        world_py = ny * TILE + TILE // 2
+        if not self._can_move_pixel(world_px, world_py):
+            self._update_dir(dx, dy)
+            return
         self._update_dir(dx, dy)
         self.dx = dx
         self.dy = dy
@@ -164,9 +199,9 @@ class Field:
             )
             screen.blit(overlay, (0, 0))
         coord_text = f"Map: {self.current_map_id} | ({self.app.x}, {self.app.y})"
-        for ox, oy in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
+        for ox2, oy2 in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
             surf = self.app.font.render(coord_text, True, (0, 0, 0))
-            screen.blit(surf, (8 + ox, 8 + oy))
+            screen.blit(surf, (8 + ox2, 8 + oy2))
         surf = self.app.font.render(coord_text, True, (255, 255, 255))
         screen.blit(surf, (8, 8))
 
@@ -213,14 +248,15 @@ class Field:
         path = resource_path(os.path.join(self.BASE_DIR, "img", img_name))
         if os.path.isfile(path):
             self.map_image = pygame.image.load(path).convert()
-            w, h = self.map_image.get_size()
-            self.map_w = w // TILE
-            self.map_h = h // TILE
+            self.map_pixel_w, self.map_pixel_h = self.map_image.get_size()
+            self.map_pixels = pygame.surfarray.array3d(self.map_image)
+            self.map_w = self.map_pixel_w // TILE
+            self.map_h = self.map_pixel_h // TILE
         else:
             self.map_image = None
+            self.map_pixels = None
             self.map_w = 0
             self.map_h = 0
-        self.current_walls = set(tuple(w) for w in data.get("walls", []))
         self.current_exits = {(e["x"], e["y"]): e for e in data.get("exits", [])}
         bgm_file = data.get("bgm", "")
         if bgm_file:
