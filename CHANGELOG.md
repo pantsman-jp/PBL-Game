@@ -1,14 +1,20 @@
 # CHANGELOG of PBL-Game
 
-## v0.20.0 (2025-12-20-issa)
+## v0.21.0 (2025-12-20-issa)
 - visual_novel.pyの新規作成
 - app.pyの変更
 - novel_script.jsonの新規作成
   > 会話の内容を書く
 
+## v0.20.0 (2025-12-20)
+- NPC ごとに表示画像を指定できる仕組みを追加
+- `assets/dialogues/dialogues.json` に `image` フィールドを追加することで、NPC 画像ファイル名を指定可能
+- NPC 画像を `assets/img/` から読み込み、描画する処理を追加しました
+- NPC の描画方法を、矩形描画から画像描画に変更
+- NPC を示すための固定色矩形描画処理を削除
+
 ## v0.19.1 (2025-12-16)
 - `assets/` 内の素材の変更
-- `maps.json` の `walls` の書き方は要検討
 
 | 使用箇所 | 出典 |
 | :---: | :---: |
