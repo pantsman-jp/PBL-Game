@@ -1,10 +1,25 @@
 # CHANGELOG of PBL-Game
 
 ## v0.20.0 (2025-12-20-issa)
-- visual_novel.pyの新規作成
-- app.pyの変更
-- novel_script.jsonの新規作成
-  > 会話の内容を書く
+- `visual_novel.py`の新規作成
+  - `VisualNovel`クラスの実装、以下の管理
+    1. 背景
+    2. 立ち絵
+    3. テキストウィンドウ
+  - VNはVisual Novelの略
+  - シーン定数の定義<br>
+    > 他の画面を実装したくなったらstate定数をここで与える
+
+    SCENE_TITLE=0:タイトル画面<br>
+  SCENE_GAME=1:RPG画面...etc.
+
+- `app.py`の変更
+  - 関数コメントの追加
+- `novel_script.json`の新規作成
+  > `bg`と`char`は指定していなければ、前の状態が維持されます。立ち絵を消したい場合は、"char":"none"を指定する
+  - text:会話の内容を書く
+  - bg:背景ファイル名
+  - char:立ち絵画像ファイル名
 
 ## v0.19.1 (2025-12-16)
 - `assets/` 内の素材の変更

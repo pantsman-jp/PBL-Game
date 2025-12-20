@@ -9,6 +9,18 @@ from src.utils import resource_path, load_json
 from src.ui import draw_window
 
 class VisualNovel:
+    """
+    ノベルパート（Visual Novel Part）を管理するクラス
+    
+    VN(Visual Novel):
+      会話イベントの処理を行う
+      > 背景、立ち絵、テキストボックスを用いて物語を進行させる形式のゲームジャンル
+    
+    機能:
+        - JSONスクリプトの読み込みと再生
+        - 背景画像と立ち絵の表示切り替え
+        - テキストウィンドウの描画とページ送り
+    """
     def __init__(self, app):
         self.app = app
         self.script = []
@@ -19,6 +31,7 @@ class VisualNovel:
         self.base_dir = resource_path("assets")
         
         # スクリプトデータの読み込み
+        # assets/data/novel_scripts.jsonからシナリオロード
         scripts_path = os.path.join(self.base_dir, "data", "novel_scripts.json")
         self.scripts_data = load_json(scripts_path) or {}
 
@@ -27,8 +40,10 @@ class VisualNovel:
 
     def start(self, script_id):
         """
-        スクリプトIDを受け取ってノベルパートを開始する
-        script_id: str (key in novel_scripts.json)
+        指定されたIDのスクリプトを開始
+        
+        Args:
+            script_id (str): novel_scripts.json 内のキー（例: "opening"）
         """
         if script_id not in self.scripts_data:
             print(f"Script ID not found: {script_id}")
@@ -41,7 +56,10 @@ class VisualNovel:
         self._load_current_scene()
 
     def _load_current_scene(self):
-        """現在のインデックスのデータを読み込んで画像を更新"""
+        """
+        - 現在の進行度(self.index)に基づいて、画面を更新
+        - スクリプト末尾なら終了処理
+        """
         if self.index >= len(self.script):
             self.end_scene()
             return
@@ -71,6 +89,10 @@ class VisualNovel:
                     self.char_image = img
 
     def update(self, events):
+        """
+        - 入力処理
+          - Click or Spaceキーで次のメッセージへ
+        """
         if not self.active:
             return
 
@@ -81,6 +103,10 @@ class VisualNovel:
                 self._load_current_scene()
 
     def draw(self, screen):
+        """
+        - ノベルパートの描画
+          - 背景->立ち絵->テキストウィンドウの順に重ねて描画
+        """
         if not self.active:
             return
 
@@ -111,7 +137,10 @@ class VisualNovel:
             draw_window(screen, self.font, lines, rect=(50, 500, 800, 150))
 
     def end_scene(self):
-        """ノベルパート終了処理"""
+        """
+        - ノベルパート終了処理
+          - フラグを下ろし、RPGパート開始
+        """
         self.active = False
         # ゲーム本編を開始するメソッドを呼び出す
         self.app.start_rpg_game()
