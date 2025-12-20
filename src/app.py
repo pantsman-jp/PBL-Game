@@ -10,11 +10,13 @@ from src.utils import KeyTracker, resource_path
 from src.core.system import System
 from src.core.field import Field
 from src.core.talk import Talk
+from src.core.visual_novel import VisualNovel
 
 WIDTH, HEIGHT = 900, 700
 FPS = 60
 SCENE_TITLE = 0
 SCENE_GAME = 1
+SCENE_VN = 2
 BASE_DIR = resource_path("assets")
 
 
@@ -63,6 +65,7 @@ class App:
         # --- サブモジュール生成 ---
         self.field = Field(self)
         self.talk = Talk(self)
+        self.vn = VisualNovel(self)
 
         self.scene_state = SCENE_TITLE
         self.running = True
@@ -81,6 +84,12 @@ class App:
         self.sfx_inv_close = _load_sound("chestclose.mp3")
 
     def start_game(self):
+        # タイトル画面からクリックされたら、まずノベルパートを開始
+        self.scene_state = SCENE_VN
+        self.vn.start("opening")
+
+    def start_rpg_game(self):
+        # ノベルパート終了後に呼ばれる、実際のゲーム開始処理
         self.field.load_map("world")  # 初期マップ
         self.field.load_player()
         self.scene_state = SCENE_GAME
@@ -107,6 +116,8 @@ class App:
             for ev in events:
                 if ev.type == pygame.MOUSEBUTTONDOWN:
                     self.start_game()
+        elif self.scene_state == SCENE_VN:
+            self.vn.update(events)
         elif self.scene_state == SCENE_GAME:
             for ev in events:
                 if ev.type == pygame.KEYDOWN:
@@ -125,6 +136,8 @@ class App:
     def _update(self):
         if self.scene_state == SCENE_TITLE:
             pass
+        elif self.scene_state == SCENE_VN:
+            pass  # VNの更新はイベントハンドラ内で行っているため
         elif self.scene_state == SCENE_GAME:
             keys = self.key_tracker.update()
             self.talk.update(keys)
@@ -154,6 +167,8 @@ class App:
                 )
                 rect = prompt_surf.get_rect(center=(WIDTH // 2, HEIGHT - 80))
                 self.screen.blit(prompt_surf, rect)
+        elif self.scene_state == SCENE_VN:
+            self.vn.draw(self.screen)
         elif self.scene_state == SCENE_GAME:
             # --- ゲーム本編描画 (既存の描画処理) ---
             self.screen.fill((50, 50, 80))  # 背景色
