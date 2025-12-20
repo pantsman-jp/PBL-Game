@@ -1,36 +1,45 @@
 from PIL import Image
 import json
 
-# !!!!!!!実行はルート直下で!!!!!!!
+####################
+# 実行はルート直下で #
+####################
 
 IMAGE_PATH = "assets/img/world_map.png"
 TILE_SIZE = 16
+FOOT_OFFSET_Y = 2
 
 
 def is_sea_color(r, g, b):
     return b > r and b > g and b > 100
 
 
-def is_sea_tile(pixels, width, height, tx, ty):
-    """
-    注目画素とその8近傍で、海か陸かを投票し、
-    多数決で決定する。
-    """
-    cx = tx * TILE_SIZE + TILE_SIZE // 2
-    cy = ty * TILE_SIZE + TILE_SIZE // 2
-    sea_count = 0
-    total = 0
-    for dy in (-1, 0, 1):
-        for dx in (-1, 0, 1):
-            px = cx + dx
-            py = cy + dy
-            if px < 0 or py < 0 or px >= width or py >= height:
-                continue
-            r, g, b = pixels[px, py]
-            total += 1
-            if is_sea_color(r, g, b):
-                sea_count += 1
-    return sea_count * 2 >= total
+def vote_sea(pixels, width, height, samples):
+    sea_score = 0
+    land_score = 0
+    for x, y, w in samples:
+        if x < 0 or y < 0 or x >= width or y >= height:
+            continue
+        r, g, b = pixels[x, y]
+        if is_sea_color(r, g, b):
+            sea_score += w
+        else:
+            land_score += w
+    return sea_score >= land_score
+
+
+def is_sea_tile_player_based(pixels, width, height, tx, ty):
+    base_x = tx * TILE_SIZE + TILE_SIZE // 2
+    base_y = (ty + 1) * TILE_SIZE - FOOT_OFFSET_Y
+    samples = [
+        (base_x, base_y, 3),
+        (base_x - 2, base_y, 2),
+        (base_x + 2, base_y, 2),
+        (base_x, base_y - 2, 2),
+        (base_x - 2, base_y - 2, 1),
+        (base_x + 2, base_y - 2, 1),
+    ]
+    return vote_sea(pixels, width, height, samples)
 
 
 def main():
@@ -47,7 +56,7 @@ def main():
     map_grid = [[False for _ in range(cols)] for _ in range(rows)]
     for y in range(rows):
         for x in range(cols):
-            map_grid[y][x] = is_sea_tile(pixels, width, height, x, y)
+            map_grid[y][x] = is_sea_tile_player_based(pixels, width, height, x, y)
     walls = []
     for y in range(rows):
         for x in range(cols):
