@@ -1,6 +1,8 @@
 # CHANGELOG of PBL-Game
 
 ## v0.22.0 (2025-12-20)
+- `maps.json` での衝突判定を廃止
+  - これに伴い `make_collision.py` を削除
 - 定数 `TILE` を 16 から 10 へ変更
 - 表示倍率を制御する定数 `ZOOM` および `Z_TILE` を導入
 - 描画中心座標 `SCREEN_CENTER_X` および `SCREEN_CENTER_Y` を App クラスの解像度（900x700）に合わせて更新
