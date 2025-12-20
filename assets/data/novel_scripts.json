@@ -1,0 +1,26 @@
+{
+  "opening": [
+    {
+      "speaker": "謎の声",
+      "text": "……聞こえますか……",
+      "bg": "title.jpg",
+      "char": "none"
+    },
+    {
+      "speaker": "謎の声",
+      "text": "今、あなたの脳内に直接語りかけています……",
+      "bg": "title.jpg"
+    },
+    {
+      "speaker": "案内人",
+      "text": "ようこそ、Tiny Quiz Fieldへ！",
+      "bg": "title.jpg",
+      "char": "player_front.png"
+    },
+    {
+      "speaker": "案内人",
+      "text": "これから冒険が始まります。",
+      "bg": "title.jpg"
+    }
+  ]
+}
