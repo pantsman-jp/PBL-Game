@@ -9,8 +9,10 @@ import math
 from src.utils import load_json, resource_path
 
 TILE = 10
-SCREEN_CENTER_X = 320
-SCREEN_CENTER_Y = 200
+ZOOM = 2
+Z_TILE = TILE * ZOOM
+SCREEN_CENTER_X = 900 // 2
+SCREEN_CENTER_Y = 700 // 2
 
 
 class Field:
@@ -31,7 +33,7 @@ class Field:
         self.transition_dest_pos = None
         self._transition_stage = None
         self.transition_max_radius = math.hypot(SCREEN_CENTER_X, SCREEN_CENTER_Y)
-        self.transition_speed = 4
+        self.transition_speed = 8
         self.BASE_DIR = resource_path("assets")
         maps_path = resource_path(os.path.join(self.BASE_DIR, "data", "maps.json"))
         self.map_data = load_json(maps_path) or {}
@@ -109,14 +111,14 @@ class Field:
     def draw(self, screen):
         if not self.map_image:
             return
-        ox, oy = self.offset * (-self.dx), self.offset * (-self.dy)
+        ox, oy = self.offset * (-self.dx) * ZOOM, self.offset * (-self.dy) * ZOOM
         base_x, base_y = (
-            SCREEN_CENTER_X - self.app.x * TILE,
-            SCREEN_CENTER_Y - self.app.y * TILE,
+            SCREEN_CENTER_X - self.app.x * Z_TILE,
+            SCREEN_CENTER_Y - self.app.y * Z_TILE,
         )
-        screen.blit(self.map_image, (base_x + ox, base_y + oy))
+        screen.blit(self.map_image_zoom, (base_x + ox, base_y + oy))
         self.player_image = getattr(self, f"player_{self.dir}")
-        screen.blit(self.player_image, self.player_rect)
+        screen.blit(self.player_image, (SCREEN_CENTER_X, SCREEN_CENTER_Y))
         for _, data in self.app.talk.dialogues.items():
             if data.get("map_id") != self.current_map_id:
                 continue
@@ -131,43 +133,40 @@ class Field:
                     movement_config.get("speed", 0.5),
                     movement_config.get("max_offset", 8),
                 )
+            z_npc_offset = data.get("offset_x", 0) * ZOOM if "offset_x" in data else 0
             if "offset_x" in data:
                 data["offset_x"] += data["NPC_speed"]
                 if abs(data["offset_x"]) > data["max_offset_x"]:
                     data["NPC_speed"] *= -1
-                screen_x = (
-                    SCREEN_CENTER_X + (nx - self.app.x) * TILE + ox + data["offset_x"]
-                )
-            else:
-                screen_x = SCREEN_CENTER_X + (nx - self.app.x) * TILE + ox
-            screen_y = SCREEN_CENTER_Y + (ny - self.app.y) * TILE + oy
+            screen_x = SCREEN_CENTER_X + (nx - self.app.x) * Z_TILE + ox + z_npc_offset
+            screen_y = SCREEN_CENTER_Y + (ny - self.app.y) * Z_TILE + oy
             img_name = data.get("image")
             if img_name:
-                if "image_surface" not in data:
+                if "image_surface_zoom" not in data:
                     img_path = resource_path(
                         os.path.join(self.BASE_DIR, "img", img_name)
                     )
                     if os.path.isfile(img_path):
                         surf = pygame.image.load(img_path).convert_alpha()
-                        data["image_surface"] = pygame.transform.scale(
-                            surf, (TILE, TILE)
+                        data["image_surface_zoom"] = pygame.transform.scale(
+                            surf, (Z_TILE, Z_TILE)
                         )
                     else:
-                        data["image_surface"] = None
-                npc_image = data.get("image_surface")
+                        data["image_surface_zoom"] = None
+                npc_image = data.get("image_surface_zoom")
                 if npc_image:
                     screen.blit(npc_image, (screen_x, screen_y))
             lines = data.get("lines", [""])
             if lines:
                 label_surf = self.app.font.render(lines[0][:12], True, (255, 255, 255))
-                screen.blit(label_surf, (screen_x, screen_y - 18))
+                screen.blit(label_surf, (screen_x, screen_y - 24))
         if self.transitioning:
             overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
             overlay.fill((0, 0, 0, 255))
             pygame.draw.circle(
                 overlay,
                 (0, 0, 0, 0),
-                (SCREEN_CENTER_X, SCREEN_CENTER_Y),
+                (SCREEN_CENTER_X + Z_TILE // 2, SCREEN_CENTER_Y + Z_TILE // 2),
                 int(self.transition_radius),
             )
             screen.blit(overlay, (0, 0))
@@ -224,10 +223,19 @@ class Field:
         if os.path.isfile(path):
             self.map_image = pygame.image.load(path).convert()
             self.map_pixel_w, self.map_pixel_h = self.map_image.get_size()
+            self.map_image_zoom = pygame.transform.scale(
+                self.map_image, (self.map_pixel_w * ZOOM, self.map_pixel_h * ZOOM)
+            )
             self.map_pixels = pygame.surfarray.array3d(self.map_image)
             self.map_w, self.map_h = self.map_pixel_w // TILE, self.map_pixel_h // TILE
         else:
-            self.map_image, self.map_pixels, self.map_w, self.map_h = None, None, 0, 0
+            (
+                self.map_image,
+                self.map_image_zoom,
+                self.map_pixels,
+                self.map_w,
+                self.map_h,
+            ) = None, None, None, 0, 0
         self.current_exits = {(e["x"], e["y"]): e for e in data.get("exits", [])}
         bgm_file = data.get("bgm", "")
         if bgm_file:
@@ -242,29 +250,18 @@ class Field:
         front = resource_path(os.path.join(self.BASE_DIR, "img", "player_front.png"))
         back = resource_path(os.path.join(self.BASE_DIR, "img", "player_back.png"))
         right = resource_path(os.path.join(self.BASE_DIR, "img", "player_right.png"))
-        if os.path.isfile(front):
-            self.player_front = pygame.transform.scale(
-                pygame.image.load(front).convert_alpha(), (TILE, TILE)
-            )
-        else:
-            self.player_front = pygame.Surface((TILE, TILE))
-            self.player_front.fill((255, 0, 0))
-        if os.path.isfile(back):
-            self.player_back = pygame.transform.scale(
-                pygame.image.load(back).convert_alpha(), (TILE, TILE)
-            )
-        else:
-            self.player_back = pygame.Surface((TILE, TILE))
-            self.player_back.fill((0, 255, 0))
-        if os.path.isfile(right):
-            self.player_right = pygame.transform.scale(
-                pygame.image.load(right).convert_alpha(), (TILE, TILE)
-            )
-        else:
-            self.player_right = pygame.Surface((TILE, TILE))
-            self.player_right.fill((0, 0, 255))
+
+        def _load_zoom(p, color):
+            if os.path.isfile(p):
+                return pygame.transform.scale(
+                    pygame.image.load(p).convert_alpha(), (Z_TILE, Z_TILE)
+                )
+            s = pygame.Surface((Z_TILE, Z_TILE))
+            s.fill(color)
+            return s
+
+        self.player_front = _load_zoom(front, (255, 0, 0))
+        self.player_back = _load_zoom(back, (0, 255, 0))
+        self.player_right = _load_zoom(right, (0, 0, 255))
         self.player_left = pygame.transform.flip(self.player_right, True, False)
         self.player_image = self.player_front
-        self.player_rect = self.player_image.get_rect(
-            topleft=(SCREEN_CENTER_X, SCREEN_CENTER_Y)
-        )
