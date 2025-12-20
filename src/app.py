@@ -57,8 +57,8 @@ class App:
         )
 
         # --- プレイヤー初期座標とインベントリ ---
-        self.x = 80
-        self.y = 80
+        self.x = 200
+        self.y = 100
         self.items = []
         self.inventory_open = False
 
