@@ -14,9 +14,15 @@ from src.core.visual_novel import VisualNovel
 
 WIDTH, HEIGHT = 900, 700
 FPS = 60
-SCENE_TITLE = 0
-SCENE_GAME = 1
-SCENE_VN = 2
+
+# --- シーン定数 (Scene Constants) ---
+# ゲームの状態を管理する値
+# メインループ内でこの値をチェックし、描画や更新処理を切り替え
+SCENE_TITLE = 0  # タイトル画面
+SCENE_GAME = 1  # RPGパート
+SCENE_VN = 2  # ノベルパート
+
+
 BASE_DIR = resource_path("assets")
 
 
@@ -84,17 +90,29 @@ class App:
         self.sfx_inv_close = _load_sound("chestclose.mp3")
 
     def start_game(self):
-        # タイトル画面からクリックされたら、まずノベルパートを開始
-        self.scene_state = SCENE_VN
+        """
+        - ゲームを開始
+            - タイトル画面でのクリック後にノベルパート開始
+        """
+
+        self.scene_state = SCENE_VN # タイトル画面からクリックされたら、まずノベルパートを開始
         self.vn.start("opening")
 
     def start_rpg_game(self):
+        """
+        - RPGパートの開始
+            - ノベルパート終了後などにマップとプレイヤーをロードしてゲーム本編へ移行
+        """
         # ノベルパート終了後に呼ばれる、実際のゲーム開始処理
         self.field.load_map("world")  # 初期マップ
         self.field.load_player()
         self.scene_state = SCENE_GAME
 
     def run(self):
+        """
+        - アプリケーションのメインループ
+            - 終了フラグが立つまで、イベント処理、更新、描画を繰り返す
+        """
         while self.running:
             self.clock.tick(FPS)
             events = pygame.event.get()
@@ -106,6 +124,10 @@ class App:
         sys.exit()
 
     def _handle_events(self, events):
+        """
+        - Pygameのイベント（キー入力、マウス操作、ウィンドウ閉じるなど）を処理
+            - 現在のシーンに応じて処理を振り分け
+        """
         for ev in events:
             if ev.type == pygame.QUIT:
                 self.running = False
@@ -134,6 +156,10 @@ class App:
                             pass
 
     def _update(self):
+        """
+        - ゲーム状態の更新（毎フレーム呼び出し）
+            - 現在のシーンに応じて、各モジュールのupdateメソッドを呼び出す
+        """
         if self.scene_state == SCENE_TITLE:
             pass
         elif self.scene_state == SCENE_VN:
@@ -147,9 +173,10 @@ class App:
 
     def _draw(self):
         """
-        画面描画
+        - 画面描画
+            - 現在のシーンに応じて描画内容を切り替え
         """
-        if self.scene_state == SCENE_TITLE:
+        if self.scene_state == SCENE_TITLE: # タイトル画面描画なら
             if self.title_image:
                 rect = self.title_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))
                 self.screen.blit(self.title_image, rect)
