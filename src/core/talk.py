@@ -92,17 +92,21 @@ class Talk:
         """
         会話ウィンドウの描画
         """
+        sw, sh = screen.get_size()
+        ww, wh = sw * 0.8, sh * 0.3
+        wx, wy = (sw - ww) // 2, sh - wh - 20
+        rect = (wx, wy, ww, wh)
         if self.quiz_mode and self.current_quiz:
             q = self.current_quiz
             lines = [q.get("question", "")] + [
                 f"{'>' if i == self.quiz_choice else ' '} {i + 1}. {c}"
                 for i, c in enumerate(q.get("choices", []))
             ]
-            draw_window(screen, font, lines)
+            draw_window(screen, font, lines, rect)
             return
         if self.window_lines:
             idx = min(self.line_index, len(self.window_lines) - 1)
-            draw_window(screen, font, [self.window_lines[idx]])
+            draw_window(screen, font, [self.window_lines[idx]], rect)
 
     def try_talk(self):
         """
