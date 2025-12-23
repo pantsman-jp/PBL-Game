@@ -93,10 +93,15 @@ class App:
         """
         - ゲームを開始
             - タイトル画面でのクリック後にノベルパート開始
+        
+        - 開発用：ノベルパートの再生はここの変数を変更してください
         """
 
-        self.scene_state = SCENE_VN # タイトル画面からクリックされたら、まずノベルパートを開始
-        self.vn.start("opening")
+        self.scene_state = (
+            SCENE_VN  # タイトル画面からクリックされたら、まずノベルパートを開始
+        )
+        # self.vn.start("opening")
+        self.vn.start("ending")  # 開発用：エンディングを再生
 
     def start_rpg_game(self):
         """
@@ -176,7 +181,7 @@ class App:
         - 画面描画
             - 現在のシーンに応じて描画内容を切り替え
         """
-        if self.scene_state == SCENE_TITLE: # タイトル画面描画なら
+        if self.scene_state == SCENE_TITLE:  # タイトル画面描画なら
             if self.title_image:
                 rect = self.title_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))
                 self.screen.blit(self.title_image, rect)

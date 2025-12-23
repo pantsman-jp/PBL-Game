@@ -11,6 +11,7 @@
 | :---: | :---: |
 | プレイヤー、NPC | <https://pipoya.net/sozai/> |
 | タイトル画面 | <https://aipict.com/> |
+| エンディング画面|<https://www.nasa.gov/nasa-brand-center/images-and-media/>|
 | 福岡県マップ | <https://rpgmap.hatenablog.com/> |
 | マップ BGM | <https://dova-s.jp/> |
 | 効果音 | <https://soundeffect-lab.info/> |
