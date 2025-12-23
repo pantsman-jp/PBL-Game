@@ -22,5 +22,50 @@
       "text": "これから冒険が始まります。",
       "bg": "title.jpg"
     }
+  ],
+  "ending": [
+    {
+      "speaker": "ナレーション",
+      "text": "種子島宇宙センターにて、組み立てたロケットの発射準備が整った。",
+      "bg": "title.jpg",
+      "char": "none"
+    },
+    {
+      "speaker": "主人公",
+      "text": "いくぞ……点火！",
+      "bg": "title.jpg",
+      "char": "player_front.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "ロケットは轟音と共に空へ昇っていく。打ち上げは成功したかに見えた。",
+      "bg": "title.jpg",
+      "char": "none"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "しかし、切り離されたブースターが風に流され……",
+      "bg": "title.jpg"
+    },
+    {
+      "speaker": "効果音",
+      "text": "ガシャーン！！",
+      "bg": "title.jpg"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "なんと、戸畑キャンパスの講義棟の窓にピンポイントで突き刺さってしまった。",
+      "bg": "title.jpg"
+    },
+    {
+      "speaker": "スマホ",
+      "text": "ピロリン♪",
+      "bg": "title.jpg"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "学生課からの呼び出し通知が、虚しく響き渡った……。",
+      "bg": "title.jpg"
+    }
   ]
 }
