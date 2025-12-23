@@ -27,7 +27,7 @@
     {
       "speaker": "ナレーション",
       "text": "種子島宇宙センターにて、組み立てたロケットの発射準備が整った。",
-      "bg": "title.jpg",
+      "bg": "Launch.jpg",
       "char": "none"
     },
     {
@@ -39,23 +39,23 @@
     {
       "speaker": "ナレーション",
       "text": "ロケットは轟音と共に空へ昇っていく。打ち上げは成功したかに見えた。",
-      "bg": "title.jpg",
+      "bg": "ISS_EarthWindow.jpg",
       "char": "none"
     },
     {
       "speaker": "ナレーション",
       "text": "しかし、切り離されたブースターが風に流され……",
-      "bg": "title.jpg"
+      "bg": "ISS_EarthWindow.jpg"
     },
     {
       "speaker": "効果音",
       "text": "ガシャーン！！",
-      "bg": "title.jpg"
+      "bg": "ISS_EarthWindow.jpg"
     },
     {
       "speaker": "ナレーション",
       "text": "なんと、戸畑キャンパスの講義棟の窓にピンポイントで突き刺さってしまった。",
-      "bg": "title.jpg"
+      "bg": "ISS_EarthWindow.jpg"
     },
     {
       "speaker": "スマホ",
