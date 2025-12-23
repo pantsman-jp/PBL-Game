@@ -1,19 +1,27 @@
+"""
+フィールド管理 | src/core/field.py
+プレイヤー移動、NPC描画、マップ遷移、画面遷移時アニメーション、BGM管理
+"""
+
 import pygame
 import os
 import math
 from src.utils import load_json, resource_path
 
-# 定数
+# 定数定義：タイルサイズおよび画面中心座標
 TILE = 10
 ZOOM = 2
 Z_TILE = TILE * ZOOM
 SCREEN_CENTER_X = 900 // 2
 SCREEN_CENTER_Y = 700 // 2
+# 累積的なずれを補正するための定数
+Y_OFFSET = 1.0
+Y_DRIFT = 0.0
 
 
 class Field:
     """
-    フィールドの管理、描画、移動判定、マップ遷移を制御するクラス
+    フィールドの管理、描画、移動判定、マップ遷移を制御する
     """
 
     def __init__(self, app):
@@ -50,12 +58,11 @@ class Field:
         """
         指定されたRGB値が海のタイル（白波を含む）に該当するか判定
         """
-        # 海の基本色 (0, 95, 255) と白波 (0, 143, 239) を包含する範囲
         return r < 25 and 90 <= g <= 155 and b >= 230
 
     def _can_move_pixel(self, world_px, world_py):
         """
-        指定されたピクセル座標の周囲3x3ピクセルを確認し、移動可能か判定
+        補正後の座標の周囲3x3ピクセルを確認し、移動可能か判定
         """
         if self.map_pixels is None:
             return True
@@ -66,10 +73,8 @@ class Field:
             int(world_px),
             int(world_py),
         )
-        # マップ範囲外のチェック
         if cx < 1 or cy < 1 or cx >= w - 1 or cy >= h - 1:
             return False
-        # 3x3ピクセル内に海の色が一つでも含まれていれば移動不可
         return not any(
             self._is_sea_color(*px[x][y])
             for x in range(cx - 1, cx + 2)
@@ -94,7 +99,6 @@ class Field:
                 )
                 self._check_map_event()
             return
-        # 入力による移動開始処理
         pressed = pygame.key.get_pressed()
         if pressed[pygame.K_UP]:
             self.start_move(0, -1)
@@ -109,12 +113,11 @@ class Field:
 
     def start_move(self, dx, dy):
         """
-        移動先が通行可能か判定し、移動を開始
+        補正係数を考慮した座標で通行可能か判定し、移動を開始
         """
         nx, ny = self.app.x + dx, self.app.y + dy
         if nx < 0 or ny < 0 or nx >= self.map_w or ny >= self.map_h:
             return
-        # NPCとの衝突判定
         if any(
             d.get("position") == [nx, ny]
             for d in self.app.talk.dialogues.values()
@@ -122,8 +125,10 @@ class Field:
         ):
             self._update_dir(dx, dy)
             return
-        # 地形（海など）の判定
-        if not self._can_move_pixel(nx * TILE + 5, ny * TILE + 5):
+        # 垂直方向の累積誤差を考慮したサンプリング座標の計算
+        # 公式: world_py = ny * TILE + 5 + Y_OFFSET + (ny * Y_DRIFT)
+        adj_py = ny * TILE + 5 + Y_OFFSET + (ny * Y_DRIFT)
+        if not self._can_move_pixel(nx * TILE + 5, adj_py):
             self._update_dir(dx, dy)
             return
         self._update_dir(dx, dy)
@@ -151,17 +156,14 @@ class Field:
         """
         if not self.map_image:
             return
-        # マップの描画座標計算
         ox, oy = self.offset * (-self.dx) * ZOOM, self.offset * (-self.dy) * ZOOM
         base_x, base_y = (
             SCREEN_CENTER_X - self.app.x * Z_TILE,
             SCREEN_CENTER_Y - self.app.y * Z_TILE,
         )
         screen.blit(self.map_image_zoom, (base_x + ox, base_y + oy))
-        # プレイヤーの描画
         self.player_image = getattr(self, f"player_{self.dir}")
         screen.blit(self.player_image, (SCREEN_CENTER_X, SCREEN_CENTER_Y))
-        # 各NPCの描画処理
         for _, data in self.app.talk.dialogues.items():
             if data.get("map_id") != self.current_map_id:
                 continue
@@ -196,12 +198,10 @@ class Field:
             npc_image = data.get("image_surface_zoom")
             if npc_image:
                 screen.blit(npc_image, (screen_x, screen_y))
-            # NPC名の簡易ラベル描画
             lines = data.get("lines", [""])
             if lines:
                 label_surf = self.app.font.render(lines[0][:12], True, (255, 255, 255))
                 screen.blit(label_surf, (screen_x, screen_y - 24))
-        # 画面遷移アニメーションの描画
         if self.transitioning:
             overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
             overlay.fill((0, 0, 0, 255))
@@ -212,7 +212,6 @@ class Field:
                 int(self.transition_radius),
             )
             screen.blit(overlay, (0, 0))
-        # 座標デバッグ情報の描画
         coord_text = f"Map: {self.current_map_id} | ({self.app.x}, {self.app.y})"
         [
             screen.blit(
@@ -303,7 +302,7 @@ class Field:
 
     def _get_scaled_player_surface(self, path, color):
         """
-        プレイヤー画像を読み込み、ズーム倍率に合わせてスケーリングします。画像がない場合は単色タイルを生成
+        プレイヤー画像を読み込み、ズーム倍率に合わせてスケーリング
         """
         if os.path.isfile(path):
             return pygame.transform.scale(
@@ -315,7 +314,7 @@ class Field:
 
     def load_player(self):
         """
-        各方向のプレイヤー画像を読み込みます。
+        各方向のプレイヤー画像を読み込み
         """
         self.player_front = self._get_scaled_player_surface(
             resource_path(os.path.join(self.BASE_DIR, "img", "player_front.png")),
