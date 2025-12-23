@@ -1,13 +1,9 @@
-"""
-フィールド管理 | src/core/field.py
-プレイヤー移動、NPC描画、マップ遷移、画面遷移時アニメーション、BGM管理
-"""
-
 import pygame
 import os
 import math
 from src.utils import load_json, resource_path
 
+# 定数
 TILE = 10
 ZOOM = 2
 Z_TILE = TILE * ZOOM
@@ -16,7 +12,14 @@ SCREEN_CENTER_Y = 700 // 2
 
 
 class Field:
+    """
+    フィールドの管理、描画、移動判定、マップ遷移を制御するクラス
+    """
+
     def __init__(self, app):
+        """
+        フィールドクラスを初期化し、マップデータとプレイヤーの読み込み
+        """
         self.app = app
         self.moving = False
         self.dx = 0
@@ -44,18 +47,39 @@ class Field:
         self.dir = "front"
 
     def _is_sea_color(self, r, g, b):
-        return b > r and b > g and b > 100
+        """
+        指定されたRGB値が海のタイル（白波を含む）に該当するか判定
+        """
+        # 海の基本色 (0, 95, 255) と白波 (0, 143, 239) を包含する範囲
+        return r < 25 and 90 <= g <= 155 and b >= 230
 
     def _can_move_pixel(self, world_px, world_py):
+        """
+        指定されたピクセル座標の周囲3x3ピクセルを確認し、移動可能か判定
+        """
         if self.map_pixels is None:
             return True
-        sx, sy = int(world_px), int(world_py)
-        if sx < 0 or sy < 0 or sx >= self.map_pixel_w or sy >= self.map_pixel_h:
+        px, w, h, cx, cy = (
+            self.map_pixels,
+            self.map_pixel_w,
+            self.map_pixel_h,
+            int(world_px),
+            int(world_py),
+        )
+        # マップ範囲外のチェック
+        if cx < 1 or cy < 1 or cx >= w - 1 or cy >= h - 1:
             return False
-        r, g, b = self.map_pixels[sx][sy]
-        return not self._is_sea_color(r, g, b)
+        # 3x3ピクセル内に海の色が一つでも含まれていれば移動不可
+        return not any(
+            self._is_sea_color(*px[x][y])
+            for x in range(cx - 1, cx + 2)
+            for y in range(cy - 1, cy + 2)
+        )
 
     def update(self, keys):
+        """
+        プレイヤーの入力状態と移動アニメーション、マップイベントの更新
+        """
         if self.transitioning:
             self._update_transition()
             return
@@ -70,6 +94,7 @@ class Field:
                 )
                 self._check_map_event()
             return
+        # 入力による移動開始処理
         pressed = pygame.key.get_pressed()
         if pressed[pygame.K_UP]:
             self.start_move(0, -1)
@@ -83,15 +108,21 @@ class Field:
             self.app.talk.try_talk()
 
     def start_move(self, dx, dy):
+        """
+        移動先が通行可能か判定し、移動を開始
+        """
         nx, ny = self.app.x + dx, self.app.y + dy
         if nx < 0 or ny < 0 or nx >= self.map_w or ny >= self.map_h:
             return
-        for _, data in self.app.talk.dialogues.items():
-            if data.get("map_id") == self.current_map_id:
-                pos = data.get("position")
-                if pos and pos[0] == nx and pos[1] == ny:
-                    self._update_dir(dx, dy)
-                    return
+        # NPCとの衝突判定
+        if any(
+            d.get("position") == [nx, ny]
+            for d in self.app.talk.dialogues.values()
+            if d.get("map_id") == self.current_map_id
+        ):
+            self._update_dir(dx, dy)
+            return
+        # 地形（海など）の判定
         if not self._can_move_pixel(nx * TILE + 5, ny * TILE + 5):
             self._update_dir(dx, dy)
             return
@@ -99,26 +130,38 @@ class Field:
         self.dx, self.dy, self.moving, self.offset = dx, dy, True, 0
 
     def _update_dir(self, dx, dy):
-        if dy == 1:
-            self.dir = "front"
-        elif dy == -1:
-            self.dir = "back"
-        elif dx == 1:
-            self.dir = "right"
-        elif dx == -1:
-            self.dir = "left"
+        """
+        移動方向に基づいてプレイヤーの向きを更新
+        """
+        self.dir = (
+            "front"
+            if dy == 1
+            else "back"
+            if dy == -1
+            else "right"
+            if dx == 1
+            else "left"
+            if dx == -1
+            else self.dir
+        )
 
     def draw(self, screen):
+        """
+        マップ、NPC、プレイヤー、座標情報を画面に描画
+        """
         if not self.map_image:
             return
+        # マップの描画座標計算
         ox, oy = self.offset * (-self.dx) * ZOOM, self.offset * (-self.dy) * ZOOM
         base_x, base_y = (
             SCREEN_CENTER_X - self.app.x * Z_TILE,
             SCREEN_CENTER_Y - self.app.y * Z_TILE,
         )
         screen.blit(self.map_image_zoom, (base_x + ox, base_y + oy))
+        # プレイヤーの描画
         self.player_image = getattr(self, f"player_{self.dir}")
         screen.blit(self.player_image, (SCREEN_CENTER_X, SCREEN_CENTER_Y))
+        # 各NPCの描画処理
         for _, data in self.app.talk.dialogues.items():
             if data.get("map_id") != self.current_map_id:
                 continue
@@ -141,25 +184,24 @@ class Field:
             screen_x = SCREEN_CENTER_X + (nx - self.app.x) * Z_TILE + ox + z_npc_offset
             screen_y = SCREEN_CENTER_Y + (ny - self.app.y) * Z_TILE + oy
             img_name = data.get("image")
-            if img_name:
-                if "image_surface_zoom" not in data:
-                    img_path = resource_path(
-                        os.path.join(self.BASE_DIR, "img", img_name)
+            if img_name and "image_surface_zoom" not in data:
+                img_path = resource_path(os.path.join(self.BASE_DIR, "img", img_name))
+                data["image_surface_zoom"] = (
+                    pygame.transform.scale(
+                        pygame.image.load(img_path).convert_alpha(), (Z_TILE, Z_TILE)
                     )
-                    if os.path.isfile(img_path):
-                        surf = pygame.image.load(img_path).convert_alpha()
-                        data["image_surface_zoom"] = pygame.transform.scale(
-                            surf, (Z_TILE, Z_TILE)
-                        )
-                    else:
-                        data["image_surface_zoom"] = None
-                npc_image = data.get("image_surface_zoom")
-                if npc_image:
-                    screen.blit(npc_image, (screen_x, screen_y))
+                    if os.path.isfile(img_path)
+                    else None
+                )
+            npc_image = data.get("image_surface_zoom")
+            if npc_image:
+                screen.blit(npc_image, (screen_x, screen_y))
+            # NPC名の簡易ラベル描画
             lines = data.get("lines", [""])
             if lines:
                 label_surf = self.app.font.render(lines[0][:12], True, (255, 255, 255))
                 screen.blit(label_surf, (screen_x, screen_y - 24))
+        # 画面遷移アニメーションの描画
         if self.transitioning:
             overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
             overlay.fill((0, 0, 0, 255))
@@ -170,17 +212,22 @@ class Field:
                 int(self.transition_radius),
             )
             screen.blit(overlay, (0, 0))
+        # 座標デバッグ情報の描画
         coord_text = f"Map: {self.current_map_id} | ({self.app.x}, {self.app.y})"
-        for ox2, oy2 in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
-            surf = self.app.font.render(coord_text, True, (0, 0, 0))
-            screen.blit(surf, (8 + ox2, 8 + oy2))
-        surf = self.app.font.render(coord_text, True, (255, 255, 255))
-        screen.blit(surf, (8, 8))
+        [
+            screen.blit(
+                self.app.font.render(coord_text, True, (0, 0, 0)), (8 + ox2, 8 + oy2)
+            )
+            for ox2, oy2 in [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+        ]
+        screen.blit(self.app.font.render(coord_text, True, (255, 255, 255)), (8, 8))
 
     def _check_map_event(self):
-        current_pos = (self.app.x, self.app.y)
-        if current_pos in self.current_exits:
-            exit_data = self.current_exits[current_pos]
+        """
+        現在のタイルに存在するマップ移動イベント（出口）を確認
+        """
+        if (self.app.x, self.app.y) in self.current_exits:
+            exit_data = self.current_exits[(self.app.x, self.app.y)]
             self._start_transition(
                 exit_data["target_map"],
                 exit_data.get("dest_x"),
@@ -188,15 +235,21 @@ class Field:
             )
 
     def _start_transition(self, map_id, dest_x, dest_y):
+        """
+        マップ遷移アニメーションを開始
+        """
         (
             self.transitioning,
             self.transition_radius,
             self.transition_target_map_id,
             self.transition_dest_pos,
             self._transition_stage,
-        ) = True, self.transition_max_radius, map_id, (dest_x, dest_y), "out"
+        ) = (True, self.transition_max_radius, map_id, (dest_x, dest_y), "out")
 
     def _update_transition(self):
+        """
+        画面遷移の半径を更新し、フェードアウト完了時にマップを切り替え
+        """
         if self._transition_stage == "out":
             self.transition_radius -= self.transition_speed
             if self.transition_radius <= 0:
@@ -214,11 +267,14 @@ class Field:
                 )
 
     def load_map(self, map_id):
+        """
+        新しいマップデータを読み込み、画像タイルおよび衝突判定用のピクセル配列を作成
+        """
         if map_id not in self.map_data:
             return
         self.current_map_id = map_id
         data = self.map_data[map_id]
-        img_name = data.get("image", "world_map.png")
+        img_name, bgm_file = data.get("image", "world_map.png"), data.get("bgm", "")
         path = resource_path(os.path.join(self.BASE_DIR, "img", img_name))
         if os.path.isfile(path):
             self.map_image = pygame.image.load(path).convert()
@@ -235,9 +291,8 @@ class Field:
                 self.map_pixels,
                 self.map_w,
                 self.map_h,
-            ) = None, None, None, 0, 0
+            ) = (None, None, None, 0, 0)
         self.current_exits = {(e["x"], e["y"]): e for e in data.get("exits", [])}
-        bgm_file = data.get("bgm", "")
         if bgm_file:
             bgm_path = resource_path(os.path.join(self.BASE_DIR, "sounds", bgm_file))
             if os.path.isfile(bgm_path):
@@ -246,22 +301,33 @@ class Field:
                 except Exception:
                     pass
 
+    def _get_scaled_player_surface(self, path, color):
+        """
+        プレイヤー画像を読み込み、ズーム倍率に合わせてスケーリングします。画像がない場合は単色タイルを生成
+        """
+        if os.path.isfile(path):
+            return pygame.transform.scale(
+                pygame.image.load(path).convert_alpha(), (Z_TILE, Z_TILE)
+            )
+        surf = pygame.Surface((Z_TILE, Z_TILE))
+        surf.fill(color)
+        return surf
+
     def load_player(self):
-        front = resource_path(os.path.join(self.BASE_DIR, "img", "player_front.png"))
-        back = resource_path(os.path.join(self.BASE_DIR, "img", "player_back.png"))
-        right = resource_path(os.path.join(self.BASE_DIR, "img", "player_right.png"))
-
-        def _load_zoom(p, color):
-            if os.path.isfile(p):
-                return pygame.transform.scale(
-                    pygame.image.load(p).convert_alpha(), (Z_TILE, Z_TILE)
-                )
-            s = pygame.Surface((Z_TILE, Z_TILE))
-            s.fill(color)
-            return s
-
-        self.player_front = _load_zoom(front, (255, 0, 0))
-        self.player_back = _load_zoom(back, (0, 255, 0))
-        self.player_right = _load_zoom(right, (0, 0, 255))
+        """
+        各方向のプレイヤー画像を読み込みます。
+        """
+        self.player_front = self._get_scaled_player_surface(
+            resource_path(os.path.join(self.BASE_DIR, "img", "player_front.png")),
+            (255, 0, 0),
+        )
+        self.player_back = self._get_scaled_player_surface(
+            resource_path(os.path.join(self.BASE_DIR, "img", "player_back.png")),
+            (0, 255, 0),
+        )
+        self.player_right = self._get_scaled_player_surface(
+            resource_path(os.path.join(self.BASE_DIR, "img", "player_right.png")),
+            (0, 0, 255),
+        )
         self.player_left = pygame.transform.flip(self.player_right, True, False)
         self.player_image = self.player_front
