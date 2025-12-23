@@ -28,5 +28,5 @@ Issues [#12](https://github.com/pantsman-jp/PBL-Game/issues/12) も参考して�
 ## PR 作成手順
 参考 Issues [#40](https://github.com/pantsman-jp/PBL-Game/issues/40)
 
-- タイトルは日本語で明確に
+- タイトルは明確に
 - テンプレートに従って書いてください
