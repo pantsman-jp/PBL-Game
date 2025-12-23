@@ -1,4 +1,5 @@
 # CHANGELOG of PBL-Game
+
 ## v0.24.3 (2025-12-23-issa)
 - 出典の補強
 - mp3の追加
