@@ -9,12 +9,12 @@
 ## 素材出典
 | 使用箇所 | 素材元・作者名 | URL・ライセンス詳細|
 | :---: | :---: |:---: |
-| プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
-| タイトル画面 | AIPICT | <https://aipict.com/> |
+| プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> <br> <https://pipoya.net/sozai/terms-of-use/> |
+| タイトル画面 | AIPICT | <https://aipict.com/> <br> <https://aipict.com/terms-of-use/> |
 | エンディング画面| Image Credit: NASA | <https://www.nasa.gov/nasa-brand-center/images-and-media/> |
-| 福岡県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> |
-| マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> |
-| 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> |
+| 福岡県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> <br> <https://rpgmap.hatenablog.com/entry/イラストマップやプログラムの利用について> |
+| マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> <br> <https://dova-s.jp/_contents/agreement/> |
+| 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> <br> <https://soundeffect-lab.info/agreement/> |
 | 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0)|
 
 ## インストール方法
