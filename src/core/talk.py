@@ -10,12 +10,12 @@ from src.utils import load_json, resource_path
 
 class Talk:
     """
-    NPCとの会話システムおよびクイズ機能を管理するクラスです。
+    NPCとの会話システムおよびクイズ機能を管理するクラス
     """
 
     def __init__(self, app):
         """
-        初期化処理を行います。
+        初期化処理
         """
         self.app = app
         dialogues_path = resource_path(
@@ -32,7 +32,7 @@ class Talk:
 
     def update(self, keys):
         """
-        会話とクイズの状態更新を行います。
+        会話とクイズの状態更新
         keys: dict {"z": bool, "q": bool, "up": bool, "down": bool}
         """
         if self.wait_frames > 0:
@@ -54,7 +54,7 @@ class Talk:
 
     def _advance_or_terminate(self):
         """
-        会話の進行、クイズへの移行、または会話の終了を判定します。
+        会話の進行、クイズへの移行、または会話の終了を判定
         """
         if self.current_quiz:
             self.window_lines = []
@@ -67,7 +67,7 @@ class Talk:
 
     def _process_npc_reward(self):
         """
-        NPCデータ直下に報酬が存在する場合、プレイヤーに付与しデータを削除します。
+        NPCデータ直下に報酬が存在する場合、プレイヤーに付与しデータを削除
         """
         npc_data = self.dialogues.get(self.active, {})
         reward = npc_data.get("reward")
@@ -77,8 +77,8 @@ class Talk:
 
     def _close_dialog(self):
         """
-        会話ウィンドウを閉じ、すべての状態変数を初期化します。
-        閉じた直後の再発火を防ぐため待機時間を設定します。
+        会話ウィンドウを閉じ、すべての状態変数を初期化
+        閉じた直後の再発火を防ぐため待機時間を設定
         """
         self.window_lines = []
         self.active = None
@@ -90,7 +90,7 @@ class Talk:
 
     def draw(self, screen, font):
         """
-        会話ウィンドウの描画を行います。
+        会話ウィンドウの描画
         """
         if self.quiz_mode and self.current_quiz:
             q = self.current_quiz
@@ -106,8 +106,8 @@ class Talk:
 
     def try_talk(self):
         """
-        プレイヤー位置の四近傍にいるNPCを探索して会話を開始します。
-        会話中や待機時間中は実行されません。
+        プレイヤー位置の四近傍にいるNPCを探索して会話を開始
+        会話中や待機時間中は実行されない
         """
         if self.is_active() or self.wait_frames > 0:
             return
@@ -121,7 +121,7 @@ class Talk:
 
     def open_dialog(self, data):
         """
-        会話開始処理を行います。
+        会話開始処理
         """
         self.window_lines = data.get("lines", [])
         self.line_index = 0
@@ -132,13 +132,13 @@ class Talk:
 
     def is_active(self):
         """
-        会話またはクイズが進行中であるか判定します。
+        会話またはクイズが進行中であるか判定
         """
         return self.active is not None
 
     def _handle_quiz(self, keys):
         """
-        クイズの入力処理および正誤判定を行います。
+        クイズの入力処理および正誤判定
         """
         q = self.current_quiz
         choices = q.get("choices", [])
