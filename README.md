@@ -7,14 +7,15 @@
 本ゲームの利用に際しては [免責事項](docs/disclaimer.ja.md) をご確認ください。
 
 ## 素材出典
-| 使用箇所 | 出典 |
-| :---: | :---: |
-| プレイヤー、NPC | <https://pipoya.net/sozai/> |
-| タイトル画面 | <https://aipict.com/> |
-| エンディング画面|<https://www.nasa.gov/nasa-brand-center/images-and-media/>|
-| 福岡県マップ | <https://rpgmap.hatenablog.com/> |
-| マップ BGM | <https://dova-s.jp/> |
-| 効果音 | <https://soundeffect-lab.info/> |
+| 使用箇所 | 素材元・作者名 | URL・ライセンス詳細|
+| :---: | :---: |:---: |
+| プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
+| タイトル画面 |  | <https://aipict.com/> |
+| エンディング画面| Image Credit: NASA |<https://www.nasa.gov/nasa-brand-center/images-and-media/>|
+| 福岡県マップ |  |<https://rpgmap.hatenablog.com/> |
+| マップ BGM |  |<https://dova-s.jp/> |
+| 効果音 |  |<https://soundeffect-lab.info/> |
+| 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0)|
 
 ## インストール方法
 ```

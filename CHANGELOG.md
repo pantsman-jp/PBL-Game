@@ -1,4 +1,9 @@
 # CHANGELOG of PBL-Game
+## v0.24.2 (2025-12-23-issa)
+- 出典の補強
+- mp3の追加
+  - Youtube Audio Libraryからの引用は安全
+
 
 ## v0.24.2 (2025-12-23)
 - 会話終了時の自動クローズ機能の追加
