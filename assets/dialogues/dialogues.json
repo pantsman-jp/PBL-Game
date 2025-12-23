@@ -1,8 +1,8 @@
 {
     "npc_1": {
         "position": [
-            425,
-            425
+            190,
+            108
         ],
         "map_id": "world",
         "image": "npc1.png",
@@ -30,8 +30,8 @@
     },
     "npc_2": {
         "position": [
-            450,
-            450
+            175,
+            110
         ],
         "map_id": "world",
         "image": "npc2.png",

@@ -4,8 +4,8 @@
     "walls": [],
     "exits": [
       {
-        "x": 72,
-        "y": 27,
+        "x": 196,
+        "y": 98,
         "target_map": "village",
         "dest_x": 2,
         "dest_y": 2
@@ -18,11 +18,11 @@
     "walls": [],
     "exits": [
       {
-        "x": 2,
-        "y": 10,
+        "x": 0,
+        "y": 0,
         "target_map": "world",
-        "dest_x": 72,
-        "dest_y": 28
+        "dest_x": 200,
+        "dest_y": 100
       }
     ],
     "bgm": "main.mp3"
