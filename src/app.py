@@ -94,11 +94,21 @@ class App:
         """
         - ゲームを開始
             - タイトル画面でのクリック後にノベルパート開始
+<<<<<<< Updated upstream
 
         - 開発用：ノベルパートの再生はここの変数を変更してください
         """
         self.scene_state = SCENE_VN
         self.vn.start("ending")  # 開発用
+=======
+        - 開発用：ノベルパートの再生はここの変数を変更してください
+        """
+
+        self.scene_state = (
+            SCENE_VN  # タイトル画面からクリックされたら、まずノベルパートを開始
+        )
+        self.vn.start("opening")
+>>>>>>> Stashed changes
 
     def start_rpg_game(self):
         """
