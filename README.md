@@ -37,4 +37,4 @@ python -m src.main
 ```
 
 ---
-Copyright © 2025-2026 pantsman, ISSA-Motomu, tanosou, osato03, nagata
+Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA)
