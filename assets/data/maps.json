@@ -9,6 +9,13 @@
         "target_map": "village",
         "dest_x": 2,
         "dest_y": 2
+      },
+      {
+        "x": 214,
+        "y": 104,
+        "target_map": "kyutech_campus",
+        "dest_x": 15,
+        "dest_y": 15
       }
     ],
     "bgm": "main.mp3"
@@ -23,6 +30,20 @@
         "target_map": "world",
         "dest_x": 200,
         "dest_y": 100
+      }
+    ],
+    "bgm": "main.mp3"
+  },
+  "kyutech_campus": {
+    "image": "title.jpg",
+    "walls": [],
+    "exits": [
+      {
+        "x": 15,
+        "y": 16,
+        "target_map": "world",
+        "dest_x": 214,
+        "dest_y": 105
       }
     ],
     "bgm": "main.mp3"

@@ -11,6 +11,7 @@ from src.core.system import System
 from src.core.field import Field
 from src.core.talk import Talk
 from src.core.visual_novel import VisualNovel
+from src.ui import draw_objective_bar
 
 WIDTH, HEIGHT = 900, 700
 FPS = 60
@@ -93,7 +94,7 @@ class App:
         """
         - ゲームを開始
             - タイトル画面でのクリック後にノベルパート開始
-        
+
         - 開発用：ノベルパートの再生はここの変数を変更してください
         """
 
@@ -205,6 +206,10 @@ class App:
             # --- ゲーム本編描画 (既存の描画処理) ---
             self.screen.fill((50, 50, 80))  # 背景色
             self.field.draw(self.screen)
+
+            # 目標UIの描画
+            obj_text = self.system.get_current_objective()
+            draw_objective_bar(self.screen, self.font, obj_text, rect=(0, 0, WIDTH, 32))
 
             # UI（所持アイテム）
             items_text = "ITEMS: " + ", ".join(self.items) if self.items else "ITEMS: -"
