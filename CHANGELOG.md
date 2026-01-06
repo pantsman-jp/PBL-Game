@@ -1,12 +1,13 @@
 # CHANGELOG of PBL-Game
-## v0.26.0 (2026-1-6)
-- talk.pyに_check_novel_trigger()を追加
- -NPCに話しかけるとnovelパートに切り替わり、対応したnovelが開始するような機能をもつ
-- app.py のstart_gameでゲーム開始時endingが始まるのをopeningに変更
-- novel_scripts.json のendingパートを追記（まだ完成はしていない）
-- dialogues.json のNPCデータに、novel_triggerを追加したNPC3を追加
- -novel_triggerにnovel_scriptsの章名（openingなど）を記載することで対応したnovelが開始する
-画像ファイルcontrol_room.png, np3.png, tanegashima_rocket.jpgの追加
+
+## v0.26.0 (2026-01-06)
+- `talk.py` に `_check_novel_trigger()` を追加
+  - NPC に話しかけると novel パートに切り替わり、対応した novel が開始するような機能をもつ
+- `app.py` の `start_game` でゲーム開始時 ending が始まるのを opening に変更
+- `novel_scripts.json` の ending パートを追記（まだ完成はしていない）
+- `dialogues.json` の NPC データに、novel_trigger を追加した NPC3 を追加
+  - novel_trigger に novel_scripts の章名（opening など）を記載することで対応した novel が開始する
+- 画像ファイル `control_room.png`, `np3.png`, `tanegashima_rocket.jpg` の追加
 
 ## v0.25.0 (2026-01-06)
 - 操作説明の表示
