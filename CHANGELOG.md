@@ -1,8 +1,6 @@
 # CHANGELOG of PBL-Game
 
-
-
-## v0.24.3 (2026-01-06-issa)
+## v0.24.4 (2026-01-06-issa)
 > Happy NewYear!
 時間がないのでVibe Cordingでいきます
 - Create Kyutech Campus
@@ -12,7 +10,7 @@
   > ゲームの進行状態を示すためにフラグを設定します
   - ui.pyで画面上部に次の目的地を示す
   - system.pyに次の目標をハードコードで書いておきます
-  
+
 ## v0.24.3 (2025-12-23-issa)
 - 出典の補強
 - mp3の追加
