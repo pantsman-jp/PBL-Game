@@ -11,7 +11,7 @@
 | :---: | :---: |:---: |
 | プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> <br> <https://pipoya.net/sozai/terms-of-use/> |
 | タイトル画面 | AIPICT | <https://aipict.com/> <br> <https://aipict.com/terms-of-use/> |
-| エンディング画面| Image Credit: NASA | <https://www.nasa.gov/nasa-brand-center/images-and-media/> |
+| エンディング画面| 1.AIPICT 2.Image Credit: NASA 3.photoAC| 1. <https://aipict.com/> <br> <https://aipict.com/terms-of-use/> 2.<https://www.nasa.gov/nasa-brand-center/images-and-media/> 3.https://www.photo-ac.com|
 | 福岡県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> <br> <https://rpgmap.hatenablog.com/entry/イラストマップやプログラムの利用について> |
 | マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> <br> <https://dova-s.jp/_contents/agreement/> |
 | 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> <br> <https://soundeffect-lab.info/agreement/> |
