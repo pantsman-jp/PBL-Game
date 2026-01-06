@@ -36,5 +36,10 @@ pip install pygame
 python -m src.main
 ```
 
+## ライセンス
+本プロジェクトのソースコードは [MIT License](https://github.com/pantsman-jp/PBL-Game/blob/main/LICENSE) の下で公開されています。
+
+また、使用している画像・音声素材のライセンスは [素材出典](https://github.com/pantsman-jp/PBL-Game?tab=readme-ov-file#素材出典) を参照してください。
+
 ---
 Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA)
