@@ -1,0 +1,47 @@
+{
+    "npc_1": {
+        "position": [
+            190,
+            108
+        ],
+        "map_id": "world",
+        "image": "npc1.png",
+        "lines": [
+            "よく来たな！",
+            "z キーを押したらクイズが始まるぞ！"
+        ],
+        "movement_x": {
+            "enabled": true,
+            "speed": 0.5,
+            "max_offset": 16
+        },
+        "quiz": {
+            "question": "このゲームは何の言語で書かれている？",
+            "choices": [
+                "Python",
+                "C++",
+                "日本語"
+            ],
+            "answer": 0,
+            "reward": [
+                "key"
+            ]
+        }
+    },
+    "npc_2": {
+        "position": [
+            175,
+            110
+        ],
+        "map_id": "world",
+        "image": "npc2.png",
+        "lines": [
+            "Hello, world!"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.5,
+            "max_offset": 16
+        }
+    }
+}
