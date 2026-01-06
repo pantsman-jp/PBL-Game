@@ -215,7 +215,7 @@ class App:
             # ★ 操作説明表示
             help_lines = [
                 "Z : 話しかける / 決定",
-                "X : 会話を終了",
+                "Q : 会話を終了",
                 "I : インベントリ",
             ]
             for i, text in enumerate(help_lines):
