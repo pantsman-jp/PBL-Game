@@ -66,6 +66,7 @@ class App:
         self.x = 200
         self.y = 100
         self.items = []
+        self._prev_item_count = 0  # ★ アイテム増加検知用
         self.inventory_open = False
 
         # --- サブモジュール生成 ---
@@ -93,23 +94,17 @@ class App:
         """
         - ゲームを開始
             - タイトル画面でのクリック後にノベルパート開始
-        
+
         - 開発用：ノベルパートの再生はここの変数を変更してください
         """
-
-        self.scene_state = (
-            SCENE_VN  # タイトル画面からクリックされたら、まずノベルパートを開始
-        )
-        # self.vn.start("opening")
-        self.vn.start("ending")  # 開発用：エンディングを再生
+        self.scene_state = SCENE_VN
+        self.vn.start("ending")  # 開発用
 
     def start_rpg_game(self):
         """
-        - RPGパートの開始
-            - ノベルパート終了後などにマップとプレイヤーをロードしてゲーム本編へ移行
+        RPGパート開始
         """
-        # ノベルパート終了後に呼ばれる、実際のゲーム開始処理
-        self.field.load_map("world")  # 初期マップ
+        self.field.load_map("world")
         self.field.load_player()
         self.scene_state = SCENE_GAME
 
@@ -168,20 +163,24 @@ class App:
         if self.scene_state == SCENE_TITLE:
             pass
         elif self.scene_state == SCENE_VN:
-            pass  # VNの更新はイベントハンドラ内で行っているため
+            pass
         elif self.scene_state == SCENE_GAME:
             keys = self.key_tracker.update()
             self.talk.update(keys)
-            if self.talk.is_active():
-                return
+
+            # ★ アイテム取得後は会話を自動終了
+            if len(self.items) > self._prev_item_count:
+                # ★ talk.end() はゲーム終了を引き起こすため使わない
+                if hasattr(self.talk, "active"):
+                    self.talk.active = False
+            elif hasattr(self.talk, "_active"):
+                self.talk._active = False
+
             self.field.update(keys)
+            self._prev_item_count = len(self.items)
 
     def _draw(self):
-        """
-        - 画面描画
-            - 現在のシーンに応じて描画内容を切り替え
-        """
-        if self.scene_state == SCENE_TITLE:  # タイトル画面描画なら
+        if self.scene_state == SCENE_TITLE:
             if self.title_image:
                 rect = self.title_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))
                 self.screen.blit(self.title_image, rect)
@@ -199,22 +198,33 @@ class App:
                 )
                 rect = prompt_surf.get_rect(center=(WIDTH // 2, HEIGHT - 80))
                 self.screen.blit(prompt_surf, rect)
+
         elif self.scene_state == SCENE_VN:
             self.vn.draw(self.screen)
+
         elif self.scene_state == SCENE_GAME:
-            # --- ゲーム本編描画 (既存の描画処理) ---
-            self.screen.fill((50, 50, 80))  # 背景色
+            self.screen.fill((50, 50, 80))
             self.field.draw(self.screen)
 
-            # UI（所持アイテム）
+            # 所持アイテム表示
             items_text = "ITEMS: " + ", ".join(self.items) if self.items else "ITEMS: -"
             surf = self.font.render(items_text, True, (255, 255, 255))
 
             self.screen.blit(surf, (8, 40))
 
+            # ★ 操作説明表示
+            help_lines = [
+                "Z : 話しかける / 決定",
+                "X : 会話を終了",
+                "I : インベントリ",
+            ]
+            for i, text in enumerate(help_lines):
+                help_surf = self.font.render(text, True, (220, 220, 220))
+                self.screen.blit(help_surf, (8, 64 + i * 18))
+
             self.talk.draw(self.screen, self.font)
 
-            # インベントリ表示（Iでトグル）
+            # インベントリ表示
             if self.inventory_open:
                 overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
                 overlay.fill((0, 0, 0, 150))
