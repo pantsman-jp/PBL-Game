@@ -43,5 +43,22 @@
             "speed": 0.5,
             "max_offset": 16
         }
+    },
+    "npc_3": {
+        "position": [
+            203,
+            93
+        ],
+        "map_id": "world",
+        "image": "npc3.png",
+        "lines": [
+            "話しかけるとエンディングが流れるよ！"
+        ],
+        "novel_trigger": "ending",
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.3,
+            "max_offset": 10
+        }
     }
 }

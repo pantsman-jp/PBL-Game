@@ -13,7 +13,7 @@
     },
     {
       "speaker": "案内人",
-      "text": "ようこそ、Tiny Quiz Fieldへ！",
+      "text": "ようこそ、Tiny Quiz Fieldへ!",
       "bg": "title.jpg",
       "char": "player_front.png"
     },
@@ -24,6 +24,24 @@
     }
   ],
   "ending": [
+    {
+      "speaker": "案内人",
+      "text": "到着しました。ここが、種子島宇宙センターです。",
+      "bg": "tanegashima_rocket.jpg",
+      "char": "none"
+    },
+    {
+      "speaker": "案内人",
+      "text": "この先は、完成したロケットだけが入ることを許されます。",
+      "bg": "tanegashima_rocket.jpg",
+      "char": "none"
+    },
+    {
+      "speaker": "管制システム",
+      "text": "入構前チェックを開始します。",
+      "bg": "control_room.png",
+      "char": "none"
+    },
     {
       "speaker": "ナレーション",
       "text": "種子島宇宙センターにて、組み立てたロケットの発射準備が整った。",

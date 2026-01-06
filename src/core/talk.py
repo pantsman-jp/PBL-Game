@@ -63,6 +63,7 @@ class Talk:
             self.wait_frames = 15
             return
         self._process_npc_reward()
+        self._check_novel_trigger()
         self._close_dialog()
 
     def _process_npc_reward(self):
@@ -74,6 +75,16 @@ class Talk:
         if reward:
             self.app.items.extend(reward)
             del npc_data["reward"]
+
+    def _check_novel_trigger(self):
+        """
+        NPCデータ直下にノベルパートトリガーが存在する場合、ノベルパートを開始
+        """
+        npc_data = self.dialogues.get(self.active, {})
+        novel_trigger = npc_data.get("novel_trigger")
+        if novel_trigger:
+            self.app.scene_state = 2
+            self.app.vn.start(novel_trigger)
 
     def _close_dialog(self):
         """
