@@ -1,7 +1,5 @@
 # PBL-Game
 
-**The English README will be added after the production release.**
-
 ## 概要
 このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されています。
 
@@ -51,4 +49,4 @@ python -m src.main
 また、使用している画像・音声素材のライセンスは [素材出典](https://github.com/pantsman-jp/PBL-Game?tab=readme-ov-file#素材出典) を参照してください。
 
 ---
-Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA)
+Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA), [@Shiba600](https://github.com/Shiba600)
