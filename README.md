@@ -1,7 +1,5 @@
 # PBL-Game
 
-**The English README will be added after the production release.**
-
 ## 概要
 このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されています。
 
