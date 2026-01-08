@@ -1,5 +1,18 @@
 # CHANGELOG of PBL-Game
 
+## v0.27.0 (2026-01-08)
+- `data/novel_scripts.json` に最低限のストーリー追加
+  - `assets/img/npc4.png` に仮画像を追加
+  - `dialogues/dialogues.json` 最低限のクイズを定義
+- **`WASD` で移動するように変更**
+  - 選択は矢印キーのまま
+- `src/core/talk.py` に以下の機能を実装・整理
+  - 会話状態とクイズ状態の分離管理
+  - クイズ中の入力処理ロジック追加
+  - クイズ報酬の一度きり取得処理
+  - 会話・クイズ終了後の待機フレーム導入
+- NPC に `novel_trigger` を設定することで、会話後にノベルパートへ遷移可能に変更
+
 ## v0.26.0 (2026-01-06)
 - `talk.py` に `_check_novel_trigger()` を追加
   - NPC に話しかけると novel パートに切り替わり、対応した novel が開始するような機能をもつ
