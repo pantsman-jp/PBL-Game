@@ -1,5 +1,10 @@
 # CHANGELOG of PBL-Game
 
+## v0.27.1 (2026-01-08)
+- `assets/fonts/NotoSansJP-Regular.ttf` の追加
+  - 実行ファイル作成時に必要です
+- 上記フォントファイル追加に伴い、`src/app.py` のフォント設定コードを変更
+
 ## v0.27.0 (2026-01-08)
 - `data/novel_scripts.json` に最低限のストーリー追加
   - `assets/img/npc4.png` に仮画像を追加

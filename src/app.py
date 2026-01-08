@@ -43,9 +43,10 @@ class App:
         self.clock = pygame.time.Clock()
 
         # --- フォント設定 ---
-        font_path = resource_path(
-            os.path.join(BASE_DIR, "fonts", "NotoSansJP-Regular.otf")
-        )
+        font_path = resource_path(os.path.join(BASE_DIR, "fonts", "NotoSansJP-Regular.ttf"))
+        self.font = pygame.font.Font(font_path, 16)
+        self.title_font = pygame.font.Font(font_path, 32)
+        self.prompt_font = pygame.font.Font(font_path, 20)
         if os.path.isfile(font_path):
             self.font = pygame.font.Font(font_path, 16)
             self.title_font = pygame.font.Font(font_path, 32)
