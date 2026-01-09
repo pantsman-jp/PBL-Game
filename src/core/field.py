@@ -315,18 +315,17 @@ class Field:
 
     def _update_bgm(self, bgm_path):
         """マップデータに基づくBGMの更新"""
-        # ミキサーが初期化されていない、または音楽再生機能が使えない場合は即終了
-        if not pygame.mixer.get_init() or not pygame.mixer.music:
-            print("Field: Sound skipped (Mixer not initialized)")
+        if not pygame.mixer.get_init():
             return
 
         if not bgm_path:
             self.app.system.stop_bgm()
             return
 
-        path = resource_path(os.path.join("assets", "sounds", bgm_path))
-        if os.path.isfile(path):
-            self.app.system.play_bgm(os.path.join("assets", "sounds", bgm_path))
+        # sounds フォルダを含めた相対パスを作成して System に渡す
+        target_path = os.path.join("assets", "sounds", bgm_path)
+        print("DEBUG: _update_bgm called with", bgm_path)
+        self.app.system.play_bgm(target_path)
 
     def _get_scaled_player_surface(self, path, color):
         """プレイヤー画像をロードし、なければ単色タイルを返す"""

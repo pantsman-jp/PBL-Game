@@ -100,31 +100,22 @@ class System:
             return False
 
     # --- BGM制御 ---
-
     def play_bgm(self, path):
-        """
-        指定されたパスのBGMファイルを再生する
-        """
-        # mixerが初期化されていない場合は何もしない
-        if not pygame.mixer.get_init():
-            return
-
-        if not path:
+        if not pygame.mixer.get_init() or not path:
             return
 
         full_path = resource_path(path)
+        print("DEBUG: play_bgm full_path =", full_path)
+        print("DEBUG: play_bgm called for", full_path)
         if not os.path.isfile(full_path):
-            print(f"System: BGM file not found - {full_path}")
+            print("BGM not found:", full_path)
             return
 
         try:
-            # 再生中の音楽を停止して新規ロード
-            if pygame.mixer.music.get_busy():
-                pygame.mixer.music.stop()
-
+            pygame.mixer.music.stop()
             pygame.mixer.music.load(full_path)
             pygame.mixer.music.set_volume(0.5)
-            pygame.mixer.music.play(-1)  # ループ再生
+            pygame.mixer.music.play(-1)
         except Exception as e:
             print(f"System: BGM Playback Error - {e}")
 

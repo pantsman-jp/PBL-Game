@@ -25,7 +25,12 @@ SCENE_VN = 2
 
 class App:
     def __init__(self):
+        # オーディオドライバの強制設定（WASAPIエラー対策）
+        # デフォルトの WASAPI が失敗する場合、古い形式の directsound を試行させます
+        os.environ["SDL_AUDIODRIVER"] = "directsound"
+
         pygame.init()
+        print("Mixer init:", pygame.mixer.get_init())
         # 0. 基礎変数を「最初」に定義する（AttributeError防止）
         self.running = True
         self.scene_state = SCENE_TITLE
@@ -37,9 +42,11 @@ class App:
         self.x, self.y, self.items = 200, 100, []
         self._prev_item_count = 0
 
-        # 1. Mixer初期化（失敗しても続行）
+        # Mixer 初期化
         try:
+            pygame.mixer.pre_init(44100, -16, 2, 512)
             pygame.mixer.init()
+            print("App: Mixer initialized successfully with directsound.")
         except Exception as e:
             print(f"App: Mixer initialization failed - {e}")
 
