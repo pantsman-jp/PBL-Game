@@ -41,8 +41,11 @@ class Field:
         self.transition_max_radius = math.hypot(SCREEN_CENTER_X, SCREEN_CENTER_Y)
         self.transition_speed = 8
         self.BASE_DIR = resource_path("assets")
-        maps_path = resource_path(os.path.join(self.BASE_DIR, "data", "maps.json"))
-        self.map_data = load_json(maps_path) or {}
+        self._current_bgm_path = None
+        self.map_data = (
+            load_json(resource_path(os.path.join(self.BASE_DIR, "data", "maps.json")))
+            or {}
+        )
         self.current_map_id = None
         self.current_exits = {}
         self.load_map("world")
@@ -71,17 +74,11 @@ class Field:
         )
 
     def update(self, keys):
-        """
-        WASD 移動のみを許可
-        会話・クイズ中は移動を無効化
-        """
         if self.transitioning:
             self._update_transition()
             return
-
         if self.app.talk.is_active():
             return
-
         if self.moving:
             self.offset += self.speed
             if self.offset >= TILE:
@@ -93,9 +90,7 @@ class Field:
                 )
                 self._check_map_event()
             return
-
         pressed = pygame.key.get_pressed()
-
         if pressed[pygame.K_w]:
             self.start_move(0, -1)
         elif pressed[pygame.K_s]:
@@ -168,9 +163,11 @@ class Field:
             screen_y = SCREEN_CENTER_Y + (ny - self.app.y) * Z_TILE + oy
             img_name = data.get("image")
             if img_name and "image_surface_zoom" not in data:
-                img_path = resource_path(os.path.join(self.BASE_DIR, "img", img_name))
                 data["image_surface_zoom"] = pygame.transform.scale(
-                    pygame.image.load(img_path).convert_alpha(), (Z_TILE, Z_TILE)
+                    pygame.image.load(
+                        resource_path(os.path.join(self.BASE_DIR, "img", img_name))
+                    ).convert_alpha(),
+                    (Z_TILE, Z_TILE),
                 )
             npc_image = data.get("image_surface_zoom")
             if npc_image:
@@ -218,6 +215,18 @@ class Field:
         self.map_w = self.map_pixel_w // TILE
         self.map_h = self.map_pixel_h // TILE
         self.current_exits = {(e["x"], e["y"]): e for e in data.get("exits", [])}
+        self._update_bgm(data.get("bgm"))
+
+    def _update_bgm(self, bgm_name):
+        path = (
+            resource_path(os.path.join(self.BASE_DIR, "sounds", bgm_name))
+            if bgm_name
+            else None
+        )
+        if path and os.path.exists(path) and self._current_bgm_path != path:
+            pygame.mixer.music.load(path)
+            pygame.mixer.music.play(-1)
+            self._current_bgm_path = path
 
     def _get_scaled_player_surface(self, path, color):
         if os.path.isfile(path):
