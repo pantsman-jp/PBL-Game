@@ -1,5 +1,11 @@
 # CHANGELOG of PBL-Game
 
+## v0.28.1 (2026-01-09)
+- BGM 再生不具合の修正（macOS 対応）
+  - SDL_AUDIODRIVER に Windows 専用の `directsound` を強制指定していた処理を削除
+  - OS ごとのデフォルトオーディオドライバを使用するよう修正
+  - mixer 初期化失敗により BGM が無音になる問題を解消
+
 ## v0.28.0 (2026-01-09)
 以下のようにリファクタリングを行った。
 
