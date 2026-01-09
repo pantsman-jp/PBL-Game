@@ -35,7 +35,7 @@ python -m src.main
 | プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
 | タイトル・エンディング画面 | AIPICT | <https://aipict.com/> |
 | エンディング画面| Image Credit: NASA <br> photoAC| <https://www.nasa.gov/nasa-brand-center/images-and-media/> <br> <https://www.photo-ac.com> |
-| 福岡県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> |
+| 都道府県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> |
 | マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> |
 | 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> |
 | 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0)|

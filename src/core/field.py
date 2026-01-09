@@ -191,6 +191,27 @@ class Field:
         self.player_image = getattr(self, f"player_{self.dir}")
         screen.blit(self.player_image, (SCREEN_CENTER_X, SCREEN_CENTER_Y))
 
+        # 遷移アニメーションの描画
+        if self.transitioning:
+            mask = pygame.Surface((900, 700), pygame.SRCALPHA)
+            # 暗転（アイリスアウト）アニメーション
+            if self._transition_stage == "out":
+                pygame.draw.circle(
+                    mask,
+                    (0, 0, 0, 255),
+                    (SCREEN_CENTER_X, SCREEN_CENTER_Y),
+                    self.transition_radius,
+                )
+            # 明転（アイリスイン）アニメーション
+            elif self._transition_stage == "in":
+                pygame.draw.circle(
+                    mask,
+                    (0, 0, 0, 255),
+                    (SCREEN_CENTER_X, SCREEN_CENTER_Y),
+                    self.transition_max_radius - self.transition_radius,
+                )
+            screen.blit(mask, (0, 0))
+
     def _draw_npcs(self, screen, base_x, base_y, ox, oy):
         """NPCの描画とアニメーション処理"""
         for _, data in self.app.talk.dialogues.items():
