@@ -105,6 +105,10 @@ class System:
         """
         指定されたパスのBGMファイルを再生する
         """
+        # mixerが初期化されていない場合は何もしない
+        if not pygame.mixer.get_init():
+            return
+
         if not path:
             return
 
@@ -125,6 +129,6 @@ class System:
             print(f"System: BGM Playback Error - {e}")
 
     def stop_bgm(self):
-        """BGMの再生を停止"""
+        # ミキサーが使用可能かチェック
         if pygame.mixer.get_init():
             pygame.mixer.music.stop()

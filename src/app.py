@@ -26,31 +26,38 @@ SCENE_VN = 2
 class App:
     def __init__(self):
         pygame.init()
+        # 0. 基礎変数を「最初」に定義する（AttributeError防止）
+        self.running = True
+        self.scene_state = SCENE_TITLE
+        self.iris_active = False
+        self.iris_progress = 0.0
+        self.iris_out = True
+        self.iris_callback = None
+        self.inventory_open = False
+        self.x, self.y, self.items = 200, 100, []
+        self._prev_item_count = 0
+
+        # 1. Mixer初期化（失敗しても続行）
         try:
             pygame.mixer.init()
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"App: Mixer initialization failed - {e}")
 
-        # システム・ユーティリティの初期化
+        # 2. 基本システム
         self.BASE_DIR = resource_path("assets")
         self.system = System(self)
         self.key_tracker = KeyTracker()
+
+        # 3. 画面初期化
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption("Tiny Quiz Field - pygame")
+        pygame.display.set_caption("Tiny Quiz Field")
         self.clock = pygame.time.Clock()
 
-        # リソース（フォント・画像・音響）のロード
+        # 4. リソースロード
         self._load_resources()
 
-        # ゲーム状態の初期化
-        self.x, self.y = 200, 100
-        self.items = []
-        self._prev_item_count = 0
-        self.inventory_open = False
-        self.running = True
-        self.scene_state = SCENE_TITLE
-
-        # サブモジュールの生成
+        # 5. サブシステム（BGMを鳴らそうとする可能性があるもの）
+        # ここで内部的にBGM再生が呼ばれても良いように、最後に配置
         self.field = Field(self)
         self.talk = Talk(self)
         self.vn = VisualNovel(self)
