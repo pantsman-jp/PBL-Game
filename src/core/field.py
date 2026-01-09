@@ -189,27 +189,32 @@ class Field:
 
         # プレイヤーの描画
         self.player_image = getattr(self, f"player_{self.dir}")
-        screen.blit(self.player_image, (SCREEN_CENTER_X, SCREEN_CENTER_Y))
+        # プレイヤーを中央に描画
+        screen.blit(
+            self.player_image,
+            (
+                SCREEN_CENTER_X - self.player_image.get_width() // 2,
+                SCREEN_CENTER_Y - self.player_image.get_height() // 2,
+            ),
+        )
 
-        # 遷移アニメーションの描画
+        # 遷移アニメーションの描画（アイリスイン/アウト）
         if self.transitioning:
-            mask = pygame.Surface((900, 700), pygame.SRCALPHA)
-            # 暗転（アイリスアウト）アニメーション
-            if self._transition_stage == "out":
-                pygame.draw.circle(
-                    mask,
-                    (0, 0, 0, 255),
-                    (SCREEN_CENTER_X, SCREEN_CENTER_Y),
-                    self.transition_radius,
-                )
-            # 明転（アイリスイン）アニメーション
-            elif self._transition_stage == "in":
-                pygame.draw.circle(
-                    mask,
-                    (0, 0, 0, 255),
-                    (SCREEN_CENTER_X, SCREEN_CENTER_Y),
-                    self.transition_max_radius - self.transition_radius,
-                )
+            # 画面サイズに合わせたサーフェス作成
+            mask = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
+            mask.fill((0, 0, 0, 255))  # まず全体を真っ黒にする
+
+            # 円の部分だけを「透明」で上書き描画する
+            # 第2引数の(0,0,0,0)が透明色（RGBA）
+            pygame.draw.circle(
+                mask,
+                (0, 0, 0, 0),
+                (SCREEN_CENTER_X, SCREEN_CENTER_Y),
+                max(
+                    0, int(self.transition_radius)
+                ),  # 半径がマイナスにならないようガード
+            )
+
             screen.blit(mask, (0, 0))
 
     def _draw_npcs(self, screen, base_x, base_y, ox, oy):
@@ -286,17 +291,22 @@ class Field:
         self._transition_stage = "out"
 
     def _update_transition(self):
-        """サークル状の暗転/明転アニメーションの更新"""
+        """アイリスアウト（閉じる）/ アイリスイン（開く）のロジック"""
+        if not self.transitioning:
+            return
         if self._transition_stage == "out":
+            # アイリスアウト：円が小さくなって画面が暗くなる
             self.transition_radius -= self.transition_speed
             if self.transition_radius <= 0:
-                # 暗転完了時にマップ切り替え
+                self.transition_radius = 0
+                # マップ切り替え処理
                 self.load_map(self.transition_target_map_id)
                 if self.transition_dest_pos:
                     self.app.x, self.app.y = self.transition_dest_pos
                 self._transition_stage = "in"
 
         elif self._transition_stage == "in":
+            # アイリスイン：円が大きくなって画面が見えるようになる
             self.transition_radius += self.transition_speed
             if self.transition_radius >= self.transition_max_radius:
                 self.transitioning = False
