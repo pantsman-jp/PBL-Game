@@ -25,10 +25,6 @@ SCENE_VN = 2
 
 class App:
     def __init__(self):
-        # オーディオドライバの強制設定（WASAPIエラー対策）
-        # デフォルトの WASAPI が失敗する場合、古い形式の directsound を試行させます
-        os.environ["SDL_AUDIODRIVER"] = "directsound"
-
         pygame.init()
         print("Mixer init:", pygame.mixer.get_init())
         # 0. 基礎変数を「最初」に定義する（AttributeError防止）
