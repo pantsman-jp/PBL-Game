@@ -9,6 +9,20 @@
         "target_map": "village",
         "dest_x": 2,
         "dest_y": 2
+      },
+      {
+        "x": 214,
+        "y": 104,
+        "target_map": "kyutech_campus",
+        "dest_x": 15,
+        "dest_y": 15
+      },
+      {
+        "x": 230,
+        "y": 83,
+        "target_map": "yamaguchi",
+        "dest_x": 50,
+        "dest_y": 212
       }
     ],
     "bgm": "main.mp3"
@@ -23,6 +37,34 @@
         "target_map": "world",
         "dest_x": 200,
         "dest_y": 100
+      }
+    ],
+    "bgm": "main.mp3"
+  },
+  "kyutech_campus": {
+    "image": "title.jpg",
+    "walls": [],
+    "exits": [
+      {
+        "x": 15,
+        "y": 16,
+        "target_map": "world",
+        "dest_x": 214,
+        "dest_y": 105
+      }
+    ],
+    "bgm": "main.mp3"
+  },
+  "yamaguchi": {
+    "image": "world_map_yamaguchi.png",
+    "walls": [],
+    "exits": [
+      {
+        "x": 50,
+        "y": 213,
+        "target_map": "world",
+        "dest_x": 230,
+        "dest_y": 84
       }
     ],
     "bgm": "main.mp3"

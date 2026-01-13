@@ -13,9 +13,15 @@
     },
     {
       "speaker": "案内人",
+<<<<<<< HEAD
       "text": "ようこそ、Tiny Quiz Fieldへ！",
       "bg": "story/title.jpg",
       "char": "character/player_front.png"
+=======
+      "text": "ようこそ、Tiny Quiz Fieldへ!",
+      "bg": "title.jpg",
+      "char": "player_front.png"
+>>>>>>> f94fe3fb5551558f15297bb60adf8c6926002852
     },
     {
       "speaker": "案内人",
@@ -23,7 +29,133 @@
       "bg": "story/title.jpg"
     }
   ],
+  "cfrp_quiz": [
+    {
+      "speaker": "ナレーション",
+      "text": "ロケットの機体を作るには、軽くて強い素材が必要だ。",
+      "bg": "*.png",
+      "char": "none"
+    },
+    {
+      "speaker": "研究員",
+      "text": "CFRPを渡す前に、宇宙工学の基礎を確認させてもらおう。",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "研究員",
+      "text": "これからクイズを出す。正解すればCFRPを渡そう。",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "（宇宙工学クイズ開始）",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "クイズに正解した。CFRPを入手した。",
+      "bg": "*.png"
+    }
+  ],
+  "fuel_quiz": [
+    {
+      "speaker": "ナレーション",
+      "text": "次に必要なのはロケット燃料だ。",
+      "bg": "*.png",
+      "char": "none"
+    },
+    {
+      "speaker": "技術者",
+      "text": "燃料の扱いには、宇宙理学の知識が欠かせない。",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "技術者",
+      "text": "クイズに答えてもらおう。正解すれば燃料を渡す。",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "（宇宙理学クイズ開始）",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "クイズに正解した。ロケット燃料を入手した。",
+      "bg": "*.png"
+    }
+  ],
+  "electronics_quiz": [
+    {
+      "speaker": "ナレーション",
+      "text": "最後に必要なのは、ロケットを制御する電子部品だ。",
+      "bg": "*.png",
+      "char": "none"
+    },
+    {
+      "speaker": "技術担当",
+      "text": "姿勢制御や誘導制御について、理解しているかな。",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "技術担当",
+      "text": "クイズに答えられれば、電子部品を渡そう。",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "（宇宙工学クイズ開始）",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "クイズに正解した。電子部品を入手した。",
+      "bg": "*.png"
+    }
+  ],
+  "assembly": [
+    {
+      "speaker": "ナレーション",
+      "text": "すべての材料が揃った。",
+      "bg": "*.png",
+      "char": "none"
+    },
+    {
+      "speaker": "主人公",
+      "text": "これで……ロケットを組み立てられる。",
+      "bg": "*.png",
+      "char": "player_front.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "主人公は慎重にロケットを組み上げていく。",
+      "bg": "*.png"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "ロケットは、ついに完成した。",
+      "bg": "*.png"
+    }
+  ],
   "ending": [
+    {
+      "speaker": "案内人",
+      "text": "到着しました。ここが、種子島宇宙センターです。",
+      "bg": "*.png",
+      "char": "none"
+    },
+    {
+      "speaker": "案内人",
+      "text": "この先は、完成したロケットだけが入ることを許されます。",
+      "bg": "*.png",
+      "char": "none"
+    },
+    {
+      "speaker": "管制システム",
+      "text": "入構前チェックを開始します。",
+      "bg": "*.png",
+      "char": "none"
+    },
     {
       "speaker": "ナレーション",
       "text": "種子島宇宙センターにて、組み立てたロケットの発射準備が整った。",

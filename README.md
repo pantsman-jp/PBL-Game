@@ -3,38 +3,50 @@
 ## 概要
 このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されています。
 
-## 免責事項
-本ゲームの利用に際しては [免責事項](docs/disclaimer.ja.md) をご確認ください。
+<!-- ## 遊び方
+開発環境を用意せずに遊びたい場合は、[ダウンロードページ]() から最新版をダウンロードしてください。 -->
 
-## 素材出典
-| 使用箇所 | 素材元・作者名 | URL・ライセンス詳細|
-| :---: | :---: |:---: |
-| プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> <br> <https://pipoya.net/sozai/terms-of-use/> |
-| タイトル画面 | AIPICT | <https://aipict.com/> <br> <https://aipict.com/terms-of-use/> |
-| エンディング画面| Image Credit: NASA | <https://www.nasa.gov/nasa-brand-center/images-and-media/> |
-| 福岡県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> <br> <https://rpgmap.hatenablog.com/entry/イラストマップやプログラムの利用について> |
-| マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> <br> <https://dova-s.jp/_contents/agreement/> |
-| 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> <br> <https://soundeffect-lab.info/agreement/> |
-| 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0)|
-
-## インストール方法
+## 開発者向け
+### インストール方法
 ```
 git clone https://github.com/pantsman-jp/PBL-Game
 ```
 
-## 使い方
-`Python3.13.9`, `Pygame2.6.1` が必要。
+### 使い方
+以下の環境が必要です。
 
-`Pygame` は以下でインストール。
+- `Python 3.13.9-`
+- `Pygame 2.6.1`
+
+`Pygame` は次のコマンドでインストールします。
 
 ```
 pip install pygame
 ```
 
-実行方法は以下。
+プロジェクトのルートディレクトリで以下のコマンドを実行してください。
 ```
 python -m src.main
 ```
 
+## 素材出典
+| 使用箇所 | 素材元・作者名 | URL・ライセンス詳細|
+| :---: | :---: |:---: |
+| プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
+| タイトル・エンディング画面 | AIPICT | <https://aipict.com/> |
+| エンディング画面| Image Credit: NASA <br> photoAC| <https://www.nasa.gov/nasa-brand-center/images-and-media/> <br> <https://www.photo-ac.com> |
+| 都道府県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> |
+| マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> |
+| 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> |
+| 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0)|
+
+## 免責事項
+本ゲームの利用に際しては [免責事項](docs/disclaimer.ja.md) をご確認ください。
+
+## ライセンス
+本プロジェクトのソースコードは [MIT License](https://github.com/pantsman-jp/PBL-Game/blob/main/LICENSE) の下で公開されています。
+
+また、使用している画像・音声素材のライセンスは [素材出典](https://github.com/pantsman-jp/PBL-Game?tab=readme-ov-file#素材出典) を参照してください。
+
 ---
-Copyright © 2025 pantsman, ISSA-Motomu, tanosou, osato03, nagata
+Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA), [@Shiba600](https://github.com/Shiba600)

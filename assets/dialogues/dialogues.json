@@ -7,8 +7,9 @@
         "map_id": "world",
         "image": "character/npc1.png",
         "lines": [
-            "よく来たな！",
-            "z キーを押したらクイズが始まるぞ！"
+            "君、ロケットを作りたいのか。",
+            "材料を手に入れたければ、基礎的な問題に答えてもらおう。",
+            "z キーでクイズ開始だ。"
         ],
         "movement_x": {
             "enabled": true,
@@ -16,15 +17,15 @@
             "max_offset": 16
         },
         "quiz": {
-            "question": "このゲームは何の言語で書かれている？",
+            "question": "CFRPがロケット構造材として用いられる主な理由として最も適切なものはどれか。",
             "choices": [
-                "Python",
-                "C++",
-                "日本語"
+                "高温で溶けやすいから",
+                "比強度が高く、軽量だから",
+                "電気伝導率が高いから"
             ],
-            "answer": 0,
+            "answer": 1,
             "reward": [
-                "key"
+                "cfrp_material"
             ]
         }
     },
@@ -36,12 +37,72 @@
         "map_id": "world",
         "image": "character/npc2.png",
         "lines": [
-            "Hello, world!"
+            "推進系に興味があるようだな。",
+            "ロケットの基本原理を理解しているか確認しよう。"
         ],
         "movement_x": {
             "enabled": false,
             "speed": 0.5,
             "max_offset": 16
+        },
+        "quiz": {
+            "question": "化学ロケットが推力を得る原理として正しいものはどれか。",
+            "choices": [
+                "空気を後方に押し出すことによる反力",
+                "質量を高速で噴射することによる運動量保存",
+                "重力を打ち消すことによる浮力"
+            ],
+            "answer": 1,
+            "reward": [
+                "engine_unit"
+            ]
+        }
+    },
+    "npc_3": {
+        "position": [
+            203,
+            93
+        ],
+        "map_id": "world",
+        "image": "npc3.png",
+        "lines": [
+            "いよいよ軌道の話だ。",
+            "ここを理解していないと、ロケットは帰ってくる。"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.3,
+            "max_offset": 10
+        },
+        "quiz": {
+            "question": "地球低軌道（LEO）を周回する人工衛星の公転速度として最も近いものはどれか。",
+            "choices": [
+                "約1 km/s",
+                "約3 km/s",
+                "約8 km/s"
+            ],
+            "answer": 2,
+            "reward": [
+                "guidance_computer"
+            ]
+        }
+    },
+    "npc_4": {
+        "position": [
+            210,
+            95
+        ],
+        "map_id": "world",
+        "image": "npc4.png",
+        "lines": [
+            "必要な部品はすべて揃ったようだな。",
+            "ここから先は、完成したロケットのみが進める。"
+        ],
+        "novel_trigger": "ending",
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
         }
     }
 }
