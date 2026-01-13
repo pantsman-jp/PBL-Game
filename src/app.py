@@ -37,6 +37,7 @@ class App:
         self.inventory_open = False
         self.x, self.y, self.items = 200, 100, []
         self._prev_item_count = 0
+        self.stop_map_transition = None  # ノベル終了後のマップ遷移用
 
         # Mixer 初期化
         try:
@@ -111,7 +112,12 @@ class App:
 
     def start_rpg_game(self):
         """RPGパートを開始"""
-        self.field.load_map("world")
+        if self.stop_map_transition:
+            map_id, dest_x, dest_y = self.stop_map_transition
+            self.field._start_transition(map_id, dest_x, dest_y)
+            self.stop_map_transition = None
+        else:
+            self.field.load_map("world")
         self.field.load_player()
         self.scene_state = SCENE_GAME
 

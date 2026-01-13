@@ -1,4 +1,10 @@
 # CHANGELOG of PBL-Game
+## v0.30.1 (2026-01-13)
+- 愛知県へマップ遷移時に、福岡県左上部に飛んでしまう不具合を修正
+- 不具合の詳細：npc5に話しかけるとノベルパートが開始し、終了時にstart_rpg_game()が呼ばれることで愛知県へのマップ遷移が上書きされていた。
+- talk.pyのmap_triggerをnovel_triggerの前に変更
+ - 話しかけたNPCにnovel_triggerがある場合、マップ遷移を一時中断（stop_map_transition）してノベルパートを開始
+ - ノベルパート終了時にapp.pyのstart_rpg_game()を呼び出して、マップ遷移が一時中断（stop_map_transition）されていれば、マップ遷移を再開する構造に変更
 
 ## v0.30.0 (2026-01-13)
 - npc5,6の追加

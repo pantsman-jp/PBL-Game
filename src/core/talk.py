@@ -90,18 +90,23 @@ class Talk:
             self.app.items.extend(reward)
             del npc_data["reward"]  # 報酬獲得フラグの代わり
 
+        # マップ遷移の確認（ノベル前にセット）
+        map_trigger = npc_data.get("map_trigger")
+        if map_trigger:
+            dest_x = npc_data.get("map_dest_x", 10)
+            dest_y = npc_data.get("map_dest_y", 10)
+            if npc_data.get("novel_trigger"):
+                # ノベルがある場合、一時的に遷移をストップする
+                self.app.stop_map_transition = (map_trigger, dest_x, dest_y)
+            else:
+                # ノベルがない場合、即時遷移
+                self.app.field._start_transition(map_trigger, dest_x, dest_y)
+
         # シナリオ遷移の確認
         novel_trigger = npc_data.get("novel_trigger")
         if novel_trigger:
             self.app.scene_state = 2  # SCENE_VN
             self.app.vn.start(novel_trigger)
-
-        # マップ遷移の確認
-        map_trigger = npc_data.get("map_trigger")
-        if map_trigger:
-            dest_x = npc_data.get("map_dest_x")
-            dest_y = npc_data.get("map_dest_y")
-            self.app.field._start_transition(map_trigger, dest_x, dest_y)
 
         self._close_dialog()
 
