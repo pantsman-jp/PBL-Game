@@ -1,4 +1,25 @@
 # CHANGELOG of PBL-Game
+## v0.30.1 (2026-01-13)
+- 愛知県へマップ遷移時に、福岡県左上部に飛んでしまう不具合を修正
+- 不具合の詳細：npc5に話しかけるとノベルパートが開始し、終了時にstart_rpg_game()が呼ばれることで愛知県へのマップ遷移が上書きされていた。
+- talk.pyのmap_triggerをnovel_triggerの前に変更
+ - 話しかけたNPCにnovel_triggerがある場合、マップ遷移を一時中断（stop_map_transition）してノベルパートを開始
+ - ノベルパート終了時にapp.pyのstart_rpg_game()を呼び出して、マップ遷移が一時中断（stop_map_transition）されていれば、マップ遷移を再開する構造に変更
+- airplane.jpgの出典をREADME.mdに記載
+
+## v0.30.0 (2026-01-13)
+- npc5,6の追加
+ - npc5を福岡県の座標(200,95)に追加（話しかけると福岡県→愛知県へ）
+  - novel_scripts.jsonに愛知県へ向かうノベルパート"aichi_trip"を追加
+ - npc6を愛知県の座標(69,78)に追加（話しかけると愛知県→福岡県へ戻る）
+ - 画像ファイルnpc5.png,npc6.pngは他のnpcと同様
+- airplane.jpgの追加（飛行機で移動する場合のノベルパート用画像）出典はphotoAC
+- new_map（愛知県）の追加
+ - world_map_aichi.pngを追加（出典は他マップと同様）
+ - map.jsonに"aichi"を追加
+- map_triggerの追加
+ - novel_triggerと同様に、talk.pyにmap_triggerを追加
+ - dialogues.jsonのnpcデータにmap_triggerを追加（話しかけて会話が終了すると対応したmapへ遷移する）
 
 ## v0.29.3 (2026-01-13)
 - 会話終了時の更新処理で keys が未定義になる不具合を修正

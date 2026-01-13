@@ -68,5 +68,11 @@
       }
     ],
     "bgm": "main.mp3"
+  },
+  "aichi": {
+    "image": "map/world_map_aichi.png",
+    "walls": [],
+    "exits": [],
+    "bgm": "main.mp3"
   }
 }
