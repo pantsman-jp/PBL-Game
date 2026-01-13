@@ -175,8 +175,9 @@ class App:
 
     def _update(self):
         """データ更新の振り分け"""
+        keys = self.key_tracker.update()
+
         if self.scene_state == SCENE_GAME:
-            keys = self.key_tracker.update()
             self.talk.update(keys)
 
         # アイテム獲得時に会話を安全に終了させる
