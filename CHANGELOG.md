@@ -5,6 +5,7 @@
 - talk.pyのmap_triggerをnovel_triggerの前に変更
  - 話しかけたNPCにnovel_triggerがある場合、マップ遷移を一時中断（stop_map_transition）してノベルパートを開始
  - ノベルパート終了時にapp.pyのstart_rpg_game()を呼び出して、マップ遷移が一時中断（stop_map_transition）されていれば、マップ遷移を再開する構造に変更
+- airplane.jpgの出典をREADME.mdに記載
 
 ## v0.30.0 (2026-01-13)
 - npc5,6の追加
