@@ -86,24 +86,14 @@ class VisualNovel:
         # 背景の更新（指定がある場合のみ）
         bg_name = data.get("bg")
         if bg_name:
-            path = resource_path(os.path.join(self.base_dir, "img", bg_name))
-            if os.path.isfile(path):
-                self.bg_image = pygame.image.load(path).convert()
-                # 画面サイズに合わせてスケール（必要に応じて）
-                self.bg_image = pygame.transform.scale(self.bg_image, (900, 700))
+            new_bg = self._get_cached_image(bg_name, alpha=False)
+            if new_bg:
+                self.bg_image = new_bg
 
         # 立ち絵の更新（指定がある場合のみ、"none" で消去）
         char_name = data.get("char")
         if char_name:
-            if char_name.lower() == "none":
-                self.char_image = None
-            else:
-                path = resource_path(os.path.join(self.base_dir, "img", char_name))
-                if os.path.isfile(path):
-                    img = pygame.image.load(path).convert_alpha()
-                    # 立ち絵のサイズ調整（例: 高さ400pxに合わせるなど）
-                    # ここではそのまま表示
-                    self.char_image = img
+            self.char_image = self._get_cached_image(char_name, alpha=True)
 
     def update(self, events):
         """入力イベントに応じたページ送り処理"""

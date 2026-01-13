@@ -13,20 +13,22 @@
     },
     {
       "speaker": "案内人",
-<<<<<<< HEAD
       "text": "ようこそ、Tiny Quiz Fieldへ！",
       "bg": "story/title.jpg",
       "char": "character/player_front.png"
-=======
-      "text": "ようこそ、Tiny Quiz Fieldへ!",
-      "bg": "title.jpg",
-      "char": "player_front.png"
->>>>>>> f94fe3fb5551558f15297bb60adf8c6926002852
     },
     {
       "speaker": "案内人",
       "text": "これから冒険が始まります。",
       "bg": "story/title.jpg"
+    }
+  ],
+  "aichi_trip": [
+    {
+      "speaker": "ナレーション",
+      "text": "君は飛行機に乗り込み、愛知県へ向かった。",
+      "bg": "story/airplane.jpg",
+      "char": "none"
     }
   ],
   "cfrp_quiz": [

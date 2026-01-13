@@ -192,10 +192,7 @@ class Field:
         # プレイヤーを中央に描画
         screen.blit(
             self.player_image,
-            (
-                SCREEN_CENTER_X - self.player_image.get_width() // 2,
-                SCREEN_CENTER_Y - self.player_image.get_height() // 2,
-            ),
+            (SCREEN_CENTER_X, SCREEN_CENTER_Y),
         )
 
         # 遷移アニメーションの描画（アイリスイン/アウト）

@@ -1,5 +1,20 @@
 # CHANGELOG of PBL-Game
 
+## v0.30.0 (2026-01-13)
+- npc5,6の追加
+ - npc5を福岡県の座標(200,95)に追加（話しかけると福岡県→愛知県へ）
+ - npc6を愛知県の座標(69,78)に追加（話しかけると愛知県→福岡県へ戻る）
+ - 画像ファイルnpc5.png,npc6.pngは他のnpcと同様
+- airplane.jpgの追加（飛行機で移動する場合のノベルパート用画像）出典はphotoAC
+- new_map（愛知県）の追加
+ - world_map_aichi.pngを追加（出典は他マップと同様）
+ - map.jsonに"aichi"を追加
+- map_triggerの追加
+ - novel_triggerと同様に、talk.pyにmap_triggerを追加
+ - dialogues.jsonのnpcデータにmap_triggerを追加（話しかけて会話が終了すると対応したmapへ遷移する）
+- visual_novel.pyの修正
+ - v0.29.1でopeningが流れないような仕様を修正し、openingが流れるように
+
 ## v0.29.3 (2026-01-13)
 - 会話終了時の更新処理で keys が未定義になる不具合を修正
 

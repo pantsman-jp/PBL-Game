@@ -96,6 +96,13 @@ class Talk:
             self.app.scene_state = 2  # SCENE_VN
             self.app.vn.start(novel_trigger)
 
+        # マップ遷移の確認
+        map_trigger = npc_data.get("map_trigger")
+        if map_trigger:
+            dest_x = npc_data.get("map_dest_x")
+            dest_y = npc_data.get("map_dest_y")
+            self.app.field._start_transition(map_trigger, dest_x, dest_y)
+
         self._close_dialog()
 
     # --- クイズ処理 ---

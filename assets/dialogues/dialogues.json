@@ -104,5 +104,44 @@
             "speed": 0.0,
             "max_offset": 0
         }
+    },
+    "npc_5": {
+        "position": [
+            200,
+            95
+        ],
+        "map_id": "world",
+        "image": "character/npc5.png",
+        "lines": [
+            "愛知県へ飛びます！"
+        ],
+        "novel_trigger": "aichi_trip",
+        "map_trigger": "aichi",
+        "map_dest_x": 69,
+        "map_dest_y": 80,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc_6": {
+        "position": [
+            69,
+            78
+        ],
+        "map_id": "aichi",
+        "image": "character/npc6.png",
+        "lines": [
+            "福岡県へ戻ります！"
+        ],
+        "map_trigger": "world",
+        "map_dest_x": 200,
+        "map_dest_y": 96,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
     }
 }
