@@ -5,7 +5,7 @@
             108
         ],
         "map_id": "world",
-        "image": "npc1.png",
+        "image": "character/npc1.png",
         "lines": [
             "君、ロケットを作りたいのか。",
             "材料を手に入れたければ、基礎的な問題に答えてもらおう。",
@@ -35,7 +35,7 @@
             110
         ],
         "map_id": "world",
-        "image": "npc2.png",
+        "image": "character/npc2.png",
         "lines": [
             "推進系に興味があるようだな。",
             "ロケットの基本原理を理解しているか確認しよう。"
@@ -64,7 +64,7 @@
             93
         ],
         "map_id": "world",
-        "image": "npc3.png",
+        "image": "character/npc3.png",
         "lines": [
             "いよいよ軌道の話だ。",
             "ここを理解していないと、ロケットは帰ってくる。"
@@ -93,7 +93,7 @@
             95
         ],
         "map_id": "world",
-        "image": "npc4.png",
+        "image": "character/npc4.png",
         "lines": [
             "必要な部品はすべて揃ったようだな。",
             "ここから先は、完成したロケットのみが進める。"
