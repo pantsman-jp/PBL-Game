@@ -13,8 +13,6 @@
 - map_triggerの追加
  - novel_triggerと同様に、talk.pyにmap_triggerを追加
  - dialogues.jsonのnpcデータにmap_triggerを追加（話しかけて会話が終了すると対応したmapへ遷移する）
-- visual_novel.pyの修正
- - v0.29.1でopeningが流れないような仕様を修正し、openingが流れるように
 
 ## v0.29.3 (2026-01-13)
 - 会話終了時の更新処理で keys が未定義になる不具合を修正
