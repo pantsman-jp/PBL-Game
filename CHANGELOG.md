@@ -8,9 +8,13 @@
 
 ## v0.29.1 (2026-01-13)
 - 画像のファイル分け
-　- assets/image/character
-               /map
-               /story
+  ```
+  assets
+  └── img
+      ├── character/
+      ├── map/
+      └── story/
+  ```
 
 ## v0.29.0 (2026-01-09)
 - マップ遷移アニメーションの追加
