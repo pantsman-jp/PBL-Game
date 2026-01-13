@@ -42,7 +42,7 @@
     "bgm": "main.mp3"
   },
   "kyutech_campus": {
-    "image": "title.jpg",
+    "image": "story/title.jpg",
     "walls": [],
     "exits": [
       {
@@ -56,7 +56,7 @@
     "bgm": "main.mp3"
   },
   "yamaguchi": {
-    "image": "world_map_yamaguchi.png",
+    "image": "map/world_map_yamaguchi.png",
     "walls": [],
     "exits": [
       {

@@ -64,7 +64,7 @@
             93
         ],
         "map_id": "world",
-        "image": "npc3.png",
+        "image": "character/npc3.png",
         "lines": [
             "いよいよ軌道の話だ。",
             "ここを理解していないと、ロケットは帰ってくる。"
@@ -93,7 +93,7 @@
             95
         ],
         "map_id": "world",
-        "image": "npc4.png",
+        "image": "character/npc4.png",
         "lines": [
             "必要な部品はすべて揃ったようだな。",
             "ここから先は、完成したロケットのみが進める。"
