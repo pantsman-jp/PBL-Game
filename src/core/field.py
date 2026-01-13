@@ -192,7 +192,10 @@ class Field:
         # プレイヤーを中央に描画
         screen.blit(
             self.player_image,
-            (SCREEN_CENTER_X, SCREEN_CENTER_Y),
+            (
+                SCREEN_CENTER_X - self.player_image.get_width() // 2,
+                SCREEN_CENTER_Y - self.player_image.get_height() // 2,
+            ),
         )
 
         # 遷移アニメーションの描画（アイリスイン/アウト）
@@ -368,15 +371,21 @@ class Field:
         img_dir = os.path.join(self.BASE_DIR, "img")
 
         self.player_front = self._get_scaled_player_surface(
-            resource_path(os.path.join(self.BASE_DIR, "img", "character", "player_front.png")),
+            resource_path(
+                os.path.join(self.BASE_DIR, "img", "character", "player_front.png")
+            ),
             (255, 0, 0),
         )
         self.player_back = self._get_scaled_player_surface(
-            resource_path(os.path.join(self.BASE_DIR, "img", "character", "player_back.png")),
+            resource_path(
+                os.path.join(self.BASE_DIR, "img", "character", "player_back.png")
+            ),
             (0, 255, 0),
         )
         self.player_right = self._get_scaled_player_surface(
-            resource_path(os.path.join(self.BASE_DIR, "img", "character", "player_right.png")),
+            resource_path(
+                os.path.join(self.BASE_DIR, "img", "character", "player_right.png")
+            ),
             (0, 0, 255),
         )
         # 左向きは右向きの反転で対応
