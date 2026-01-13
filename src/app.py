@@ -179,15 +179,16 @@ class App:
             keys = self.key_tracker.update()
             self.talk.update(keys)
 
-            # アイテム獲得時に会話を強制終了するフラグ管理
-            if len(self.items) > self._prev_item_count:
-                if hasattr(self.talk, "active"):
-                    self.talk.active = False
-                elif hasattr(self.talk, "_active"):
-                    self.talk._active = False
+        # アイテム獲得時に会話を安全に終了させる
+        if len(self.items) > self._prev_item_count:
+            if self.talk.is_active():
+                self.talk.request_close()
 
+        # 会話中はプレイヤー更新を止める
+        if not self.talk.is_active():
             self.field.update(keys)
-            self._prev_item_count = len(self.items)
+
+        self._prev_item_count = len(self.items)
 
     # --- 描画処理 ---
 
