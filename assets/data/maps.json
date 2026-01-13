@@ -1,6 +1,6 @@
 {
   "world": {
-    "image": "world_map.png",
+    "image": "map/world_map.png",
     "walls": [],
     "exits": [
       {
@@ -14,7 +14,7 @@
     "bgm": "main.mp3"
   },
   "village": {
-    "image": "title.jpg",
+    "image": "story/title.jpg",
     "walls": [],
     "exits": [
       {

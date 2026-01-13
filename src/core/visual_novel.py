@@ -69,7 +69,7 @@ class VisualNovel:
         # 背景画像のロード (指定がある場合のみ更新)
         bg_name = data.get("bg")
         if bg_name:
-            path = os.path.join(self.base_dir, "img", bg_name)
+            path = resource_path(os.path.join(self.base_dir, "img", bg_name))
             if os.path.isfile(path):
                 self.bg_image = pygame.image.load(path).convert()
                 # 画面サイズに合わせてスケール（必要に応じて）
@@ -81,7 +81,7 @@ class VisualNovel:
             if char_name.lower() == "none":
                 self.char_image = None
             else:
-                path = os.path.join(self.base_dir, "img", char_name)
+                path = resource_path(os.path.join(self.base_dir, "img", char_name))
                 if os.path.isfile(path):
                     img = pygame.image.load(path).convert_alpha()
                     # 立ち絵のサイズ調整（例: 高さ400pxに合わせるなど）

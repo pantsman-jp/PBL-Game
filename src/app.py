@@ -55,7 +55,7 @@ class App:
             self.prompt_font = pygame.font.SysFont("meiryo", 20)
 
         # --- タイトル画像 ---
-        title_img_path = resource_path(os.path.join(BASE_DIR, "img", "title.jpg"))
+        title_img_path = resource_path(os.path.join(BASE_DIR, "img", "story", "title.jpg"))
         self.title_image = (
             pygame.image.load(title_img_path).convert()
             if os.path.isfile(title_img_path)

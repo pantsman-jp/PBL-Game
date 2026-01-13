@@ -273,7 +273,7 @@ class Field:
             return
         self.current_map_id = map_id
         data = self.map_data[map_id]
-        img_name, bgm_file = data.get("image", "world_map.png"), data.get("bgm", "")
+        img_name, bgm_file = data.get("image", "map/world_map.png"), data.get("bgm", "")
         path = resource_path(os.path.join(self.BASE_DIR, "img", img_name))
         if os.path.isfile(path):
             self.map_image = pygame.image.load(path).convert()
@@ -317,15 +317,15 @@ class Field:
         各方向のプレイヤー画像を読み込み
         """
         self.player_front = self._get_scaled_player_surface(
-            resource_path(os.path.join(self.BASE_DIR, "img", "player_front.png")),
+            resource_path(os.path.join(self.BASE_DIR, "img", "character", "player_front.png")),
             (255, 0, 0),
         )
         self.player_back = self._get_scaled_player_surface(
-            resource_path(os.path.join(self.BASE_DIR, "img", "player_back.png")),
+            resource_path(os.path.join(self.BASE_DIR, "img", "character", "player_back.png")),
             (0, 255, 0),
         )
         self.player_right = self._get_scaled_player_surface(
-            resource_path(os.path.join(self.BASE_DIR, "img", "player_right.png")),
+            resource_path(os.path.join(self.BASE_DIR, "img", "character", "player_right.png")),
             (0, 0, 255),
         )
         self.player_left = pygame.transform.flip(self.player_right, True, False)

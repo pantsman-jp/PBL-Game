@@ -5,7 +5,7 @@
             108
         ],
         "map_id": "world",
-        "image": "npc1.png",
+        "image": "character/npc1.png",
         "lines": [
             "よく来たな！",
             "z キーを押したらクイズが始まるぞ！"
@@ -34,7 +34,7 @@
             110
         ],
         "map_id": "world",
-        "image": "npc2.png",
+        "image": "character/npc2.png",
         "lines": [
             "Hello, world!"
         ],
