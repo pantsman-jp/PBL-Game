@@ -1,6 +1,6 @@
 # CHANGELOG of PBL-Game
 
-## v0.31.1 (2026-01-15)
+## v0.31.0 (2026-01-15)
 - 新規マップ（神奈川県）の追加
  - world_map_kanagawa.pngを追加（他の都道府県マップと同様の出典）
  - maps.jsonに"kanagawa"を追加
