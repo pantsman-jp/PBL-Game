@@ -76,7 +76,7 @@
     "bgm": "main.mp3"
   },
   "kanagawa": {
-    "image": "map/world_map_kanagawa(2780×2120).png",
+    "image": "map/world_map_kanagawa.png",
     "walls": [],
     "exits": [],
     "bgm": "main.mp3"
