@@ -31,6 +31,14 @@
       "char": "none"
     }
   ],
+  "kanagawa_trip": [
+    {
+      "speaker": "ナレーション",
+      "text": "君は飛行機に乗り込み、神奈川県へ向かった。",
+      "bg": "story/airplane.jpg",
+      "char": "none"
+    }
+  ],
   "cfrp_quiz": [
     {
       "speaker": "ナレーション",
