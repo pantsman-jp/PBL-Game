@@ -40,12 +40,12 @@ python -m src.main
 | :---: | :---: |:---: |
 | プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
 | タイトル・エンディング画面 | AIPICT | <https://aipict.com/> |
-| ノベルパート・エンディング画面 | photoAC | <https://www.photo-ac.com> |
-| エンディング画面| Image Credit: NASA| <https://www.nasa.gov/nasa-brand-center/images-and-media/>|
+| ノベルパート <br> エンディング画面 | photoAC | <https://www.photo-ac.com> |
+| エンディング画面 | Image Credit: NASA | <https://www.nasa.gov/nasa-brand-center/images-and-media/>|
 | 都道府県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> |
 | マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> |
 | 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> |
-| 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0)|
+| 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0) |
 
 ---
 Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA), [@Shiba600](https://github.com/Shiba600)
