@@ -15,7 +15,7 @@ git clone https://github.com/pantsman-jp/PBL-Game
 ### 使い方
 以下の環境が必要です。
 
-- `Python 3.13.9-`
+- `Python 3.13`
 - `Pygame 2.6.1`
 
 `Pygame` は次のコマンドでインストールします。
@@ -29,7 +29,13 @@ pip install pygame
 python -m src.main
 ```
 
-## 素材出典
+## 免責事項
+本ゲームの利用に際しては [免責事項](docs/disclaimer.ja.md) をご確認ください。
+
+## ライセンス
+本プロジェクトのソースコードは [MIT License](LICENSE) の下で公開されています。
+
+### 素材出典
 | 使用箇所 | 素材元・作者名 | URL・ライセンス詳細|
 | :---: | :---: |:---: |
 | プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
@@ -40,14 +46,6 @@ python -m src.main
 | マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> |
 | 効果音 | 効果音ラボ | <https://soundeffect-lab.info/> |
 | 音楽 | Kevin MacLeod | "Blue Danube (by Strauss)" (CC By 4.0)|
-
-## 免責事項
-本ゲームの利用に際しては [免責事項](docs/disclaimer.ja.md) をご確認ください。
-
-## ライセンス
-本プロジェクトのソースコードは [MIT License](LICENSE) の下で公開されています。
-
-また、使用している画像・音声素材のライセンスは [素材出典](#素材出典) を参照してください。
 
 ---
 Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA), [@Shiba600](https://github.com/Shiba600)
