@@ -2,38 +2,38 @@
 
 ## v0.31.0 (2026-01-14)
 - 新規マップ（神奈川県）の追加
- - world_map_kanagawa.pngを追加（他の都道府県マップと同様の出典）
- - maps.jsonに"kanagawa"を追加
- - novel_scripts.jsonに"kanagawa_trip"（神奈川県へ移動するノベルパート）を追加
-- npc7,8の追加
- - npc7を愛知県に配置（話しかけると愛知県→神奈川県へ）
- - npc8を神奈川県に配置（話しかけると神奈川県→愛知県へ）
- - - 画像ファイルnpc7.png,npc8.pngは他のnpcと同様
+  - world_map_kanagawa.pngを追加（他の都道府県マップと同様の出典）
+  - `maps.json` に"kanagawa"を追加
+  - `novel_scripts.json` に "kanagawa_trip"（神奈川県へ移動するノベルパート）を追加
+- npc7,8 の追加
+  - npc7を愛知県に配置（話しかけると愛知県→神奈川県へ）
+  - npc8を神奈川県に配置（話しかけると神奈川県→愛知県へ）
+    - 画像ファイル `npc7.png`, `npc8.png` は他の NPC と同様
 
 ## v0.30.2 (2026-01-14)
 - プレイヤーの表示のずれにより、マップの当たり判定がずれてしまう不具合を解決
 
 ## v0.30.1 (2026-01-13)
 - 愛知県へマップ遷移時に、福岡県左上部に飛んでしまう不具合を修正
-- 不具合の詳細：npc5に話しかけるとノベルパートが開始し、終了時にstart_rpg_game()が呼ばれることで愛知県へのマップ遷移が上書きされていた。
-- talk.pyのmap_triggerをnovel_triggerの前に変更
- - 話しかけたNPCにnovel_triggerがある場合、マップ遷移を一時中断（stop_map_transition）してノベルパートを開始
- - ノベルパート終了時にapp.pyのstart_rpg_game()を呼び出して、マップ遷移が一時中断（stop_map_transition）されていれば、マップ遷移を再開する構造に変更
-- airplane.jpgの出典をREADME.mdに記載
+- 不具合の詳細：npc5に話しかけるとノベルパートが開始し、終了時に `start_rpg_game()` が呼ばれることで愛知県へのマップ遷移が上書きされていた。
+- `talk.py` の map_trigger を novel_trigger の前に変更
+  - 話しかけた NPC に novel_trigger がある場合、マップ遷移を一時中断（stop_map_transition）してノベルパートを開始
+  - ノベルパート終了時に `app.py` の `start_rpg_game()` を呼び出して、マップ遷移が一時中断（stop_map_transition）されていれば、マップ遷移を再開する構造に変更
+- `airplane.jpg` の出典を `README.md` に記載
 
 ## v0.30.0 (2026-01-13)
 - npc5,6の追加
- - npc5を福岡県の座標(200,95)に追加（話しかけると福岡県→愛知県へ）
-  - novel_scripts.jsonに愛知県へ向かうノベルパート"aichi_trip"を追加
- - npc6を愛知県の座標(69,78)に追加（話しかけると愛知県→福岡県へ戻る）
- - 画像ファイルnpc5.png,npc6.pngは他のnpcと同様
-- airplane.jpgの追加（飛行機で移動する場合のノベルパート用画像）出典はphotoAC
+  - npc5を福岡県の座標(200,95)に追加（話しかけると福岡県→愛知県へ）
+    - `novel_scripts.json` に愛知県へ向かうノベルパート "aichi_trip" を追加
+  - npc6を愛知県の座標(69,78)に追加（話しかけると愛知県→福岡県へ戻る）
+  - 画像ファイル `npc5.png`, `npc6.png` は他のnpcと同様
+- `airplane.jpg` の追加（飛行機で移動する場合のノベルパート用画像）出典は photoAC
 - new_map（愛知県）の追加
- - world_map_aichi.pngを追加（出典は他マップと同様）
- - map.jsonに"aichi"を追加
-- map_triggerの追加
- - novel_triggerと同様に、talk.pyにmap_triggerを追加
- - dialogues.jsonのnpcデータにmap_triggerを追加（話しかけて会話が終了すると対応したmapへ遷移する）
+  - `world_map_aichi.png` を追加（出典は他マップと同様）
+  - `map.json` に "aichi" を追加
+- map_trigger の追加
+  - novel_trigger と同様に、`talk.py` に map_trigger を追加
+  - `dialogues.json` の NPC データに map_trigger を追加（話しかけて会話が終了すると対応した map へ遷移する）
 
 ## v0.29.3 (2026-01-13)
 - 会話終了時の更新処理で keys が未定義になる不具合を修正
