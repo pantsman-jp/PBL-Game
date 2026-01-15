@@ -74,5 +74,11 @@
     "walls": [],
     "exits": [],
     "bgm": "main.mp3"
+  },
+  "kanagawa": {
+    "image": "map/world_map_kanagawa.png",
+    "walls": [],
+    "exits": [],
+    "bgm": "main.mp3"
   }
 }
