@@ -39,8 +39,8 @@ python -m src.main
 | 使用箇所 | 素材元・作者名 | URL・ライセンス詳細|
 | :---: | :---: |:---: |
 | プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
-| タイトル・エンディング画面 | AIPICT | <https://aipict.com/> |
-| ノベルパート <br> エンディング画面 | photoAC | <https://www.photo-ac.com> |
+| タイトル・エンディング画面 <br> ノベルパート| AIPICT | <https://aipict.com/> |
+| エンディング画面 <br> ノベルパート| photoAC | <https://www.photo-ac.com> |
 | エンディング画面 | Image Credit: NASA | <https://www.nasa.gov/nasa-brand-center/images-and-media/>|
 | 都道府県マップ | RPG風イラストマップ | <https://rpgmap.hatenablog.com/> |
 | マップ BGM | DOVA-SYNDROME | <https://dova-s.jp/> |

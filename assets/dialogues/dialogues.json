@@ -182,5 +182,44 @@
             "speed": 0.0,
             "max_offset": 0
         }
+    },
+    "npc9": {
+        "position": [
+            134,
+            128
+        ],
+        "map_id": "kanagawa",
+        "image": "character/npc9.png",
+        "lines": [
+            "茨城県へ向かいます！"
+        ],
+        "novel_trigger": "ibaraki_trip",
+        "map_trigger": "ibaraki",
+        "map_dest_x": 220,
+        "map_dest_y": 220,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc10": {
+        "position": [
+            220,
+            218
+        ],
+        "map_id": "ibaraki",
+        "image": "character/npc10.png",
+        "lines": [
+            "神奈川県へ戻ります！"
+        ],
+        "map_trigger": "kanagawa",
+        "map_dest_x": 134,
+        "map_dest_y": 130,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
     }
 }
