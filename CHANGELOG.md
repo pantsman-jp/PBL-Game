@@ -2,10 +2,10 @@
 
 ## v0.32.0 (2026-01-19)
 - 新規マップ（茨城県）の追加
-  - world_map_ibaraki.pngを追加（他の都道府県マップと同様の出典）
+  - `world_map_ibaraki.png` を追加（他の都道府県マップと同様の出典）
   - `maps.json` に"ibaraki"を追加
   - `novel_scripts.json` に "ibaraki_trip"（神奈川県→茨城県へ電車で移動するノベルパート）を追加
-- train.pngの追加（電車で移動する場合ノベルパート用画像）出典はAI PICT
+- `train.png` の追加（電車で移動する場合ノベルパート用画像）出典はAI PICT
 - npc9,10の追加
   - npc9を神奈川県に配置（話しかけると神奈川県→茨城県へ）
   - npc10を茨城県に配置（話しかけると茨城県→神奈川県へ）
