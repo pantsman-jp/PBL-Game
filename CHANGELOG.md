@@ -1,6 +1,6 @@
 # CHANGELOG of PBL-Game
 
-## v0.32.0 (2026-01-16)
+## v0.32.0 (2026-01-19)
 - 新規マップ（茨城県）の追加
   - world_map_ibaraki.pngを追加（他の都道府県マップと同様の出典）
   - `maps.json` に"ibaraki"を追加
