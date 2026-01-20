@@ -45,13 +45,6 @@ class VisualNovel:
         # データロード
         self.scripts_data = {}
 
-        # 1. 従来の single JSON file をロード
-        old_scripts_path = os.path.join(self.base_dir, "data", "novel_scripts.json")
-        if os.path.isfile(old_scripts_path):
-            data = load_json(old_scripts_path)
-            if data:
-                self.scripts_data.update(data)
-
         # 2. novel_scripts フォルダ内のJSONをロード・マージ
         scripts_dir = os.path.join(self.base_dir, "data", "novel_scripts")
         if os.path.isdir(scripts_dir):
@@ -190,6 +183,14 @@ class VisualNovel:
             else:
                 img = self._get_cached_image(char_name, alpha=True)
                 if img:
+                    # 立ち絵を画面高さの80%程度に縮小（引きの画にする）
+                    # アスペクト比を維持
+                    h_limit = int(VN_SCREEN_H * 0.8)
+                    w, h = img.get_size()
+                    if h > h_limit:
+                        scale = h_limit / h
+                        new_size = (int(w * scale), int(h * scale))
+                        img = pygame.transform.smoothscale(img, new_size)
                     self.char_image = img
 
         # 選択肢の確認

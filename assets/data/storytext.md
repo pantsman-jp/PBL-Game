@@ -34,6 +34,10 @@
 - fix(app): イベントの重複実行を防ぐためのフラグ管理を追加
 - refactor(vn): シナリオデータを単一ファイルだけでなく `assets/data/novel_scripts/` フォルダからも読み込むように改修
 - data(scenario): 九工大イベントのシナリオを独立したファイル `kyutech.json` に分離
+- feat(vn): ノベルパートの選択肢をボタン形式のGUIによるインタラクティブなUIに変更（マウス/キー操作対応）
+- refactor(data): `novel_scripts.json`を`novel_scripts/common.json`に移動し、ディレクトリ一括読み込み構成へ移行
+- data(scenario): 九工大イベント(`kyutech.json`)の背景を`cupping.png`、立ち絵を`Professor1.png`に変更
+- data(scenario): アイテム入手時の演出として、`C6-0`の画像を立ち絵として表示するように変更
 
 
 ---

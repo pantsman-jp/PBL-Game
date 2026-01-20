@@ -4,13 +4,13 @@
       "speaker": "ナレーション",
       "text": "九州工業大学 戸畑キャンパスに到着した。",
       "bg": "story/concreteroom.jpg",
-      "char": "none"
+      "char": "character/cupping.png"
     },
     {
       "speaker": "先生",
       "text": "やあ。君が噂のロケット開発者だね。",
       "bg": "story/concreteroom.jpg",
-      "char": "character/npc1.png"
+      "char": "character/Professor2.png"
     },
     {
       "speaker": "先生",
@@ -69,7 +69,7 @@
       "speaker": "システム",
       "text": "モデルロケットエンジン『C6-0』を手に入れた！",
       "bg": "story/concreteroom.jpg",
-      "char": "none",
+      "char": "story/C6-0.png",
       "reward": "model_rocket_engine_c6_0",
       "next_map": {
         "map_id": "world",
