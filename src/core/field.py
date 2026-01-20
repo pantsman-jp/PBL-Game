@@ -361,6 +361,17 @@ class Field:
         # BGM更新
         self._update_bgm(data.get("bgm"))
 
+        # --- 自動イベント発火 ---
+        # 九工大マップに入ったとき、初回のみノベルパート"entering_kyutech"を開始
+        if (
+            map_id == "kyutech_campus"
+            and "entering_kyutech" not in self.app.played_events
+        ):
+            self.app.played_events.add("entering_kyutech")
+            # マップロード直後にVNを開始するためにシーンを切り替え
+            self.app.scene_state = 2  # SCENE_VN
+            self.app.vn.start("entering_kyutech")
+
     def _update_bgm(self, bgm_path):
         """マップデータに基づくBGMの更新"""
         if not pygame.mixer.get_init():
