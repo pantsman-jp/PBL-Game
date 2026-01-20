@@ -186,10 +186,10 @@ class App:
         if self.scene_state == SCENE_GAME:
             self.talk.update(keys)
 
-        # アイテム獲得時に会話を安全に終了させる
+        # アイテム獲得時に会話を安全に終了させる処理
         if len(self.items) > self._prev_item_count:
-            if self.talk.is_active():
-                self.talk.request_close()
+            # self.talk.request_close()  # ← このメソッドは無いので消してOKです
+            pass
 
         # 会話中はプレイヤー更新を止める
         if not self.talk.is_active():
