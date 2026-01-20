@@ -40,6 +40,7 @@ class VisualNovel:
         # リソース管理
         self.bg_image = None
         self.char_image = None
+        self.char_offset_y = 0  # 立ち絵のY座標オフセット
         self._image_cache = {}  # 重複ロード防止用のキャッシュ
 
         # データロード
@@ -183,15 +184,39 @@ class VisualNovel:
             else:
                 img = self._get_cached_image(char_name, alpha=True)
                 if img:
-                    # 立ち絵を画面高さの80%程度に縮小（引きの画にする）
-                    # アスペクト比を維持
-                    h_limit = int(VN_SCREEN_H * 0.8)
-                    w, h = img.get_size()
-                    if h > h_limit:
-                        scale = h_limit / h
-                        new_size = (int(w * scale), int(h * scale))
+                    # 指定されたスケール、または自動縮小
+                    custom_scale = data.get("char_scale")
+
+                    if custom_scale:
+                        # JSONでスケール指定がある場合
+                        w, h = img.get_size()
+                        new_size = (int(w * custom_scale), int(h * custom_scale))
                         img = pygame.transform.smoothscale(img, new_size)
+
+                        # オフセット指定（y座標調整用）
+                        if "char_offset_y" in data:
+                            self.char_offset_y = data["char_offset_y"]
+                        else:
+                            self.char_offset_y = 0
+                    else:
+                        # 自動調整: 画面高さの80%程度に収める
+                        h_limit = int(VN_SCREEN_H * 0.8)
+                        w, h = img.get_size()
+                        if h > h_limit:
+                            scale = h_limit / h
+                            new_size = (int(w * scale), int(h * scale))
+                            img = pygame.transform.smoothscale(img, new_size)
+                        self.char_offset_y = 0
+
                     self.char_image = img
+
+        # 背景立ち絵リセット（明示的な指定がない限りオフセットはリセットしない実装も可能だが、シーンごと描画なのでリセットが無難）
+        # ただし char_name がない場合は char_image が更新されないので、
+        # 前のシーンの画像が残る場合、オフセットも残すべきか？
+        # 現状の実装は _load_current_scene で毎回 char_name をチェックしている。
+        # char_nameがキーとして存在しない場合、何もしない（前の画像維持）仕様か？
+        # -> はい。ただし今回は拡大縮小を伴うので、char_nameがない＝画像維持なら、オフセットも維持でOK。
+        # char_nameがある場合のみ上記で char_offset_y を設定している。
 
         # 選択肢の確認
         choices = data.get("choices")
@@ -279,6 +304,7 @@ class VisualNovel:
         # 2. 立ち絵
         if self.char_image:
             rect = self.char_image.get_rect(midbottom=CHAR_POS)
+            rect.y += self.char_offset_y  # オフセット適用
             screen.blit(self.char_image, rect)
 
         # 3. テキストウィンドウ
