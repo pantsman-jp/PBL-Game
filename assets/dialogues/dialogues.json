@@ -221,5 +221,121 @@
             "speed": 0.0,
             "max_offset": 0
         }
+    },
+    "npc_aichi": {
+        "position": [
+            191,
+            108
+        ],
+        "map_id": "world",
+        "image": "character/npc1.png",
+        "lines": [
+            "ここは愛知県だ。ロケットの『構造』について詳しいかな？",
+            "合格すれば、必要な材料を分けてあげよう。"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        },
+        "quiz": {
+            "question": "【構造系クイズ：ここにクイズ内容を書いてください】",
+            "choices": [
+                "選択肢1",
+                "選択肢2",
+                "選択肢3"
+            ],
+            "answer": 0,
+            "reward": [
+                "aichi_structure_part"
+            ]
+        }
+    },
+    "npc_kanagawa": {
+        "position": [
+            192,
+            108
+        ],
+        "map_id": "world",
+        "image": "character/npc1.png",
+        "lines": [
+            "神奈川県へようこそ。ロケットの『制御』は非常に緻密な世界だ。",
+            "君にその知識があるか試させてもらうよ。"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        },
+        "quiz": {
+            "question": "【制御系クイズ：ここにクイズ内容を書いてください】",
+            "choices": [
+                "選択肢1",
+                "選択肢2",
+                "選択肢3"
+            ],
+            "answer": 0,
+            "reward": [
+                "kanagawa_control_unit"
+            ]
+        }
+    },
+    "npc_ibaraki": {
+        "position": [
+            189,
+            108
+        ],
+        "map_id": "world",
+        "image": "character/npc1.png",
+        "lines": [
+            "茨城県だ。宇宙との『通信』が途絶えれば、ミッションは失敗する。",
+            "通信技術についての問題に答えてみてくれ。"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        },
+        "quiz": {
+            "question": "【通信系クイズ：ここにクイズ内容を書いてください】",
+            "choices": [
+                "選択肢1",
+                "選択肢2",
+                "選択肢3"
+            ],
+            "answer": 0,
+            "reward": [
+                "ibaraki_antenna_module"
+            ]
+        }
+    },
+    "npc_kagoshima": {
+        "position": [
+            190,
+            107
+        ],
+        "map_id": "world",
+        "image": "character/npc1.png",
+        "lines": [
+            "鹿児島県、種子島。ロケットの心臓、つまり『燃料』の知識は不可欠だ。",
+            "準備ができたらクイズに挑戦してくれ。"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        },
+        "quiz": {
+            "question": "【燃料系クイズ：ここにクイズ内容を書いてください】",
+            "choices": [
+                "選択肢1",
+                "選択肢2",
+                "選択肢3"
+            ],
+            "answer": 0,
+            "reward": [
+                "kagoshima_fuel_tank"
+            ]
+        }
     }
 }
