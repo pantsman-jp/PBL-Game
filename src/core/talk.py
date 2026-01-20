@@ -22,20 +22,19 @@ class Talk:
         )
         self.dialogues = load_json(dialogues_path) or {}
 
-        # 会話状態管理
+        # --- 状態管理変数の初期化（ここが漏れるとエラーになります） ---
         self.active = None  # 現在会話中のNPCキー
-        self.window_lines = []  # 表示中のテキスト行リスト
-        self.line_index = 0  # 現在表示中のテキストのインデックス
-
-        # クイズ状態管理
-        self.quiz_mode = False
+        self.window_lines = []  # 表示するテキストリスト
+        self.line_index = 0  # 現在の行番号
+        self.quiz_mode = False  # クイズ中か
+        self.quiz_result_mode = False  # クイズ結果の表示中か
         self.current_quiz = None
-        self.quiz_choice = 0  # 選択中の選択肢番号
-
-        # 入力遅延用（連続入力の防止）
+        self.quiz_choice = 0
         self.wait_frames = 0
 
-    # --- 更新処理 ---
+    def is_active(self):
+        """現在会話中（ウィンドウが表示されるべき状態）か判定"""
+        return self.active is not None
 
     def update(self, keys):
         """毎フレームの更新処理"""
@@ -51,10 +50,11 @@ class Talk:
             self._close_dialog()
             return
 
-        # モードに応じたイベントハンドリング
-        if self.quiz_mode:
+        # クイズ選択中の操作
+        if self.quiz_mode and not self.quiz_result_mode:
             self._handle_quiz(keys)
         else:
+            # 通常会話、またはクイズ結果表示中の操作
             self._handle_dialog(keys)
 
     def _handle_dialog(self, keys):
@@ -64,7 +64,10 @@ class Talk:
 
             # 全ての行を読み終えた場合
             if self.line_index >= len(self.window_lines):
-                self._advance_to_next_state()
+                if self.quiz_result_mode:
+                    self._close_dialog()  # 結果を読み終えたら終了
+                else:
+                    self._advance_to_next_state()
 
     def _advance_to_next_state(self):
         """テキスト終了後の遷移判定（クイズへ行くか、終了するか）"""
@@ -134,16 +137,24 @@ class Talk:
         q = self.current_quiz
         npc_data = self.dialogues.get(self.active, {})
 
-        if self.quiz_choice == q.get("answer", 0):
-            # 正解時：報酬を付与し、クイズ完了フラグを立てる
+        # 結果メッセージの構築
+        result_lines = []
+        if self.quiz_choice == q.get("answer", 1):  # jsonは1から始まるため
+            result_lines.append("正解だ！素晴らしい。")
             reward = q.get("reward")
             if reward:
+                for item_id in reward:
+                    result_lines.append(f"【{item_id}】を手に入れた。")
                 self.app.items.extend(reward)
             npc_data["quiz_done"] = True
+        else:
+            result_lines.append("残念、不正解だ。")
+            result_lines.append("もう一度挑戦してくれたまえ。")
 
-        self._close_dialog()
-
-    # --- インターフェース ---
+        self.window_lines = result_lines
+        self.line_index = 0
+        self.quiz_result_mode = True
+        self.wait_frames = 15
 
     def try_talk(self):
         """プレイヤーの周囲にNPCがいるか確認し、会話を開始する"""
@@ -154,20 +165,17 @@ class Talk:
 
         for key, data in self.dialogues.items():
             pos = data.get("position")
-            if not pos:
-                continue
-
-            # マンハッタン距離が1（隣接）しているか判定
-            if abs(pos[0] - px) + abs(pos[1] - py) == 1:
+            if pos and abs(pos[0] - px) + abs(pos[1] - py) == 1:
                 self.active = key
                 self._open_dialog(data)
-                return
+                break
 
     def _open_dialog(self, data):
         """会話ウィンドウを開く"""
         self.window_lines = data.get("lines", [])
         self.line_index = 0
         self.quiz_mode = False
+        self.quiz_result_mode = False
         self.current_quiz = None
         self.wait_frames = 15
 
@@ -177,14 +185,16 @@ class Talk:
         self.window_lines = []
         self.line_index = 0
         self.quiz_mode = False
-        self.current_quiz = None
-        self.wait_frames = 20  # 閉じた直後の誤動作防止
+        self.quiz_result_mode = False
+        self.wait_frames = 20
 
-    def is_active(self):
-        """現在会話中かどうかを返す"""
-        return self.active is not None
-
-    # --- 描画処理 ---
+    def _finalize_conversation(self, npc_data):
+        # ... (app.pyに準拠した遷移処理。変更なし)
+        novel_trigger = npc_data.get("novel_trigger")
+        if novel_trigger:
+            self.app.scene_state = 2  # SCENE_VN
+            self.app.vn.start(novel_trigger)
+        self._close_dialog()
 
     def draw(self, screen, font):
         """会話またはクイズウィンドウの描画"""
@@ -193,12 +203,9 @@ class Talk:
 
         # ウィンドウサイズと位置の計算
         sw, sh = screen.get_size()
-        ww, wh = sw * 0.8, sh * 0.3
-        wx, wy = (sw - ww) // 2, sh - wh - 20
-        rect = (wx, wy, ww, wh)
+        rect = (sw * 0.1, sh - sh * 0.3 - 20, sw * 0.8, sh * 0.3)
 
-        if self.quiz_mode and self.current_quiz:
-            # クイズ表示
+        if self.quiz_mode and not self.quiz_result_mode:
             q = self.current_quiz
             display_lines = [q.get("question", "")]
 
@@ -210,6 +217,6 @@ class Talk:
             draw_window(screen, font, display_lines, rect)
 
         elif self.window_lines:
-            # 通常会話表示
+            # 1行ずつ表示するための修正
             idx = min(self.line_index, len(self.window_lines) - 1)
             draw_window(screen, font, [self.window_lines[idx]], rect)
