@@ -27,7 +27,12 @@
             "reward": [
                 "cfrp_material"
             ]
-        }
+        },
+        "quiz_passed_lines": [
+            "正解だ！",
+            "CFRPの基本的な特性を理解しているんだな。",
+            "このCFRP材料を使って、ロケットを組み立ててくれ。"
+        ]
     },
     "npc_2": {
         "position": [
@@ -56,7 +61,12 @@
             "reward": [
                 "engine_unit"
             ]
-        }
+        },
+        "quiz_passed_lines": [
+            "素晴らしい！",
+            "運動量保存の法則を理解しているようだね。",
+            "このエンジンユニットがあれば、ロケットに動力を付与できるぞ。"
+        ]
     },
     "npc_3": {
         "position": [
@@ -85,7 +95,12 @@
             "reward": [
                 "guidance_computer"
             ]
-        }
+        },
+        "quiz_passed_lines": [
+            "完璧だ！",
+            "第一宇宙速度の理解が深いようだ。",
+            "このガイダンスコンピュータを使えば、軌道制御ができるようになる。"
+        ]
     },
     "npc_4": {
         "position": [
@@ -99,6 +114,123 @@
             "ここから先は、完成したロケットのみが進める。"
         ],
         "novel_trigger": "ending",
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc_5": {
+        "position": [
+            200,
+            95
+        ],
+        "map_id": "world",
+        "image": "character/npc5.png",
+        "lines": [
+            "愛知県へ飛びます！"
+        ],
+        "novel_trigger": "aichi_trip",
+        "map_trigger": "aichi",
+        "map_dest_x": 69,
+        "map_dest_y": 80,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc_6": {
+        "position": [
+            69,
+            78
+        ],
+        "map_id": "aichi",
+        "image": "character/npc6.png",
+        "lines": [
+            "福岡県へ戻ります！"
+        ],
+        "map_trigger": "world",
+        "map_dest_x": 200,
+        "map_dest_y": 96,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc7": {
+        "position": [
+            74,
+            78
+        ],
+        "map_id": "aichi",
+        "image": "character/npc7.png",
+        "lines": [
+            "神奈川県へ飛びます！"
+        ],
+        "novel_trigger": "kanagawa_trip",
+        "map_trigger": "kanagawa",
+        "map_dest_x": 130,
+        "map_dest_y": 130,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc8": {
+        "position": [
+            130,
+            128
+        ],
+        "map_id": "kanagawa",
+        "image": "character/npc8.png",
+        "lines": [
+            "愛知県へ戻ります！"
+        ],
+        "map_trigger": "aichi",
+        "map_dest_x": 74,
+        "map_dest_y": 80,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc9": {
+        "position": [
+            134,
+            128
+        ],
+        "map_id": "kanagawa",
+        "image": "character/npc9.png",
+        "lines": [
+            "茨城県へ向かいます！"
+        ],
+        "novel_trigger": "ibaraki_trip",
+        "map_trigger": "ibaraki",
+        "map_dest_x": 220,
+        "map_dest_y": 220,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc10": {
+        "position": [
+            220,
+            218
+        ],
+        "map_id": "ibaraki",
+        "image": "character/npc10.png",
+        "lines": [
+            "神奈川県へ戻ります！"
+        ],
+        "map_trigger": "kanagawa",
+        "map_dest_x": 134,
+        "map_dest_y": 130,
         "movement_x": {
             "enabled": false,
             "speed": 0.0,

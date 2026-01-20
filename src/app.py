@@ -37,6 +37,7 @@ class App:
         self.inventory_open = False
         self.x, self.y, self.items = 200, 100, []
         self._prev_item_count = 0
+        self.stop_map_transition = None  # ノベル終了後のマップ遷移用
 
         # Mixer 初期化
         try:
@@ -82,7 +83,7 @@ class App:
             self.title_font = pygame.font.SysFont("meiryo", 32)
             self.prompt_font = pygame.font.SysFont("meiryo", 20)
 
-        #  タイトル画像 
+        #  タイトル画像
         img_p = resource_path(os.path.join(self.BASE_DIR, "img", "story", "title.jpg"))
         self.title_image = (
             pygame.image.load(img_p).convert() if os.path.isfile(img_p) else None
@@ -111,7 +112,12 @@ class App:
 
     def start_rpg_game(self):
         """RPGパートを開始"""
-        self.field.load_map("world")
+        if self.stop_map_transition:
+            map_id, dest_x, dest_y = self.stop_map_transition
+            self.field._start_transition(map_id, dest_x, dest_y)
+            self.stop_map_transition = None
+        else:
+            self.field.load_map("world")
         self.field.load_player()
         self.scene_state = SCENE_GAME
 
@@ -175,19 +181,21 @@ class App:
 
     def _update(self):
         """データ更新の振り分け"""
+        keys = self.key_tracker.update()
+
         if self.scene_state == SCENE_GAME:
-            keys = self.key_tracker.update()
             self.talk.update(keys)
 
-            # アイテム獲得時に会話を強制終了するフラグ管理
-            if len(self.items) > self._prev_item_count:
-                if hasattr(self.talk, "active"):
-                    self.talk.active = False
-                elif hasattr(self.talk, "_active"):
-                    self.talk._active = False
+        # アイテム獲得時に会話を安全に終了させる
+        if len(self.items) > self._prev_item_count:
+            if self.talk.is_active():
+                self.talk.request_close()
 
+        # 会話中はプレイヤー更新を止める
+        if not self.talk.is_active():
             self.field.update(keys)
-            self._prev_item_count = len(self.items)
+
+        self._prev_item_count = len(self.items)
 
     # --- 描画処理 ---
 

@@ -68,5 +68,23 @@
       }
     ],
     "bgm": "main.mp3"
+  },
+  "aichi": {
+    "image": "map/world_map_aichi.png",
+    "walls": [],
+    "exits": [],
+    "bgm": "main.mp3"
+  },
+  "kanagawa": {
+    "image": "map/world_map_kanagawa.png",
+    "walls": [],
+    "exits": [],
+    "bgm": "main.mp3"
+  },
+  "ibaraki": {
+    "image": "map/world_map_ibaraki.png",
+    "walls": [],
+    "exits": [],
+    "bgm": "main.mp3"
   }
 }

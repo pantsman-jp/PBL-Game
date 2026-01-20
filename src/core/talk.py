@@ -90,6 +90,18 @@ class Talk:
             self.app.items.extend(reward)
             del npc_data["reward"]  # 報酬獲得フラグの代わり
 
+        # マップ遷移の確認（ノベル前にセット）
+        map_trigger = npc_data.get("map_trigger")
+        if map_trigger:
+            dest_x = npc_data.get("map_dest_x", 10)
+            dest_y = npc_data.get("map_dest_y", 10)
+            if npc_data.get("novel_trigger"):
+                # ノベルがある場合、一時的に遷移をストップする
+                self.app.stop_map_transition = (map_trigger, dest_x, dest_y)
+            else:
+                # ノベルがない場合、即時遷移
+                self.app.field._start_transition(map_trigger, dest_x, dest_y)
+
         # シナリオ遷移の確認
         novel_trigger = npc_data.get("novel_trigger")
         if novel_trigger:
@@ -128,7 +140,17 @@ class Talk:
             if reward:
                 self.app.items.extend(reward)
             npc_data["quiz_done"] = True
-
+            
+            # 正解後の会話があれば表示
+            passed_lines = npc_data.get("quiz_passed_lines", [])
+            if passed_lines:
+                self.window_lines = passed_lines
+                self.line_index = 0
+                self.quiz_mode = False
+                self.current_quiz = None
+                self.wait_frames = 15
+                return
+        
         self._close_dialog()
 
     # --- インターフェース ---
