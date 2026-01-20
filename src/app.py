@@ -252,6 +252,10 @@ class App:
         i_text = f"ITEMS: {', '.join(self.items)}" if self.items else "ITEMS: -"
         self.screen.blit(self.font.render(i_text, True, (255, 255, 255)), (8, 40))
 
+        # UI: 座標表示
+        pos_text = f"POS: ({self.x}, {self.y})"
+        self.screen.blit(self.font.render(pos_text, True, (255, 255, 255)), (8, 64))
+
         # UI: 操作ガイド
         h_lines = [
             "Z : 話しかける / 決定",
@@ -261,7 +265,7 @@ class App:
         ]
         for i, text in enumerate(h_lines):
             self.screen.blit(
-                self.font.render(text, True, (220, 220, 220)), (8, 64 + i * 18)
+                self.font.render(text, True, (220, 220, 220)), (8, 88 + i * 18)
             )
 
         # 会話ウィンドウ

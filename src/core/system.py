@@ -42,21 +42,18 @@ class System:
         """
         現在のフラグ状態に基づいて、画面上部に表示する目標テキストを生成する
         """
-        # 1. 導入フェーズ
-        if not self.flags["intro_done"]:
-            return "目標：案内人に話しかけて指示を仰げ"
+        # 1. エンジン (C6-0) チェック
+        if "model_rocket_engine_c6_0" not in self.app.items:
+            return "目標：九州工業大学(座標(214,104))に向かい、モデルロケットエンジンを入手せよ"
 
         # 2. 部品収集フェーズ
-        # 各部品のフラグと対応するメッセージを定義
-        parts_info = [
-            ("item_cfrp", "複合材料研究室へ向かい、CFRPを入手せよ"),
-            ("item_engine", "実習工場へ向かい、エンジンを入手せよ"),
-            ("item_cpu", "情報工学棟へ向かい、制御基板を入手せよ"),
-        ]
+        # CFRP
+        if "cfrp_material" not in self.app.items:
+            return "目標：座標(190,108)にいるNPCに話しかけてCFRPを入手せよ"
 
-        for flag_key, message in parts_info:
-            if not self.flags[flag_key]:
-                return f"目標：{message}"
+        # CPU (制御基板)
+        if "guidance_computer" not in self.app.items:
+            return "目標：座標(203,93)にいるNPCに話しかけて制御基板を入手せよ"
 
         # 3. 最終フェーズ
         if not self.flags["rocket_assembled"]:
