@@ -195,6 +195,11 @@ class Field:
             player_y = self.app.y * TILE * ZOOM * scale_y
             # プレイヤー位置に赤い円を描画
             pygame.draw.circle(screen, (255, 0, 0), (int(player_x), int(player_y)), 5)
+            # 都道府県名を表示
+            name_surf = self.app.title_font.render(
+                self.current_map_name, True, (255, 255, 255)
+            )
+            screen.blit(name_surf, (800, 30))
             return
 
         # 移動中の滑らかな表示オフセット計算
@@ -340,6 +345,7 @@ class Field:
 
         self.current_map_id = map_id
         data = self.map_data[map_id]
+        self.current_map_name = data.get("name", map_id)
         img_name = data.get("image", "map/world_map.png")
         path = resource_path(os.path.join(self.BASE_DIR, "img", img_name))
         self.map_image = pygame.image.load(path).convert()

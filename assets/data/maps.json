@@ -1,5 +1,6 @@
 {
   "world": {
+    "name": "福岡県",
     "image": "map/world_map.png",
     "walls": [],
     "exits": [
@@ -28,6 +29,7 @@
     "bgm": "main.mp3"
   },
   "village": {
+    "name": "村",
     "image": "story/title.jpg",
     "walls": [],
     "exits": [
@@ -42,6 +44,7 @@
     "bgm": "main.mp3"
   },
   "kyutech_campus": {
+    "name": "九州工業大学",
     "image": "story/title.jpg",
     "walls": [],
     "exits": [
@@ -56,6 +59,7 @@
     "bgm": "main.mp3"
   },
   "yamaguchi": {
+    "name": "山口県",
     "image": "map/world_map_yamaguchi.png",
     "walls": [],
     "exits": [
@@ -70,18 +74,21 @@
     "bgm": "main.mp3"
   },
   "aichi": {
+    "name": "愛知県",
     "image": "map/world_map_aichi.png",
     "walls": [],
     "exits": [],
     "bgm": "main.mp3"
   },
   "kanagawa": {
+    "name": "神奈川県",
     "image": "map/world_map_kanagawa.png",
     "walls": [],
     "exits": [],
     "bgm": "main.mp3"
   },
   "ibaraki": {
+    "name": "茨城県",
     "image": "map/world_map_ibaraki.png",
     "walls": [],
     "exits": [],
