@@ -1,4 +1,6 @@
 # CHANGELOG of PBL-Game
+## v0.35.0
+- `dialogues.json`において各都道府県NPCのひな形を作成
 
 ## v0.34.2 (2026-01-20)
 - マップ遷移できないバグを修正
