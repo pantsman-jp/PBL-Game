@@ -62,6 +62,9 @@ class Field:
         # BGM管理
         self._current_bgm_path = None
 
+        # マップ表示フラグ
+        self.map_display = False
+
         # 初期ロード
         self.load_map("world")
         self.load_player()
@@ -111,16 +114,18 @@ class Field:
 
         # キー入力受付
         pressed = pygame.key.get_pressed()
-        if pressed[pygame.K_w]:
+        if pressed[pygame.K_w] and not self.map_display:
             self.start_move(0, -1)
-        elif pressed[pygame.K_s]:
+        elif pressed[pygame.K_s] and not self.map_display:
             self.start_move(0, 1)
-        elif pressed[pygame.K_a]:
+        elif pressed[pygame.K_a] and not self.map_display:
             self.start_move(-1, 0)
-        elif pressed[pygame.K_d]:
+        elif pressed[pygame.K_d] and not self.map_display:
             self.start_move(1, 0)
-        elif keys.get("z"):
+        elif keys.get("z") and not self.map_display:
             self.app.talk.try_talk()
+        elif keys.get("m"):
+            self.map_display = not self.map_display
 
     def _update_movement(self):
         """タイル間のスムーズな移動を更新"""
@@ -173,6 +178,23 @@ class Field:
     def draw(self, screen):
         """フィールド全体の描画"""
         if not self.map_image:
+            return
+
+        if self.map_display:
+            # マップ表示モード：全体マップを縮小表示
+            screen_w, screen_h = screen.get_size()
+            scaled_map = pygame.transform.scale(
+                self.map_image_zoom, (screen_w, screen_h)
+            )
+            screen.blit(scaled_map, (0, 0))
+            # 縮小率を計算
+            scale_x = screen_w / (self.map_pixel_w * ZOOM)
+            scale_y = screen_h / (self.map_pixel_h * ZOOM)
+            # 全体マップでのプレイヤーの位置を計算
+            player_x = self.app.x * TILE * ZOOM * scale_x
+            player_y = self.app.y * TILE * ZOOM * scale_y
+            # プレイヤー位置に赤い円を描画
+            pygame.draw.circle(screen, (255, 0, 0), (int(player_x), int(player_y)), 5)
             return
 
         # 移動中の滑らかな表示オフセット計算
