@@ -188,14 +188,6 @@ class Talk:
         self.quiz_result_mode = False
         self.wait_frames = 20
 
-    def _finalize_conversation(self, npc_data):
-        # ... (app.pyに準拠した遷移処理。変更なし)
-        novel_trigger = npc_data.get("novel_trigger")
-        if novel_trigger:
-            self.app.scene_state = 2  # SCENE_VN
-            self.app.vn.start(novel_trigger)
-        self._close_dialog()
-
     def draw(self, screen, font):
         """会話またはクイズウィンドウの描画"""
         if not self.is_active():
