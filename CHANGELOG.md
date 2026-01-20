@@ -1,10 +1,11 @@
 # CHANGELOG of PBL-Game
+
 ## v0.37.0 (2026-01-20)
 - マップ名表示
- - 全体マップを開いた際に、マップ名が右上部に表示されるように
- - `map.json`にマップごとの"name"（マップ名：福岡県など）を追加
- - `field.py`の`load_map`に`self.current_map_name`を追加し、所在マップ名を取得
- - `field.py`の`draw`で都道府県名を右上部に白文字で表示する
+  - 全体マップを開いた際に、マップ名が右上部に表示されるように
+  - `map.json`にマップごとの"name"（マップ名：福岡県など）を追加
+  - `field.py`の`load_map`に`self.current_map_name`を追加し、所在マップ名を取得
+  - `field.py`の`draw`で都道府県名を右上部に白文字で表示する
 
 ## v0.36.1 (2026-01-20-issa)
 - feat(system): 目標テキスト（Objective）に具体的な座標情報を追加
