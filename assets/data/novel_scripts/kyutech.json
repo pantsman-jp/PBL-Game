@@ -1,0 +1,81 @@
+{
+  "entering_kyutech": [
+    {
+      "speaker": "ナレーション",
+      "text": "九州工業大学 戸畑キャンパスに到着した。",
+      "bg": "story/concreteroom.jpg",
+      "char": "none"
+    },
+    {
+      "speaker": "先生",
+      "text": "やあ。君が噂のロケット開発者だね。",
+      "bg": "story/concreteroom.jpg",
+      "char": "character/npc1.png"
+    },
+    {
+      "speaker": "先生",
+      "text": "ここではモデルロケットの開発支援を行っているんだ。",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "speaker": "先生",
+      "text": "エンジン『C6-0』を探しているのか？",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "speaker": "先生",
+      "text": "それなら、この簡単なクイズに答えられたら譲ってあげよう。",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "label": "quiz_start",
+      "speaker": "先生",
+      "text": "Q. 固体燃料ロケットの特徴として正しいものは？",
+      "bg": "story/concreteroom.jpg",
+      "choices": [
+        {
+          "text": "液体酸素を使い、推力調整が容易"
+        },
+        {
+          "text": "構造が単純で、大きな推力を出せる"
+        },
+        {
+          "text": "一度点火すると再着火が容易"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "correct",
+      "jump_wrong": "wrong"
+    },
+    {
+      "label": "wrong",
+      "speaker": "先生",
+      "text": "おや、間違っているね。もう一度よく考えてみるんだ。",
+      "bg": "story/concreteroom.jpg",
+      "jump_to": "quiz_start"
+    },
+    {
+      "label": "correct",
+      "speaker": "先生",
+      "text": "正解だ！ 単純な構造で大きな力を出せるのが固体燃料の強みだよ。",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "speaker": "先生",
+      "text": "約束通り、このエンジンをあげよう。",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "speaker": "システム",
+      "text": "モデルロケットエンジン『C6-0』を手に入れた！",
+      "bg": "story/concreteroom.jpg",
+      "char": "none",
+      "reward": "model_rocket_engine_c6_0",
+      "next_map": {
+        "map_id": "world",
+        "x": 214,
+        "y": 105
+      }
+    }
+  ]
+}
