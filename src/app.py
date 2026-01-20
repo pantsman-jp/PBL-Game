@@ -245,7 +245,12 @@ class App:
         self.screen.blit(self.font.render(i_text, True, (255, 255, 255)), (8, 40))
 
         # UI: 操作ガイド
-        h_lines = ["Z : 話しかける / 決定", "Q : 会話を終了", "I : インベントリ"]
+        h_lines = [
+            "Z : 話しかける / 決定",
+            "Q : 会話を終了",
+            "I : インベントリ",
+            "M : マップを開く",
+        ]
         for i, text in enumerate(h_lines):
             self.screen.blit(
                 self.font.render(text, True, (220, 220, 220)), (8, 64 + i * 18)
