@@ -25,8 +25,13 @@ SCENE_VN = 2
 
 class App:
     def __init__(self):
+        # pre_init は pygame.init() より前に呼ぶ
+        pygame.mixer.pre_init(44100, -16, 2, 512)
         pygame.init()
-        print("Mixer init:", pygame.mixer.get_init())
+        # 既に pygame.init() で mixer が初期化されている場合があるため確認
+        if not pygame.mixer.get_init():
+            pygame.mixer.init()
+        print("Mixer init status:", pygame.mixer.get_init())
         # 0. 基礎変数を「最初」に定義する（AttributeError防止）
         self.running = True
         self.scene_state = SCENE_TITLE
