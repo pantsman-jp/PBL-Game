@@ -1,10 +1,11 @@
 # CHANGELOG of PBL-Game
+
 ## v0.35.0
 - `dialogues.json`において各都道府県NPCのひな形を作成
 
 ## v0.34.2 (2026-01-20)
 - マップ遷移できないバグを修正
- - v0.33.0の機能追加で`talk.py`の`_finalize_conversation`が二度定義されていたため、修正
+  - v0.33.0の機能追加で`talk.py`の`_finalize_conversation`が二度定義されていたため、修正
 
 ## v0.34.1 (2026-01-20)
 - `src/app.py` におけるミキサー初期化順序の変更
