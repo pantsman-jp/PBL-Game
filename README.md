@@ -15,7 +15,7 @@ git clone https://github.com/pantsman-jp/PBL-Game
 ### 使い方
 以下の環境が必要です。
 
-- `Python 3.13`
+- `Python 3.13.9-`
 - `Pygame 2.6.1`
 
 `Pygame` は次のコマンドでインストールします。
