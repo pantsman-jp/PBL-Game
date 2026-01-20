@@ -57,6 +57,30 @@
       "char": "none"
     }
   ],
+  "aichi_trip": [
+    {
+      "speaker": "ナレーション",
+      "text": "君は飛行機に乗り込み、愛知県へ向かった。",
+      "bg": "story/airplane.jpg",
+      "char": "none"
+    }
+  ],
+  "kanagawa_trip": [
+    {
+      "speaker": "ナレーション",
+      "text": "君は飛行機に乗り込み、神奈川県へ向かった。",
+      "bg": "story/airplane.jpg",
+      "char": "none"
+    }
+  ],
+  "ibaraki_trip": [
+    {
+      "speaker": "ナレーション",
+      "text": "君は電車を乗り継ぎ、茨城県へ向かった。",
+      "bg": "story/train.png",
+      "char": "none"
+    }
+  ],
   "cfrp_quiz": [
     {
       "speaker": "ナレーション",

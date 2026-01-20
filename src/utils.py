@@ -29,6 +29,7 @@ class KeyTracker:
         "q": pygame.K_q,
         "s": pygame.K_s,
         "i": pygame.K_i,
+        "m": pygame.K_m,
     }
 
     def __init__(self):

@@ -25,8 +25,13 @@ SCENE_VN = 2
 
 class App:
     def __init__(self):
+        # pre_init は pygame.init() より前に呼ぶ
+        pygame.mixer.pre_init(44100, -16, 2, 512)
         pygame.init()
-        print("Mixer init:", pygame.mixer.get_init())
+        # 既に pygame.init() で mixer が初期化されている場合があるため確認
+        if not pygame.mixer.get_init():
+            pygame.mixer.init()
+        print("Mixer init status:", pygame.mixer.get_init())
         # 0. 基礎変数を「最初」に定義する（AttributeError防止）
         self.running = True
         self.scene_state = SCENE_TITLE
@@ -186,10 +191,10 @@ class App:
         if self.scene_state == SCENE_GAME:
             self.talk.update(keys)
 
-        # アイテム獲得時に会話を安全に終了させる
+        # アイテム獲得時に会話を安全に終了させる処理
         if len(self.items) > self._prev_item_count:
-            if self.talk.is_active():
-                self.talk.request_close()
+            # self.talk.request_close()  # ← このメソッドは無いので消してOKです
+            pass
 
         # 会話中はプレイヤー更新を止める
         if not self.talk.is_active():
@@ -245,7 +250,12 @@ class App:
         self.screen.blit(self.font.render(i_text, True, (255, 255, 255)), (8, 40))
 
         # UI: 操作ガイド
-        h_lines = ["Z : 話しかける / 決定", "Q : 会話を終了", "I : インベントリ"]
+        h_lines = [
+            "Z : 話しかける / 決定",
+            "Q : 会話を終了",
+            "I : インベントリ",
+            "M : マップを開く",
+        ]
         for i, text in enumerate(h_lines):
             self.screen.blit(
                 self.font.render(text, True, (220, 220, 220)), (8, 64 + i * 18)
