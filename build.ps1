@@ -1,5 +1,3 @@
-# PBL-Game/build-win.ps1
-
 # git 操作
 git checkout main
 git pull
