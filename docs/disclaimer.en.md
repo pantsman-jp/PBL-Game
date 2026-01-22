@@ -16,5 +16,5 @@ direct, indirect, special, incidental, or consequential; loss of data; or busine
 It is important to note that users of this software do so at their own risk.
 The author is not responsible for any outcomes resulting from the use of the software.
 
-The Japanese version of this disclaimer is considered the authoritative text.  
+[The Japanese version of this disclaimer](disclaimer.ja.md) is considered the authoritative text.  
 The English version is provided for reference purposes only.
