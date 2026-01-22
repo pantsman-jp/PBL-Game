@@ -1,29 +1,30 @@
-# git 操作
-git checkout main
-git pull
-
-# pyinstaller 実行
-pyinstaller --onefile --windowed --add-data "assets;assets" src\main.py
-
-# 出力先フォルダ作成
-$dest = "..\for-win"
-if (-Not (Test-Path $dest)) {
-    New-Item -ItemType Directory -Path $dest
+function build {
+    git checkout main
+    git pull
+    pyinstaller --onefile --windowed --add-data "assets;assets" src\main.py
+    $dest = "..\for-win"
+    if (-Not (Test-Path $dest)) {
+        New-Item -ItemType Directory -Path $dest | Out-Null
+    }
+    Remove-Item "$dest\main.exe" -Force -ErrorAction SilentlyContinue
+    Remove-Item "$dest\LICENSE.txt" -Force -ErrorAction SilentlyContinue
+    Copy-Item ".\dist\main.exe" -Destination $dest
+    Copy-Item ".\LICENSE" -Destination "$dest\LICENSE.txt"
+    $zipPath = "..\for-win.zip"
+    if (Test-Path $zipPath) {
+        Remove-Item $zipPath -Force
+    }
+    Compress-Archive -Path $dest -DestinationPath $zipPath
 }
 
-# 既存ファイル削除（上書き対応）
-Remove-Item -Path "$dest\main.exe" -Force -ErrorAction SilentlyContinue
-Remove-Item -Path "$dest\LICENSE.txt" -Force -ErrorAction SilentlyContinue
-
-# main.exe コピー
-Copy-Item -Path ".\dist\main.exe" -Destination $dest
-
-# LICENSE コピー（名前を LICENSE.txt に変更）
-Copy-Item -Path ".\LICENSE" -Destination "$dest\LICENSE.txt"
-
-# zip 圧縮
-$zipPath = "..\for-win.zip"
-if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
-
-# for-win フォルダ自体を圧縮
-Compress-Archive -Path $dest -DestinationPath $zipPath
+# means "show-count"
+function sc {
+    $url = "https://api.github.com/repos/pantsman-jp/PBL-Game/releases"
+    $releases = Invoke-RestMethod -Uri $url -Method Get
+    $assets = $releases[0].assets
+    $assets |
+        Where-Object { $_.name -eq "for-win.zip" -or $_.name -eq "for-mac.zip" } |
+        ForEach-Object {
+            "{0}: {1}" -f $_.name, $_.download_count
+        }
+}
