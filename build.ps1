@@ -17,7 +17,7 @@ function build {
     Compress-Archive -Path $dest -DestinationPath $zipPath
 }
 
-# means "show-count"
+# "sc" means "show-count"
 function sc {
     $url = "https://api.github.com/repos/pantsman-jp/PBL-Game/releases"
     $releases = Invoke-RestMethod -Uri $url -Method Get
