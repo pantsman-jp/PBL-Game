@@ -11,7 +11,7 @@ build:
 	rm -f ../for-mac.zip
 	cd .. && zip -r for-mac.zip for-mac
 
-# means "show-count"
+# "sc" means "show-count"
 sc:
 	@curl -s https://api.github.com/repos/pantsman-jp/PBL-Game/releases \
 	| tr ',' '\n' \
