@@ -17,12 +17,14 @@ git clone https://github.com/pantsman-jp/PBL-Game
 以下の環境が必要です。
 
 - `Python 3.13.9-`
-- `Pygame 2.6.1`
+- `numpy 2.4.1`
+- `pygame 2.6.1`
+- `pyinstaller 6.18.0`
 
-`Pygame` は次のコマンドでインストールします。
+パッケージは次のコマンドでインストールします。
 
 ```
-pip install pygame
+pip install -r requirements.txt
 ```
 
 プロジェクトのルートディレクトリで以下のコマンドを実行してください。
