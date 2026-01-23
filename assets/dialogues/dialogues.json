@@ -7,14 +7,13 @@
         "map_id": "world",
         "image": "character/npc1.png",
         "lines": [
-            "君、ロケットを作りたいのか。",
-            "材料を手に入れたければ、基礎的な問題に答えてもらおう。",
-            "z キーでクイズ開始だ。"
+            "ここは愛知県だ。ロケットの『構造』について詳しいかな？",
+            "合格すれば、必要な材料を分けてあげよう。"
         ],
         "movement_x": {
-            "enabled": true,
-            "speed": 0.5,
-            "max_offset": 16
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
         },
         "quiz": {
             "question": "CFRPがロケット構造材として用いられる主な理由として最も適切なものはどれか。",
@@ -25,239 +24,17 @@
             ],
             "answer": 1,
             "reward": [
-                "cfrp_material"
+                "aichi_cfrp_sheet"
             ]
         }
     },
     "npc_2": {
         "position": [
-            175,
-            110
-        ],
-        "map_id": "world",
-        "image": "character/npc2.png",
-        "lines": [
-            "推進系に興味があるようだな。",
-            "ロケットの基本原理を理解しているか確認しよう。"
-        ],
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.5,
-            "max_offset": 16
-        },
-        "quiz": {
-            "question": "化学ロケットが推力を得る原理として正しいものはどれか。",
-            "choices": [
-                "空気を後方に押し出すことによる反力",
-                "質量を高速で噴射することによる運動量保存",
-                "重力を打ち消すことによる浮力"
-            ],
-            "answer": 1,
-            "reward": [
-                "engine_unit"
-            ]
-        }
-    },
-    "npc_3": {
-        "position": [
-            203,
-            93
-        ],
-        "map_id": "world",
-        "image": "character/npc3.png",
-        "lines": [
-            "いよいよ軌道の話だ。",
-            "ここを理解していないと、ロケットは帰ってくる。"
-        ],
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.3,
-            "max_offset": 10
-        },
-        "quiz": {
-            "question": "地球低軌道（LEO）を周回する人工衛星の公転速度として最も近いものはどれか。",
-            "choices": [
-                "約1 km/s",
-                "約3 km/s",
-                "約8 km/s"
-            ],
-            "answer": 2,
-            "reward": [
-                "guidance_computer"
-            ]
-        }
-    },
-    "npc_4": {
-        "position": [
-            210,
-            95
-        ],
-        "map_id": "world",
-        "image": "character/npc4.png",
-        "lines": [
-            "必要な部品はすべて揃ったようだな。",
-            "ここから先は、完成したロケットのみが進める。"
-        ],
-        "novel_trigger": "ending",
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        }
-    },
-    "npc_5": {
-        "position": [
-            200,
-            95
-        ],
-        "map_id": "world",
-        "image": "character/npc5.png",
-        "lines": [
-            "愛知県へ飛びます！"
-        ],
-        "novel_trigger": "aichi_trip",
-        "map_trigger": "aichi",
-        "map_dest_x": 69,
-        "map_dest_y": 80,
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        }
-    },
-    "npc_6": {
-        "position": [
-            69,
-            78
-        ],
-        "map_id": "aichi",
-        "image": "character/npc6.png",
-        "lines": [
-            "福岡県へ戻ります！"
-        ],
-        "map_trigger": "world",
-        "map_dest_x": 200,
-        "map_dest_y": 96,
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        }
-    },
-    "npc7": {
-        "position": [
-            74,
-            78
-        ],
-        "map_id": "aichi",
-        "image": "character/npc7.png",
-        "lines": [
-            "神奈川県へ飛びます！"
-        ],
-        "novel_trigger": "kanagawa_trip",
-        "map_trigger": "kanagawa",
-        "map_dest_x": 130,
-        "map_dest_y": 130,
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        }
-    },
-    "npc8": {
-        "position": [
-            130,
-            128
-        ],
-        "map_id": "kanagawa",
-        "image": "character/npc8.png",
-        "lines": [
-            "愛知県へ戻ります！"
-        ],
-        "map_trigger": "aichi",
-        "map_dest_x": 74,
-        "map_dest_y": 80,
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        }
-    },
-    "npc9": {
-        "position": [
-            134,
-            128
-        ],
-        "map_id": "kanagawa",
-        "image": "character/npc9.png",
-        "lines": [
-            "茨城県へ向かいます！"
-        ],
-        "novel_trigger": "ibaraki_trip",
-        "map_trigger": "ibaraki",
-        "map_dest_x": 220,
-        "map_dest_y": 220,
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        }
-    },
-    "npc10": {
-        "position": [
-            220,
-            218
-        ],
-        "map_id": "ibaraki",
-        "image": "character/npc10.png",
-        "lines": [
-            "神奈川県へ戻ります！"
-        ],
-        "map_trigger": "kanagawa",
-        "map_dest_x": 134,
-        "map_dest_y": 130,
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        }
-    },
-    "npc_aichi": {
-        "position": [
-            191,
-            108
-        ],
-        "map_id": "world",
-        "image": "character/npc1.png",
-        "lines": [
-            "ここは愛知県だ。ロケットの『構造』について詳しいかな？",
-            "合格すれば、必要な材料を分けてあげよう。"
-        ],
-        "movement_x": {
-            "enabled": false,
-            "speed": 0.0,
-            "max_offset": 0
-        },
-        "quiz": {
-            "question": "【構造系クイズ：ここにクイズ内容を書いてください】",
-            "choices": [
-                "選択肢1",
-                "選択肢2",
-                "選択肢3"
-            ],
-            "answer": 0,
-            "reward": [
-                "aichi_structure_part"
-            ]
-        }
-    },
-    "npc_kanagawa": {
-        "position": [
             192,
             108
         ],
         "map_id": "world",
-        "image": "character/npc1.png",
+        "image": "character/npc2.png",
         "lines": [
             "神奈川県へようこそ。ロケットの『制御』は非常に緻密な世界だ。",
             "君にその知識があるか試させてもらうよ。"
@@ -280,16 +57,16 @@
             ]
         }
     },
-    "npc_ibaraki": {
+    "npc_3": {
         "position": [
-            189,
-            108
+            203,
+            93
         ],
         "map_id": "world",
-        "image": "character/npc1.png",
+        "image": "character/npc3.png",
         "lines": [
             "茨城県だ。宇宙との『通信』が途絶えれば、ミッションは失敗する。",
-            "通信技術についての問題に答えてみてくれ。"
+            "通信についての問題に答えてみてくれ。"
         ],
         "movement_x": {
             "enabled": false,
@@ -297,25 +74,25 @@
             "max_offset": 0
         },
         "quiz": {
-            "question": "【通信系クイズ：ここにクイズ内容を書いてください】",
+            "question": "地球低軌道（LEO）を周回する人工衛星の公転速度として最も近いものはどれか。",
             "choices": [
-                "選択肢1",
-                "選択肢2",
-                "選択肢3"
+                "約1 km/s",
+                "約3 km/s",
+                "約8 km/s"
             ],
-            "answer": 0,
+            "answer": 1,
             "reward": [
                 "ibaraki_antenna_module"
             ]
         }
     },
-    "npc_kagoshima": {
+    "npc_4": {
         "position": [
-            190,
-            107
+            175,
+            110
         ],
         "map_id": "world",
-        "image": "character/npc1.png",
+        "image": "character/npc4.png",
         "lines": [
             "鹿児島県、種子島。ロケットの心臓、つまり『燃料』の知識は不可欠だ。",
             "準備ができたらクイズに挑戦してくれ。"
@@ -326,16 +103,151 @@
             "max_offset": 0
         },
         "quiz": {
-            "question": "【燃料系クイズ：ここにクイズ内容を書いてください】",
+            "question": "化学ロケットが推力を得る原理として正しいものはどれか。",
             "choices": [
-                "選択肢1",
-                "選択肢2",
-                "選択肢3"
+                "空気を後方に押し出すことによる反力",
+                "質量を高速で噴射することによる運動量保存",
+                "重力を打ち消すことによる浮力"
             ],
-            "answer": 0,
+            "answer": 1,
             "reward": [
-                "kagoshima_fuel_tank"
+                "kagoshima_engine_unit"
             ]
+        }
+    },
+    "npc_5": {
+        "position": [
+            210,
+            95
+        ],
+        "map_id": "world",
+        "image": "character/npc5.png",
+        "lines": [
+            "必要な部品はすべて揃ったようだな。",
+            "ここから先は、完成したロケットのみが進める。"
+        ],
+        "novel_trigger": "ending",
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc_6": {
+        "position": [
+            200,
+            95
+        ],
+        "map_id": "world",
+        "image": "character/npc6.png",
+        "lines": [
+            "愛知県へ飛びます！"
+        ],
+        "novel_trigger": "aichi_trip",
+        "map_trigger": "aichi",
+        "map_dest_x": 69,
+        "map_dest_y": 80,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc_7": {
+        "position": [
+            69,
+            78
+        ],
+        "map_id": "aichi",
+        "image": "character/npc7.png",
+        "lines": [
+            "福岡県へ戻ります！"
+        ],
+        "map_trigger": "world",
+        "map_dest_x": 200,
+        "map_dest_y": 96,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc8": {
+        "position": [
+            74,
+            78
+        ],
+        "map_id": "aichi",
+        "image": "character/npc8.png",
+        "lines": [
+            "神奈川県へ飛びます！"
+        ],
+        "novel_trigger": "kanagawa_trip",
+        "map_trigger": "kanagawa",
+        "map_dest_x": 130,
+        "map_dest_y": 130,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc9": {
+        "position": [
+            130,
+            128
+        ],
+        "map_id": "kanagawa",
+        "image": "character/npc9.png",
+        "lines": [
+            "愛知県へ戻ります！"
+        ],
+        "map_trigger": "aichi",
+        "map_dest_x": 74,
+        "map_dest_y": 80,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc10": {
+        "position": [
+            134,
+            128
+        ],
+        "map_id": "kanagawa",
+        "image": "character/npc10.png",
+        "lines": [
+            "茨城県へ向かいます！"
+        ],
+        "novel_trigger": "ibaraki_trip",
+        "map_trigger": "ibaraki",
+        "map_dest_x": 220,
+        "map_dest_y": 220,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc11": {
+        "position": [
+            220,
+            218
+        ],
+        "map_id": "ibaraki",
+        "image": "character/npc11.png",
+        "lines": [
+            "神奈川県へ戻ります！"
+        ],
+        "map_trigger": "kanagawa",
+        "map_dest_x": 134,
+        "map_dest_y": 130,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
         }
     }
 }
