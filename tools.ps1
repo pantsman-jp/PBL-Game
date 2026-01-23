@@ -1,7 +1,6 @@
 function build {
     git checkout main
     git pull
-    . .venv\Scripts\activate
     pyinstaller --onefile --windowed --add-data "assets;assets" src\main.py
     $dest = "..\for-win"
     if (-Not (Test-Path $dest)) {
