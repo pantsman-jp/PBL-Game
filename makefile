@@ -1,4 +1,4 @@
-.PHONY: build, sc
+.PHONY: build sc
 
 build:
 	git checkout main
