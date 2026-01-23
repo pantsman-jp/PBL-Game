@@ -14,7 +14,8 @@ git clone https://github.com/pantsman-jp/PBL-Game
 ```
 
 ### 使い方
-以下の環境が必要です。仮想環境の使用をお勧めします。
+以下の環境が必要です。
+`makefile` や `tools.ps1` におけるビルドコマンドは仮想環境（`venv`）の使用を前提としています。
 
 - `Python 3.13.9 - 3.13.11`
 - `numpy 2.4.1`
@@ -30,6 +31,21 @@ pip install -r requirements.txt
 プロジェクトのルートディレクトリで以下のコマンドを実行してください。
 ```
 python -m src.main
+```
+
+### 実行ファイル作成
+コマンドはルート直下で実行します。
+
+#### Windows
+```PowerShell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+. .\tools.ps1
+build
+```
+
+#### macOS
+```
+make build
 ```
 
 ## 免責事項
