@@ -14,9 +14,9 @@ git clone https://github.com/pantsman-jp/PBL-Game
 ```
 
 ### 使い方
-以下の環境が必要です。
+以下の環境が必要です。仮想環境の使用をお勧めします。
 
-- `Python 3.13.9-`
+- `Python 3.13.9 - 3.13.11`
 - `numpy 2.4.1`
 - `pygame 2.6.1`
 - `pyinstaller 6.18.0`
