@@ -42,24 +42,50 @@ class System:
         """
         現在のフラグ状態に基づいて、画面上部に表示する目標テキストを生成する
         """
+        current_map = self.app.field.current_map_id
+
         # 1. エンジン (C6-0) チェック
         if "model_rocket_engine_c6_0" not in self.app.items:
             return "目標：九州工業大学(座標(214,104))に向かい、モデルロケットエンジンを入手せよ"
+        
+        # 九工大マップから出れない人用
+        if current_map == "kyutech_campus":
+            return "目標：出口は(15,16)付近にある。外へ出よう！"
 
         # 2. 部品収集フェーズ
         # CFRP
-        if "cfrp_material" not in self.app.items:
-            return "目標：座標(190,108)にいるNPCに話しかけてCFRPを入手せよ"
+        if "aichi_cfrp_sheet" not in self.app.items:
+            if current_map == "world":
+                return "目標：愛知県へ向かい、構造用CFRPシートを入手せよ"
+            else:
+                return "目標：三菱重工の工場（座標（/./））付近にいるNPCに話しかけてCFRPを入手せよ"
 
-        # CPU (制御基板)
-        if "guidance_computer" not in self.app.items:
-            return "目標：座標(203,93)にいるNPCに話しかけて制御基板を入手せよ"
+        # 制御基板
+        if "kanagawa_control_unit" not in self.app.items:
+            if current_map == "world" or current_map == "aichi":
+                return "目標：神奈川県へ向かい、制御基板を入手せよ"
+            else:
+                return "目標：JAXA相模原キャンパス（座標（/./））付近にいるNPCに話しかけて制御基板を入手せよ"
 
-        # 3. 最終フェーズ
-        if not self.flags["rocket_assembled"]:
-            return "目標：部品は揃った。ロケットを組み立てろ！"
+        # アンテナ
+        if "ibaraki_antenna_module" not in self.app.items:
+            if current_map in ["world", "aichi", "kanagawa"]:
+                return "目標：茨城県へ向かい、アンテナを入手せよ"
+            else:
+                return "目標：筑波宇宙センター（座標（/./））付近にいるNPCに話しかけてアンテナを入手せよ"
 
-        return "目標：種子島へ向かい、ロケットを打ち上げろ！"
+        # エンジンユニット
+        if "kagoshima_engine_unit" not in self.app.items:
+            if current_map in ["world", "aichi", "kanagawa", "ibaraki"]:
+                return "目標：鹿児島県へ向かい、エンジンユニットを入手せよ"
+            else:
+                return "目標：鹿児島県種子島の座標(/,/)のNPCに話しかけてエンジンユニットを入手せよ"
+
+        # 3. 最終フェーズ デモ版では、組み立てる段階を作れなさそうので直接打ち上げへ
+        # if not self.flags["rocket_assembled"]:
+        #    return "目標：部品は揃った。ロケットを組み立てろ！"
+
+        return "目標：種子島のどこかにいるNPCを探し、ロケットを打ち上げろ！"
 
     # --- データ永続化（セーブ・ロード） ---
 

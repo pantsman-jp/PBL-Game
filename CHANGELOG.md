@@ -1,5 +1,7 @@
 # CHANGELOG of PBL-Game
 
+## V0.41.0 (2026-01-25)
+
 ## v0.40.0 (2026-01-25)
 - npcと会話し次のマップへ移動する際に、特定のクイズ報酬アイテムを持っていないとマップ遷移できないように
  - `talk.py`の `_finalize_conversation`に"rquired_items"を追加し、それぞれのNPCに対応した必要アイテムを取得
