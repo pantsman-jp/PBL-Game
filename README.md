@@ -8,19 +8,22 @@
 からデモ版をダウンロードしてください。
 
 ## 開発者向け
+
 ### インストール方法
 ```
 git clone https://github.com/pantsman-jp/PBL-Game
 ```
 
 ### 使い方
-以下の環境が必要です。
-`makefile` や `tools.ps1` におけるビルドコマンドは仮想環境（`venv`）の使用を前提としています。
+以下の環境で動作確認済みです。
 
-- `Python 3.13.9 - 3.13.11`
-- `numpy 2.4.1`
+- `Python 3.13.9 ~ 3.13.11`
+- `numpy 2.4.0 ~ 2.4.1`
 - `pygame 2.6.1`
-- `pyinstaller 6.18.0`
+- `pyinstaller 6.17.0 ~ 6.18.0`
+
+後述する `Makefile` および `tools.ps1` を用いた実行ファイルの作成方法は、
+仮想環境（`venv`）の使用を前提としています。事前に仮想環境を構築してください。
 
 パッケージは次のコマンドでインストールします。
 
@@ -29,6 +32,7 @@ pip install -r requirements.txt
 ```
 
 プロジェクトのルートディレクトリで以下のコマンドを実行してください。
+
 ```
 python -m src.main
 ```
@@ -61,7 +65,7 @@ make build
 
 ### 素材出典
 | 使用箇所 | 素材元・作者名 | URL |
-| :---: | :---: |:---: |
+| :---: | :---: | :---: |
 | プレイヤー、NPC | ぴぽや倉庫 | <https://pipoya.net/sozai/> |
 | タイトル・エンディング画面 <br> ノベルパート| AIPICT | <https://aipict.com/> |
 | エンディング画面 <br> ノベルパート| photoAC | <https://www.photo-ac.com> |
