@@ -30,6 +30,7 @@ class Talk:
         self.quiz_result_mode = False  # クイズ結果の表示中か
         self.current_quiz = None
         self.quiz_choice = 0
+        self.quiz_index = 0  # 複数クイズのインデックス
         self.wait_frames = 0
 
     def is_active(self):
@@ -77,7 +78,11 @@ class Talk:
         # 未達成のクイズがある場合はクイズモードへ
         if quiz and not npc_data.get("quiz_done"):
             self.quiz_mode = True
-            self.current_quiz = quiz
+            if isinstance(quiz, list):
+                self.quiz_index = 0
+                self.current_quiz = quiz[self.quiz_index]
+            else:
+                self.current_quiz = quiz
             self.quiz_choice = 0
             self.window_lines = []
             self.wait_frames = 15
@@ -136,20 +141,46 @@ class Talk:
         """クイズの正誤判定"""
         q = self.current_quiz
         npc_data = self.dialogues.get(self.active, {})
+        quiz = npc_data.get("quiz")
 
         # 結果メッセージの構築
         result_lines = []
         if self.quiz_choice == q.get("answer", 1):  # jsonは1から始まるため
-            result_lines.append("正解だ！素晴らしい。")
-            reward = q.get("reward")
-            if reward:
-                for item_id in reward:
-                    result_lines.append(f"【{item_id}】を手に入れた。")
-                self.app.items.extend(reward)
-            npc_data["quiz_done"] = True
+            if isinstance(quiz, list):
+                self.quiz_index += 1
+                if self.quiz_index >= len(quiz):
+                    # すべて正解
+                    result_lines.append("全問正解だ！素晴らしい。")
+                    reward = npc_data.get("reward")
+                    if reward:
+                        for item_id in reward:
+                            result_lines.append(f"【{item_id}】を手に入れた。")
+                        self.app.items.extend(reward)
+                    npc_data["quiz_done"] = True
+                else:
+                    # 次のクイズへ
+                    result_lines.append("正解！次の問題だ。")
+                    self.current_quiz = quiz[self.quiz_index]
+                    self.quiz_choice = 0
+                    self.window_lines = []
+                    self.wait_frames = 15
+                    return  # 結果表示せずに次のクイズへ
+            else:
+                result_lines.append("正解だ！素晴らしい。")
+                reward = q.get("reward")
+                if reward:
+                    for item_id in reward:
+                        result_lines.append(f"【{item_id}】を手に入れた。")
+                    self.app.items.extend(reward)
+                npc_data["quiz_done"] = True
         else:
             result_lines.append("残念、不正解だ。")
-            result_lines.append("もう一度挑戦してくれたまえ。")
+            if isinstance(quiz, list):
+                result_lines.append("最初の問題からやり直しだ。")
+                self.quiz_index = 0
+                self.current_quiz = quiz[self.quiz_index]
+            else:
+                result_lines.append("もう一度挑戦してくれたまえ。")
 
         self.window_lines = result_lines
         self.line_index = 0
@@ -177,6 +208,7 @@ class Talk:
         self.quiz_mode = False
         self.quiz_result_mode = False
         self.current_quiz = None
+        self.quiz_index = 0
         self.wait_frames = 15
 
     def _close_dialog(self):
@@ -186,6 +218,7 @@ class Talk:
         self.line_index = 0
         self.quiz_mode = False
         self.quiz_result_mode = False
+        self.quiz_index = 0
         self.wait_frames = 20
 
     def draw(self, screen, font):
