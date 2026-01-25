@@ -93,5 +93,12 @@
     "walls": [],
     "exits": [],
     "bgm": "main.mp3"
+  },
+  "kagoshima": {
+    "name": "鹿児島県",
+    "image": "map/world_map_kagoshima.png",
+    "walls": [],
+    "exits": [],
+    "bgm": "main.mp3"
   }
 }

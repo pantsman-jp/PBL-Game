@@ -47,6 +47,14 @@
       "char": "none"
     }
   ],
+  "kagoshima_trip": [
+    {
+      "speaker": "ナレーション",
+      "text": "君は飛行機に乗り込み、鹿児島県種子島宇宙センターへ向かった。",
+      "bg": "story/airplane.jpg",
+      "char": "none"
+    }
+  ],
   "cfrp_quiz": [
     {
       "speaker": "ナレーション",

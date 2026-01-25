@@ -249,5 +249,44 @@
             "speed": 0.0,
             "max_offset": 0
         }
+    },
+    "npc12": {
+        "position": [
+            225,
+            218
+        ],
+        "map_id": "ibaraki",
+        "image": "character/npc12.png",
+        "lines": [
+            "鹿児島県へ飛びます！"
+        ],
+        "novel_trigger": "kagoshima_trip",
+        "map_trigger": "kagoshima",
+        "map_dest_x": 471,
+        "map_dest_y": 595,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
+    },
+    "npc13": {
+        "position": [
+            471,
+            593
+        ],
+        "map_id": "kagoshima",
+        "image": "character/npc13.png",
+        "lines": [
+            "茨城県へ戻ります！"
+        ],
+        "map_trigger": "ibaraki",
+        "map_dest_x": 225,
+        "map_dest_y": 220,
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        }
     }
 }
