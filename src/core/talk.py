@@ -111,6 +111,7 @@ class Talk:
                     "kanagawa": "aichi_cfrp_sheet",
                     "ibaraki": "kanagawa_control_unit",
                     "kagoshima": "ibaraki_antenna_module",
+                    "ending": "kagoshima_engine_unit",
                 }
                 required_item = required_items.get(map_trigger)
                 if required_item:

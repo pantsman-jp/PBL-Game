@@ -208,6 +208,7 @@
             "ここから先は、完成したロケットのみが進める。"
         ],
         "novel_trigger": "ending",
+        "map_trigger": "ending",
         "movement_x": {
             "enabled": false,
             "speed": 0.0,

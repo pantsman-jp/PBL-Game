@@ -7,6 +7,8 @@
  - v0.40.0では、次のマップへ移動するために、次のマップのアイテムが必要という状態になっていたため修正
  - "maptrigger":"aichi"（愛知県へ飛ぶ） の時、 "required_item":"model_rocket_engine_c6_0"（福岡県のアイテム）
   のように"maptrigger"と"required_item"が一つずれるように修正
+- 'dialogue.json`のエンディングNPC5に"map_trigger":"ending"を追加
+- `talk.py`の"required_items"に"ending"を追加し、"kagoshima_engine_unit"をもっていれば、エンディングが流れるように
 - `dialogue.json`の鹿児島県のクイズNPCに会話追加
 
 ## v0.40.0 (2026-01-25)
