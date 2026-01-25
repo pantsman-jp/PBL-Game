@@ -103,11 +103,32 @@ class Talk:
         if map_trigger:
             dest_x = npc_data.get("map_dest_x", 10)
             dest_y = npc_data.get("map_dest_y", 10)
-            if npc_data.get("novel_trigger"):
-                # ノベルがある場合、一時的に遷移をストップする
+            novel_trigger = npc_data.get("novel_trigger")
+            if novel_trigger:
+                # 次の都道府県へ飛ぶ場合、アイテムチェック
+                required_items = {
+                    "aichi": "aichi_cfrp_sheet",
+                    "kanagawa": "kanagawa_control_unit",
+                    "ibaraki": "ibaraki_antenna_module",
+                    "kagoshima": "kagoshima_engine_unit",
+                }
+                required_item = required_items.get(map_trigger)
+                if required_item:
+                    if required_item not in self.app.items:
+                        self.window_lines = [
+                            f"【{required_item}】を持っていないと進めないぞ。"
+                        ]
+                        self.line_index = 0
+                        self.wait_frames = 15
+                        return
+                    else:
+                        self.line_index = 0
+                        self.wait_frames = 15
+                        # 遷移は続行
+                # アイテムがある場合、遷移
                 self.app.stop_map_transition = (map_trigger, dest_x, dest_y)
             else:
-                # ノベルがない場合、即時遷移
+                # 戻る場合、即時遷移
                 self.app.field._start_transition(map_trigger, dest_x, dest_y)
 
         # シナリオ遷移の確認
