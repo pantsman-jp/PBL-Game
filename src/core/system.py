@@ -62,7 +62,7 @@ class System:
 
         # 制御基板
         if "kanagawa_control_unit" not in self.app.items:
-            if current_map == "world" or current_map == "aichi":
+            if current_map in ["world", "aichi"]:
                 return "目標：神奈川県へ向かい、制御基板を入手せよ"
             else:
                 return "目標：JAXA相模原キャンパス（座標（/./））付近にいるNPCに話しかけて制御基板を入手せよ"
