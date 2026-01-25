@@ -47,7 +47,7 @@ class System:
         # 1. エンジン (C6-0) チェック
         if "model_rocket_engine_c6_0" not in self.app.items:
             return "目標：九州工業大学(座標(214,104))に向かい、モデルロケットエンジンを入手せよ"
-        
+
         # 九工大マップから出れない人用
         if current_map == "kyutech_campus":
             return "目標：出口は(15,16)付近にある。外へ出よう！"
@@ -58,7 +58,7 @@ class System:
             if current_map == "world":
                 return "目標：愛知県へ向かい、構造用CFRPシートを入手せよ"
             else:
-                return "目標：三菱重工の工場（座標（/./））付近にいるNPCに話しかけてCFRPを入手せよ"
+                return "目標：名古屋城（座標（/,/））付近にいるNPCに話しかけてCFRPを入手せよ"
 
         # 制御基板
         if "kanagawa_control_unit" not in self.app.items:
