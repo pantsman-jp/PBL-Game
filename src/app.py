@@ -40,7 +40,7 @@ class App:
         self.iris_out = True
         self.iris_callback = None
         self.inventory_open = False
-        self.x, self.y, self.items = 200, 100, []
+        self.x, self.y, self.items = 214, 109, []
         self._prev_item_count = 0
         self.stop_map_transition = None  # ノベル終了後のマップ遷移用
         self.played_events = set()  # 実行済みイベントIDを管理
