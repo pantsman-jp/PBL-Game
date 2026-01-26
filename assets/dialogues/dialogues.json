@@ -1,10 +1,10 @@
 {
     "npc_1": {
         "position": [
-            190,
-            108
+            69,
+            86
         ],
-        "map_id": "world",
+        "map_id": "aichi",
         "image": "character/npc1.png",
         "lines": [
             "ここは愛知県だ。ロケットの『構造』について詳しいかな？",
@@ -50,10 +50,10 @@
     },
     "npc_2": {
         "position": [
-            192,
-            108
+            140,
+            48
         ],
-        "map_id": "world",
+        "map_id": "kanagawa",
         "image": "character/npc2.png",
         "lines": [
             "神奈川県へようこそ。ロケットの『制御』は非常に緻密な世界だ。",
@@ -99,10 +99,10 @@
     },
     "npc_3": {
         "position": [
-            203,
-            93
+            118,
+            323
         ],
-        "map_id": "world",
+        "map_id": "ibaraki",
         "image": "character/npc3.png",
         "lines": [
             "茨城県だ。宇宙との『通信』が途絶えれば、ミッションは失敗する。",
@@ -148,10 +148,10 @@
     },
     "npc_4": {
         "position": [
-            175,
-            110
+            458,
+            595
         ],
-        "map_id": "world",
+        "map_id": "kagoshima",
         "image": "character/npc4.png",
         "lines": [
             "よくここまで来たな。これが最後の問題だ。",
@@ -198,10 +198,10 @@
     },
     "npc_5": {
         "position": [
-            210,
-            95
+            465,
+            676
         ],
-        "map_id": "world",
+        "map_id": "kagoshima",
         "image": "character/npc5.png",
         "lines": [
             "必要な部品はすべて揃ったようだな。",
@@ -217,18 +217,19 @@
     },
     "npc_6": {
         "position": [
-            200,
-            95
+            182,
+            89
         ],
         "map_id": "world",
         "image": "character/npc6.png",
         "lines": [
-            "愛知県へ飛びます！"
+            "モデルロケットエンジンは手に入れたか？",
+            "愛知県へ移動するぞ！"
         ],
         "novel_trigger": "aichi_trip",
         "map_trigger": "aichi",
-        "map_dest_x": 69,
-        "map_dest_y": 80,
+        "map_dest_x": 75,
+        "map_dest_y": 63,
         "movement_x": {
             "enabled": false,
             "speed": 0.0,
@@ -237,17 +238,17 @@
     },
     "npc_7": {
         "position": [
-            69,
-            78
+            75,
+            61
         ],
         "map_id": "aichi",
         "image": "character/npc7.png",
         "lines": [
-            "福岡県へ戻ります！"
+            "福岡県へ戻るぞ！"
         ],
         "map_trigger": "world",
-        "map_dest_x": 200,
-        "map_dest_y": 96,
+        "map_dest_x": 182,
+        "map_dest_y": 91,
         "movement_x": {
             "enabled": false,
             "speed": 0.0,
@@ -256,13 +257,14 @@
     },
     "npc8": {
         "position": [
-            74,
-            78
+            73,
+            104
         ],
         "map_id": "aichi",
         "image": "character/npc8.png",
         "lines": [
-            "神奈川県へ飛びます！"
+            "CFRPは手に入れたか？",
+            "神奈川県へ移動するぞ！"
         ],
         "novel_trigger": "kanagawa_trip",
         "map_trigger": "kanagawa",
@@ -282,11 +284,11 @@
         "map_id": "kanagawa",
         "image": "character/npc9.png",
         "lines": [
-            "愛知県へ戻ります！"
+            "愛知県へ戻るぞ！"
         ],
         "map_trigger": "aichi",
-        "map_dest_x": 74,
-        "map_dest_y": 80,
+        "map_dest_x": 73,
+        "map_dest_y": 107,
         "movement_x": {
             "enabled": false,
             "speed": 0.0,
@@ -295,13 +297,14 @@
     },
     "npc10": {
         "position": [
-            134,
-            128
+            196,
+            135
         ],
         "map_id": "kanagawa",
         "image": "character/npc10.png",
         "lines": [
-            "茨城県へ向かいます！"
+            "制御基板は手に入れたか？",
+            "茨城県へ移動するぞ！"
         ],
         "novel_trigger": "ibaraki_trip",
         "map_trigger": "ibaraki",
@@ -321,11 +324,11 @@
         "map_id": "ibaraki",
         "image": "character/npc11.png",
         "lines": [
-            "神奈川県へ戻ります！"
+            "神奈川県へ戻るぞ！"
         ],
         "map_trigger": "kanagawa",
-        "map_dest_x": 134,
-        "map_dest_y": 130,
+        "map_dest_x": 195,
+        "map_dest_y": 137,
         "movement_x": {
             "enabled": false,
             "speed": 0.0,
@@ -334,13 +337,14 @@
     },
     "npc12": {
         "position": [
-            225,
-            218
+            126,
+            277
         ],
         "map_id": "ibaraki",
         "image": "character/npc12.png",
         "lines": [
-            "鹿児島県へ飛びます！"
+            "アンテナモジュールは手に入れたか？",
+            "鹿児島県へ移動するぞ！"
         ],
         "novel_trigger": "kagoshima_trip",
         "map_trigger": "kagoshima",
@@ -360,11 +364,11 @@
         "map_id": "kagoshima",
         "image": "character/npc13.png",
         "lines": [
-            "茨城県へ戻ります！"
+            "茨城県へ戻るぞ！"
         ],
         "map_trigger": "ibaraki",
-        "map_dest_x": 225,
-        "map_dest_y": 220,
+        "map_dest_x": 126,
+        "map_dest_y": 279,
         "movement_x": {
             "enabled": false,
             "speed": 0.0,

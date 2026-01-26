@@ -1,5 +1,10 @@
 # CHANGELOG of PBL-Game
 
+## v0.41.1 (2026-01-26)
+- NPCの移動
+ - 
+-プレイヤーのスタート地点を(214,109)に変更
+
 ## V0.41.0 (2026-01-25)
 - `dialogue.json`の鹿児島県のクイズNPCに会話追加
 - `dialogue.json`のエンディングNPC5に"map_trigger":"ending"を追加

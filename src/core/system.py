@@ -56,30 +56,30 @@ class System:
         # CFRP
         if "aichi_cfrp_sheet" not in self.app.items:
             if current_map == "world":
-                return "目標：愛知県へ向かい、構造用CFRPシートを入手せよ"
+                return "目標：若松区付近のNPCに話しかけて愛知県へ向かおう"
             else:
-                return "目標：名古屋城（座標（/,/））付近にいるNPCに話しかけてCFRPを入手せよ"
+                return "目標：名古屋城（座標（69,85））付近にいるNPCに話しかけてCFRPを入手せよ"
 
         # 制御基板
         if "kanagawa_control_unit" not in self.app.items:
             if current_map in ["world", "aichi"]:
-                return "目標：神奈川県へ向かい、制御基板を入手せよ"
+                return "目標：熱田神宮（座標（73,104））付近にいるNPCに話しかけて神奈川県へ向かおう"
             else:
-                return "目標：JAXA相模原キャンパス（座標（/./））付近にいるNPCに話しかけて制御基板を入手せよ"
+                return "目標：JAXA相模原キャンパス（座標（140,47））付近にいるNPCに話しかけて制御基板を入手せよ"
 
         # アンテナ
         if "ibaraki_antenna_module" not in self.app.items:
             if current_map in ["world", "aichi", "kanagawa"]:
-                return "目標：茨城県へ向かい、アンテナを入手せよ"
+                return "目標：鎌倉市（座標（196,135））付近にいるNPCに話しかけて茨城県へ向かおう"
             else:
-                return "目標：筑波宇宙センター（座標（/./））付近にいるNPCに話しかけてアンテナを入手せよ"
+                return "目標：筑波宇宙センター（座標（118,322））付近にいるNPCに話しかけてアンテナを入手せよ"
 
         # エンジンユニット
         if "kagoshima_engine_unit" not in self.app.items:
             if current_map in ["world", "aichi", "kanagawa", "ibaraki"]:
-                return "目標：鹿児島県へ向かい、エンジンユニットを入手せよ"
+                return "目標：筑波山（座標（127,270））付近にいるNPCに話しかけて鹿児島県へ向かおう"
             else:
-                return "目標：鹿児島県種子島の座標(/,/)のNPCに話しかけてエンジンユニットを入手せよ"
+                return "目標：鹿児島県種子島のNPCに話しかけてエンジンユニットを入手せよ"
 
         # 3. 最終フェーズ デモ版では、組み立てる段階を作れなさそうので直接打ち上げへ
         # if not self.flags["rocket_assembled"]:
