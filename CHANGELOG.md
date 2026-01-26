@@ -1,8 +1,10 @@
 # CHANGELOG of PBL-Game
 
 ## v0.42.0
-- タイトル
-- エンディング
+- タイトル画面に「THE JOURNEY TO ROCKET LAUNCH　~YOU CAN (NOT) TRY AGAIN~ Demo ver」を表示
+- エンディング方法の追加
+ - `ending(demo).png`の追加（title.jpgに編集を加えたもの）
+ - デモ版のエンディングでは、ノベルパートの"ending"が流れた後に、マップ遷移して`ending(demo).png`の画像の上をプレイヤーが動き回ってもらう形に
 
 ## v0.41.1 (2026-01-26)
 - NPCの移動
