@@ -1,7 +1,7 @@
 # 概要
 私たちは **宇宙工学PBL** のプロジェクトのひとつとしてゲーム制作を行ないました。
 
-詳しくは [こちら](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/description.md) をご確認ください。
+詳しくは [こちら](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/description.md) をご確認ください。  
 説明スライドは [こちら](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/slide.pdf) 。
 
 > [!WARNING]
@@ -24,9 +24,9 @@ for-mac
 ```
 
 ## 実行できない場合
-セキュリティソフトが本ゲームを悪意のあるファイルと検出する場合があります。
-本ソフトウェアには悪意のあるコードは含まれていません。
-実行できない場合は、以下を参考にして設定や実行許可の付与を行ってください。
+セキュリティソフトが本ゲームを悪意のあるファイルと検出する場合があります。  
+本ソフトウェアには悪意のあるコードは含まれていません。  
+実行できない場合は、以下を参考にして設定や実行許可の付与を行ってください。  
 
 - [Windows 11で.exeファイルが実行できないときの解決法](https://m32006400n.xsrv.jp/infrastructure/windows-3507/)
 - [Macのアプリケーションを開けません？その原因と対策を解説](https://www.drbuho.com/jp/how-to/cant-open-app-on-mac)
