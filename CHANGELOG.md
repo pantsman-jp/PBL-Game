@@ -1,5 +1,16 @@
 # CHANGELOG of PBL-Game
 
+## V0.41.0 (2026-01-25)
+- `dialogue.json`の鹿児島県のクイズNPCに会話追加
+- `dialogue.json`のエンディングNPC5に"map_trigger":"ending"を追加
+- 目標UIの改良
+　- 画面左上部に表示する目標UIを所在マップに応じて、変化するように改良
+- `talk.py`のrequired_itemsの修正
+ - v0.40.0では、次のマップへ移動するために、次のマップのアイテムが必要という状態になっていたため修正
+ - "maptrigger":"aichi"（愛知県へ飛ぶ） の時、 "required_item":"model_rocket_engine_c6_0"（福岡県のアイテム）
+  のように"maptrigger"と"required_item"が一つずれるように修正
+ - `talk.py`の"required_items"に"ending"を追加し、"kagoshima_engine_unit"をもっていれば、エンディングが流れるように
+
 ## v0.40.0 (2026-01-25)
 - npcと会話し次のマップへ移動する際に、特定のクイズ報酬アイテムを持っていないとマップ遷移できないように
   - `talk.py`の `_finalize_conversation`に"rquired_items"を追加し、それぞれのNPCに対応した必要アイテムを取得

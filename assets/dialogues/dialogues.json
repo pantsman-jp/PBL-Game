@@ -154,6 +154,7 @@
         "map_id": "world",
         "image": "character/npc4.png",
         "lines": [
+            "よくここまで来たな。これが最後の問題だ。",
             "鹿児島県、種子島。ロケットの心臓、つまり『燃料』の知識は不可欠だ。",
             "準備ができたらクイズに挑戦してくれ。"
         ],
@@ -207,6 +208,7 @@
             "ここから先は、完成したロケットのみが進める。"
         ],
         "novel_trigger": "ending",
+        "map_trigger": "ending",
         "movement_x": {
             "enabled": false,
             "speed": 0.0,

@@ -107,10 +107,11 @@ class Talk:
             if novel_trigger:
                 # 次の都道府県へ飛ぶ場合、アイテムチェック
                 required_items = {
-                    "aichi": "aichi_cfrp_sheet",
-                    "kanagawa": "kanagawa_control_unit",
-                    "ibaraki": "ibaraki_antenna_module",
-                    "kagoshima": "kagoshima_engine_unit",
+                    "aichi": "model_rocket_engine_c6_0",
+                    "kanagawa": "aichi_cfrp_sheet",
+                    "ibaraki": "kanagawa_control_unit",
+                    "kagoshima": "ibaraki_antenna_module",
+                    "ending": "kagoshima_engine_unit",
                 }
                 required_item = required_items.get(map_trigger)
                 if required_item:
