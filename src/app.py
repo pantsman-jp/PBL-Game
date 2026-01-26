@@ -60,7 +60,9 @@ class App:
 
         # 3. 画面初期化
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption("Tiny Quiz Field")
+        pygame.display.set_caption(
+            "THE JOURNEY TO ROCKET LAUNCH ~YOU CAN (NOT) TRY AGAIN~ Demo ver"
+        )
         self.clock = pygame.time.Clock()
 
         # 4. リソースロード
