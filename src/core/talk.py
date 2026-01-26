@@ -101,9 +101,14 @@ class Talk:
         # マップ遷移の確認（ノベル前にセット）
         map_trigger = npc_data.get("map_trigger")
         if map_trigger:
+            novel_trigger = npc_data.get("novel_trigger")
+            if map_trigger == "ending":
+                # エンディング遷移は特別処理
+                self.app.scene_state = 2  # SCENE_VN
+                self.app.vn.start(novel_trigger)
+                self._close_dialog()
             dest_x = npc_data.get("map_dest_x", 10)
             dest_y = npc_data.get("map_dest_y", 10)
-            novel_trigger = npc_data.get("novel_trigger")
             if novel_trigger:
                 # 次の都道府県へ飛ぶ場合、アイテムチェック
                 required_items = {
