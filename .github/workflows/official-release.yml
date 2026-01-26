@@ -1,0 +1,61 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-and-release:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]
+        include:
+          - os: windows-latest
+            artifact: for-win.zip
+          - os: macos-latest
+            artifact: for-mac.zip
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install -r requirements.txt
+
+      - name: Build on Windows
+        if: matrix.os == 'windows-latest'
+        shell: powershell
+        run: |
+          pyinstaller --onefile --windowed --add-data "assets;assets" src\main.py
+          $dest = "..\for-win"
+          if (-Not (Test-Path $dest)) { New-Item -ItemType Directory -Path $dest | Out-Null }
+          Remove-Item "$dest\main.exe" -Force -ErrorAction SilentlyContinue
+          Remove-Item "$dest\LICENSE.txt" -Force -ErrorAction SilentlyContinue
+          Copy-Item ".\dist\main.exe" -Destination $dest
+          Copy-Item ".\LICENSE" -Destination "$dest\LICENSE.txt"
+          if (Test-Path "..\for-win.zip") { Remove-Item "..\for-win.zip" -Force }
+          Compress-Archive -Path $dest -DestinationPath "..\for-win.zip"
+
+      - name: Build on macOS
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        run: |
+          pyinstaller src/main.py --windowed --onedir --add-data "assets:assets" --noconfirm
+          mkdir -p ../for-mac
+          rm -rf ../for-mac/main.app
+          cp -R dist/main.app ../for-mac/
+          cp LICENSE ../for-mac/LICENSE.txt
+          rm -f ../for-mac.zip
+          cd .. && zip -r for-mac.zip for-mac
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          files: ../${{ matrix.artifact }}
+          body_path: .github/release_template.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
