@@ -4,15 +4,15 @@
 - タイトル画面に「THE JOURNEY TO ROCKET LAUNCH　~YOU CAN (NOT) TRY AGAIN~ Demo ver」を表示
 - "Tiny quiz field"を"THE JOURNEY TO ROCKET LAUNCH"に差し替え
 - エンディング方法の追加
- - `ending(demo).png`の追加（title.jpgに編集を加えたもの）
- - `map.json`に"ending"を追加
- - デモ版のエンディングでは、ノベルパートの"ending"を先に流した後、マップ遷移して`ending(demo).png`の画像の上をプレイヤーが動き回ってもらう形に
- - `common.json`の"ending"に「―――END――― YOU CAN (NOT) TRY AGAIN」を追記 
+  - `ending(demo).png`の追加（title.jpgに編集を加えたもの）
+  - `map.json`に"ending"を追加
+  - デモ版のエンディングでは、ノベルパートの"ending"を先に流した後、マップ遷移して`ending(demo).png`の画像の上をプレイヤーが動き回ってもらう形に
+  - `common.json`の"ending"に「―――END――― YOU CAN (NOT) TRY AGAIN」を追記
 
 ## v0.41.1 (2026-01-26)
 - NPCの移動
- - クイズNPCを各マップに移動
- - マップ遷移NPCを各都道府県の観光名所等の近くに移動
+  - クイズNPCを各マップに移動
+  - マップ遷移NPCを各都道府県の観光名所等の近くに移動
 - NPCの会話セリフをゲーム風に修正
 - NPCの移動に合わせて目標UIも修正（座標、場所名を追加）
 -プレイヤーのスタート地点を(214,109)に変更
@@ -23,10 +23,10 @@
 - 目標UIの改良
 　- 画面左上部に表示する目標UIを所在マップに応じて、変化するように改良
 - `talk.py`のrequired_itemsの修正
- - v0.40.0では、次のマップへ移動するために、次のマップのアイテムが必要という状態になっていたため修正
- - "maptrigger":"aichi"（愛知県へ飛ぶ） の時、 "required_item":"model_rocket_engine_c6_0"（福岡県のアイテム）
+  - v0.40.0では、次のマップへ移動するために、次のマップのアイテムが必要という状態になっていたため修正
+  - "maptrigger":"aichi"（愛知県へ飛ぶ） の時、 "required_item":"model_rocket_engine_c6_0"（福岡県のアイテム）
   のように"maptrigger"と"required_item"が一つずれるように修正
- - `talk.py`の"required_items"に"ending"を追加し、"kagoshima_engine_unit"をもっていれば、エンディングが流れるように
+  - `talk.py`の"required_items"に"ending"を追加し、"kagoshima_engine_unit"をもっていれば、エンディングが流れるように
 
 ## v0.40.0 (2026-01-25)
 - npcと会話し次のマップへ移動する際に、特定のクイズ報酬アイテムを持っていないとマップ遷移できないように
@@ -38,7 +38,7 @@
 - クイズシステムを改良し、複数出題してすべて正解すれば報酬が獲得できるように
   - `dialogue.json`のNPC"quiz"をリスト化（複数問に）
   - `talk.py`のクイズ処理を、クイズが単問の場合、複数問（リスト）になっている場合で条件分岐
- 　 - 複数問の場合、すべて正解したときに報酬をゲット、間違えると最初の問題からになる。
+    - 複数問の場合、すべて正解したときに報酬をゲット、間違えると最初の問題からになる。
 - `dialogue.json`に、npc1,2,3,4が出題する問題を追加し、各分野3問ずつに
 
 ## v0.38.0 (2026-01-25)
