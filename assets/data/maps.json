@@ -100,5 +100,12 @@
     "walls": [],
     "exits": [],
     "bgm": "main.mp3"
+  },
+  "ending": {
+    "name": "エンディング",
+    "image": "story/ending(demo).png",
+    "walls": [],
+    "exits": [],
+    "bgm": "Blue_Danube.mp3"
   }
 }

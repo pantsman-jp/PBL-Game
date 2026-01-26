@@ -60,7 +60,9 @@ class App:
 
         # 3. 画面初期化
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption("Tiny Quiz Field")
+        pygame.display.set_caption(
+            "THE JOURNEY TO ROCKET LAUNCH ~YOU CAN (NOT) TRY AGAIN~ Demo ver"
+        )
         self.clock = pygame.time.Clock()
 
         # 4. リソースロード
@@ -223,11 +225,17 @@ class App:
                 self.title_image,
                 self.title_image.get_rect(center=(WIDTH // 2, HEIGHT // 2)),
             )
-        else:
-            self.screen.fill((20, 20, 40))
-            t_surf = self.title_font.render("Tiny Quiz Field", True, (255, 255, 255))
+            t_surf1 = self.title_font.render(
+                "THE JOURNEY TO ROCKET LAUNCH", True, (255, 255, 150)
+            )
             self.screen.blit(
-                t_surf, t_surf.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 50))
+                t_surf1, t_surf1.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 50))
+            )
+            t_surf2 = self.title_font.render(
+                "~YOU CAN (NOT) TRY AGAIN~ Demo ver", True, (255, 255, 150)
+            )
+            self.screen.blit(
+                t_surf2, t_surf2.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 10))
             )
 
         # 点滅するプロンプト

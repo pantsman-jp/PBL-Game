@@ -13,7 +13,7 @@
     },
     {
       "speaker": "案内人",
-      "text": "ようこそ、Tiny Quiz Fieldへ！",
+      "text": "ようこそ、THE JOURNEY TO ROCKET LAUNCHへ！",
       "bg": "story/title.jpg",
       "char": "character/player_front.png"
     },
@@ -223,6 +223,11 @@
     {
       "speaker": "ナレーション",
       "text": "学生課からの呼び出し通知が、虚しく響き渡った……。",
+      "bg": "story/title.jpg"
+    },
+    {
+      "speaker": "ナレーション",
+      "text": "―――END――― YOU CAN (NOT) TRY AGAIN",
       "bg": "story/title.jpg"
     }
   ]
