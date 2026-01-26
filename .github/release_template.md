@@ -4,8 +4,8 @@
 詳しくは [こちら](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/description.md) をご確認ください。
 説明スライドは [こちら](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/slide.pdf) 。
 
-## 注意
-ダウンロード・利用にあたっては [免責事項](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/disclaimer.ja.md) をご確認ください。
+> [!WARNING]
+> ダウンロード・利用にあたっては [免責事項](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/disclaimer.ja.md) をご確認ください。
 
 # 使い方
 1. お使いの OS に応じた圧縮ファイルをダウンロード
@@ -30,10 +30,6 @@ for-mac
 
 - [Windows 11で.exeファイルが実行できないときの解決法](https://m32006400n.xsrv.jp/infrastructure/windows-3507/)
 - [Macのアプリケーションを開けません？その原因と対策を解説](https://www.drbuho.com/jp/how-to/cant-open-app-on-mac)
-
-# ダウンロード
-### [`Windows版をダウンロード（118 MB）`](https://github.com/pantsman-jp/PBL-Game/releases/download/demo/for-win.zip)
-### [`mac版をダウンロード（246 MB）`](https://github.com/pantsman-jp/PBL-Game/releases/download/demo/for-mac.zip)
 
 ---
 Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA), [@Shiba600](https://github.com/Shiba600)
