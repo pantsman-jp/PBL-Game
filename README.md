@@ -31,14 +31,14 @@ git clone https://github.com/pantsman-jp/PBL-Game
 pip install -r requirements.txt
 ```
 
-プロジェクトのルートディレクトリで以下のコマンドを実行してください。
+ゲームを起動するには、ルート直下で以下のコマンドを実行します。
 
 ```
 python -m src.main
 ```
 
 ### 実行ファイル作成
-コマンドはルート直下で実行します。
+以下のコマンドはルート直下で実行します。
 
 #### Windows
 ```PowerShell
