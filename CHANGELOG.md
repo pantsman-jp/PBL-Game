@@ -1,4 +1,7 @@
 # CHANGELOG of PBL-Game
+##v0.42.1
+- クイズ出題前の会話を追加
+- 若松の座標を追加
 
 ## v0.42.0
 - タイトル画面に「THE JOURNEY TO ROCKET LAUNCH　~YOU CAN (NOT) TRY AGAIN~ Demo ver」を表示
