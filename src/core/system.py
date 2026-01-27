@@ -50,13 +50,13 @@ class System:
 
         # 九工大マップから出れない人用
         if current_map == "kyutech_campus":
-            return "目標：出口は(15,16)付近にある。外へ出よう！"
+            return "目標：出口は(座標(15,16))付近にある。外へ出よう！"
 
         # 2. 部品収集フェーズ
         # CFRP
         if "aichi_cfrp_sheet" not in self.app.items:
             if current_map == "world":
-                return "目標：若松区付近のNPCに話しかけて愛知県へ向かおう"
+                return "目標：若松区(座標(182,90))付近のNPCに話しかけて愛知県へ向かおう"
             else:
                 return "目標：名古屋城（座標（69,85））付近にいるNPCに話しかけてCFRPを入手せよ"
 
