@@ -1,6 +1,6 @@
-<div align="center">
-  <h1>The Journey to Rocket Launch <br> - YOU CAN (NOT) TRY AGAIN -</h1>
-</div>
+<h1 align="center">
+  The Journey to Rocket Launch<br>- YOU CAN (NOT) TRY AGAIN -
+</h1>
 
 ## 概要
 このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されました。
