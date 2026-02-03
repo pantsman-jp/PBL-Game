@@ -1,18 +1,24 @@
 # 概要
-私たちは **宇宙工学PBL** のプロジェクトのひとつとしてゲーム制作を行ないました。
-
-詳しくは [こちら](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/description.md) をご確認ください。  
-説明スライドは [こちら](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/slide.pdf) 。
+本ソフトウェアは、**宇宙工学PBL** におけるプロジェクトの一環として制作したゲームです。
 
 > [!WARNING]
-> ダウンロード・利用にあたっては [免責事項](https://github.com/pantsman-jp/PBL-Game/blob/main/docs/disclaimer.ja.md) をご確認ください。
+> 本ソフトウェアのダウンロードおよび利用にあたっては、**必ず**以下の免責事項をご確認ください。
+> <https://github.com/pantsman-jp/PBL-Game/blob/main/docs/disclaimer.ja.md>
 
-# 使い方
-1. お使いの OS に応じた圧縮ファイルをダウンロード
-2. ダウンロードした圧縮ファイルを解凍
-3. 解凍したフォルダを開き、mac の方は `main.app` を、Windows の方は `main.exe` をダブルクリックしてゲームを起動
+# 動作環境
+- Windows 11
+- macOS Monterey（12）以降
+  - Monterey で動作確認済み
+  - これ以降の全ての macOS での動作を保証するものではありません
 
-フォルダ構成は以下のようになっています。
+# 起動方法
+1. お使いの OS に対応する圧縮ファイルをダウンロードしてください。
+2. ダウンロードした圧縮ファイルを解凍してください。
+3. 解凍後、以下の実行ファイルを起動してください。
+- macOS: `main.app`
+- Windows: `main.exe`
+
+## フォルダ構成
 ```
 for-win
 ├─ main.exe
@@ -23,15 +29,13 @@ for-mac
 └─ LICENSE.txt
 ```
 
-## 実行できない場合
-セキュリティソフトが本ゲームを悪意のあるファイルと検出する場合があります。  
-本ソフトウェアには悪意のあるコードは含まれていません。  
-実行できない場合は、以下を参考にして設定や実行許可の付与を行ってください。  
-
-- [Windows 11で.exeファイルが実行できないときの解決法](https://m32006400n.xsrv.jp/infrastructure/windows-3507/)
-- [Macのアプリケーションを開けません？その原因と対策を解説](https://www.drbuho.com/jp/how-to/cant-open-app-on-mac)
+## 起動できない場合
+OS のセキュリティ機能により初回起動時に実行できない場合があります。
+その場合は、各 OS の案内に従って実行許可を付与してください。
 
 ---
 Copyright © 2025-2026 [@pantsman](https://github.com/pantsman-jp), [@ISSA-Motomu](https://github.com/ISSA-Motomu), [@tanosou](https://github.com/tanosou), [@osato03](https://github.com/osato03), [@nagata](https://github.com/Yusuke-NAGATA), [@Shiba600](https://github.com/Shiba600)
 
-See [LICENSE](https://github.com/pantsman-jp/PBL-Game/blob/main/LICENSE) and [README](https://github.com/pantsman-jp/PBL-Game/blob/main/README.md) for more details.
+ライセンスおよび詳細情報については、以下をご確認ください
+- LICENSE: <https://github.com/pantsman-jp/PBL-Game/blob/main/LICENSE>
+- README: <https://github.com/pantsman-jp/PBL-Game/blob/main/README.md>
