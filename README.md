@@ -50,7 +50,7 @@ python -m src.main
 
 #### Windows
 > [!WARNING]
-> 下記コマンドは PowerShell の実行ポリシーを **プロセス単位で一時的に変更** します。
+> 下記コマンドは PowerShell の実行ポリシーを **一時的に変更** します。  
 > 内容を理解した上で実行してください。
 
 ```PowerShell
