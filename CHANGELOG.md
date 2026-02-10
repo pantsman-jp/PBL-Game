@@ -6,6 +6,7 @@
   - 話すとすべてのアイテムを入手し、鹿児島県のエンディングNPC付近へ遷移し、クリアが可能
   - `dialogue.json` 新規NPC "npc_yamaguchi" を追加
   - NPC画像ファイル `npc_yamaguchi.png` を追加（出典は他のNPCと同様）
+  - `common.json` に "secret_route" を追加
 
 ## v1.1.2 (2026-02-10)
 - 操作方法を十字キーに変更
