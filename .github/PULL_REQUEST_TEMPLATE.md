@@ -12,4 +12,4 @@
 その他、注意事項や共有すべき事項があれば記載。
 -->
 ## 特記事項
-- [v1.X.Y](../CHANGELOG.md)
+- [v1.X.Y](https://github.com/pantsman-jp/PBL-Game/blob/main/CHANGELOG.md)
