@@ -1,17 +1,25 @@
-# The Journey to Rocket Launch _- YOU CAN (NOT) TRY AGAIN -_
+<h1 align="center">
+  The Journey to Rocket Launch<br>- YOU CAN (NOT) TRY AGAIN -
+</h1>
 
 ## 概要
-このゲームは、**宇宙工学・宇宙理学の面白さを高校生に紹介する** というコンセプトで開発されています。
+このゲームは、ロケット開発を題材にした探索・ノベル要素を含む 2D ゲームです。
+**宇宙工学・宇宙理学の面白さを高校生に紹介する** ことを目的として開発されました。
+
+プレイヤーは物語を通して、宇宙開発に関わる概念や考え方に触れていきます。
 
 ## 遊び方
-開発環境を用意せずに遊びたい場合は、[こちら](https://github.com/pantsman-jp/PBL-Game/releases/tag/demo)
-からデモ版をダウンロードしてください。
+開発環境を用意せずに遊びたい場合は、[こちら](https://github.com/pantsman-jp/PBL-Game/releases)
+から最新リリースをダウンロードしてください。
+
+ゲーム開始後、プレイヤーはマップ上を移動し、NPC との会話やイベントを通じて物語を進行させます。
+物語の進行に伴い、ロケット開発に関する要素が段階的に提示されます。
 
 ## 開発者向け
 
 ### インストール方法
 ```
-git clone https://github.com/pantsman-jp/PBL-Game
+git clone git@github.com:pantsman-jp/PBL-Game.git
 ```
 
 ### 使い方
@@ -22,7 +30,7 @@ git clone https://github.com/pantsman-jp/PBL-Game
 - `pygame 2.6.1`
 - `pyinstaller 6.17.0 ~ 6.18.0`
 
-後述する `Makefile` および `tools.ps1` を用いた実行ファイルの作成方法は、
+後述する `makefile` および `tools.ps1` を用いた実行ファイルの作成方法は、
 仮想環境（`venv`）の使用を前提としています。事前に仮想環境を構築してください。
 
 パッケージは次のコマンドでインストールします。
@@ -41,6 +49,10 @@ python -m src.main
 以下のコマンドはルート直下で実行します。
 
 #### Windows
+> [!WARNING]
+> 下記コマンドは PowerShell の実行ポリシーを **一時的に変更** します。  
+> 内容を理解した上で実行してください。
+
 ```PowerShell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 . .\tools.ps1
@@ -58,10 +70,11 @@ make build
 ## ライセンス
 本プロジェクトのソースコードは [MIT License](LICENSE) の下で公開されています。
 
-ただし、ゲーム内で使用している画像、音声等のアセットについては、
-各素材提供元のライセンス条件が優先して適用されます。
+なお、ゲーム内で使用している画像、音声等のアセットについては、
+各素材提供元のライセンス条件が適用されます。
 これらは [MIT License](LICENSE) の適用範囲には含まれません。
-アセットの再配布・改変・商用利用にあたっては、下記の素材出典を参考に必ず各提供元の規約をご確認ください。
+
+アセットの再配布・改変・商用利用にあたっては、**必ず**下記の素材出典から各提供元の規約をご確認ください。
 
 ### 素材出典
 | 使用箇所 | 素材元・作者名 | URL |

@@ -1,54 +1,62 @@
 # CHANGELOG of PBL-Game
 
+## v0.42.2 (2026-01-27)
+- 新規NPC画像の追加
+  - `npc2.png` の画像ファイルを老人（青）から中年男性（青）に差し替え
+  - `npc3.png` を中年男性（緑）に差し替え
+  - `npc4.png` を老人（緑）に差し替え
+  - 出典は以前の npc と同様
+
 ## v0.42.1 (2026-01-27)
 - クイズ出題前の会話を追加
 - 若松の座標を追加
 
 ## v0.42.0 (2026-01-26)
-- タイトル画面に「THE JOURNEY TO ROCKET LAUNCH　~YOU CAN (NOT) TRY AGAIN~ Demo ver」を表示
-- "Tiny quiz field"を"THE JOURNEY TO ROCKET LAUNCH"に差し替え
+- タイトル画面に「THE JOURNEY TO ROCKET LAUNCH　\~YOU CAN (NOT) TRY AGAIN\~ Demo ver」を表示
+- "Tiny quiz field" を "THE JOURNEY TO ROCKET LAUNCH" に差し替え
 - エンディング方法の追加
-  - `ending(demo).png`の追加（title.jpgに編集を加えたもの）
-  - `map.json`に"ending"を追加
-  - デモ版のエンディングでは、ノベルパートの"ending"を先に流した後、マップ遷移して`ending(demo).png`の画像の上をプレイヤーが動き回ってもらう形に
-  - `common.json`の"ending"に「―――END――― YOU CAN (NOT) TRY AGAIN」を追記
+  - `ending(demo).png` の追加（`title.jpg` に編集を加えたもの）
+  - `map.json` に "ending" を追加
+  - デモ版のエンディングでは、ノベルパートの "ending" を先に流した後  
+    マップ遷移して `ending(demo).png` の画像の上をプレイヤーが動き回ってもらう形に
+  - `common.json` の "ending" に「―――END――― YOU CAN (NOT) TRY AGAIN」を追記
 
 ## v0.41.1 (2026-01-26)
-- NPCの移動
-  - クイズNPCを各マップに移動
-  - マップ遷移NPCを各都道府県の観光名所等の近くに移動
-- NPCの会話セリフをゲーム風に修正
-- NPCの移動に合わせて目標UIも修正（座標、場所名を追加）
--プレイヤーのスタート地点を(214,109)に変更
+- NPC の移動
+  - クイズ NP を各マップに移動
+  - マップ遷移 NPC を各都道府県の観光名所等の近くに移動
+- NPC の会話セリフをゲーム風に修正
+- NPC の移動に合わせて目標UIも修正（座標、場所名を追加）
+- プレイヤーのスタート地点を (214,109) に変更
 
-## V0.41.0 (2026-01-25)
-- `dialogue.json`の鹿児島県のクイズNPCに会話追加
-- `dialogue.json`のエンディングNPC5に"map_trigger":"ending"を追加
-- 目標UIの改良
-　- 画面左上部に表示する目標UIを所在マップに応じて、変化するように改良
-- `talk.py`のrequired_itemsの修正
-  - v0.40.0では、次のマップへ移動するために、次のマップのアイテムが必要という状態になっていたため修正
+## v0.41.0 (2026-01-25)
+- `dialogue.json` の鹿児島県のクイズ NPC に会話追加
+- `dialogue.json` のエンディング NPC5 に "map_trigger":"ending" を追加
+- 目標 UI の改良
+  - 画面左上部に表示する目標 UI を所在マップに応じて、変化するように改良
+- `talk.py` の required_items の修正
+  - [v0.40.0](#v0400-2026-01-25) では、次のマップへ移動するために、次のマップのアイテムが必要という状態になっていたため修正
   - "maptrigger":"aichi"（愛知県へ飛ぶ） の時、 "required_item":"model_rocket_engine_c6_0"（福岡県のアイテム）
-  のように"maptrigger"と"required_item"が一つずれるように修正
-  - `talk.py`の"required_items"に"ending"を追加し、"kagoshima_engine_unit"をもっていれば、エンディングが流れるように
+  のように "maptrigger" と "required_item" が一つずれるように修正
+  - `talk.py` の "required_items" に "ending" を追加し、"kagoshima_engine_unit" をもっていれば、エンディングが流れるように
 
 ## v0.40.0 (2026-01-25)
-- npcと会話し次のマップへ移動する際に、特定のクイズ報酬アイテムを持っていないとマップ遷移できないように
-  - `talk.py`の `_finalize_conversation`に"rquired_items"を追加し、それぞれのNPCに対応した必要アイテムを取得
+- npc と会話し次のマップへ移動する際に、特定のクイズ報酬アイテムを持っていないとマップ遷移できないように
+  - `talk.py` の `_finalize_conversation` に "rquired_items" を追加し、それぞれの NPC に対応した必要アイテムを取得
     - 必要アイテムを持っていない場合は、「『必要アイテム名』を持っていないと進めないぞ。」と表示
     - 必要アイテムを持っていれば、そのままマップ遷移するように
 
 ## v0.39.0 (2026-01-25)
 - クイズシステムを改良し、複数出題してすべて正解すれば報酬が獲得できるように
-  - `dialogue.json`のNPC"quiz"をリスト化（複数問に）
-  - `talk.py`のクイズ処理を、クイズが単問の場合、複数問（リスト）になっている場合で条件分岐
+  - `dialogue.json` の NPC "quiz" をリスト化（複数問に）
+  - `talk.py` のクイズ処理を、クイズが単問の場合、複数問（リスト）になっている場合で条件分岐
     - 複数問の場合、すべて正解したときに報酬をゲット、間違えると最初の問題からになる。
-- `dialogue.json`に、npc1,2,3,4が出題する問題を追加し、各分野3問ずつに
+- `dialogue.json` に、npc1,2,3,4 が出題する問題を追加し、各分野3問ずつに
 
 ## v0.38.0 (2026-01-25)
 - 新規マップ（鹿児島県種子島）の追加
   - `world_map_kagoshima.png` を追加（他の都道府県マップと同様の出典）
-  - `maps.json` に"kagoshima"を追加
+  - `maps.json` に "kagoshima" を追加
   - `common.json` に "kagoshima_trip"（茨城県→種子島宇宙センターへ移動するノベルパート）を追加
 - npc12,13の追加
   - npc12を茨城県に配置（話しかけると茨城県→種子島宇宙センターへ）
@@ -56,36 +64,36 @@
   - 画像ファイル `npc12.png`, `npc13.png` は他の NPC と同様
 
 ## v0.37.1 (2026-01-23)
-- NPCの整理
-  - npc1,2,3クイズ内容と、PR#87で追加された、npc_aichi等の会話内容をジャンルごとに整理
-  - `dialogue.json`に記載するNPCの順番を
-    - NPC1~4:クイズを出題するNPC 構造系→制御系→通信系→推進系
-    - NPC5:エンディングを流すNPC
-    - NPC6~11:マップ遷移するNPC　に整理
-- `npc11.png`を追加（他のNPCと同様の画像）
-- npc1の移動を停止
+- NPC の整理
+  - npc1,2,3 クイズ内容と、[PR#87](https://github.com/pantsman-jp/PBL-Game/pull/87) で追加された、npc_aichi 等の会話内容をジャンルごとに整理
+  - `dialogue.json` に記載する NPC の順番を
+    - NPC1~4: クイズを出題する NPC 構造系→制御系→通信系→推進系
+    - NPC5: エンディングを流す NPC
+    - NPC6~11: マップ遷移する NPC　に整理
+- `npc11.png` を追加（他の NPC と同様の画像）
+- npc1 の移動を停止
 
 ## v0.37.0 (2026-01-20)
 - マップ名表示
   - 全体マップを開いた際に、マップ名が右上部に表示されるように
-  - `map.json`にマップごとの"name"（マップ名：福岡県など）を追加
-  - `field.py`の`load_map`に`self.current_map_name`を追加し、所在マップ名を取得
-  - `field.py`の`draw`で都道府県名を右上部に白文字で表示する
+  - `map.json` にマップごとの "name"（マップ名：福岡県など）を追加
+  - `field.py` の `load_map` に `self.current_map_name` を追加し、所在マップ名を取得
+  - `field.py` の `draw` で都道府県名を右上部に白文字で表示する
 
 ## v0.36.1 (2026-01-20-issa)
 - feat(system): 目標テキスト（Objective）に具体的な座標情報を追加
-  - プレイヤーが迷わないよう、次に向かうべき場所やNPCの座標（九工大:214,104、NPC1:190,108等）を明示するように変更
+  - プレイヤーが迷わないよう、次に向かうべき場所やNPCの座標（九工大: 214,104、NPC1: 190,108等）を明示するように変更
   1. 九州工業大学
   2. npc
-  3. npcの順番で現在はストーリー進行
+  3. npc の順番で現在はストーリー進行
 
 ## v0.36.0 (2026-01-20-issa)
-- ノベルパートのGUI化および機能拡張
+- ノベルパートの GUI 化および機能拡張
   - システム面
     - 選択肢をボタン形式のGUIに変更（マウス/キー操作対応、フォーカス表示）
     - マウスホバーによるハイライト機能の実装
     - 背景画像・立ち絵のスケール調整（`char_scale`）および位置調整（`char_offset_y`）機能を実装
-    - シナリオデータの実装構造を変更（古い`novel_scripts.json`を廃止し、ディレクトリ一括読み込みへ）
+    - シナリオデータの実装構造を変更（古い `novel_scripts.json` を廃止し、ディレクトリ一括読み込みへ）
   - シナリオ・アセット
     - 九工大イベント（`kyutech.json`）の実装（先生との会話、クイズ、アイテム入手）
     - イベント用背景画像（`cupping.png`）、先生立ち絵（`Professor2.png`）の追加<br>
@@ -93,11 +101,11 @@
     - アイテム入手演出の強化（`C6-0` 画像を表示）
 
 ## v0.35.0
-- `dialogues.json`において各都道府県NPCのひな形を作成
+- `dialogues.json` において各都道府県NPCのひな形を作成
 
 ## v0.34.2 (2026-01-20)
 - マップ遷移できないバグを修正
-  - v0.33.0の機能追加で`talk.py`の`_finalize_conversation`が二度定義されていたため、修正
+  - v0.33.0の機能追加で `talk.py` の `_finalize_conversation` が二度定義されていたため、修正
 
 ## v0.34.1 (2026-01-20)
 - `src/app.py` におけるミキサー初期化順序の変更
