@@ -167,19 +167,19 @@
     {
       "speaker": "案内人",
       "text": "到着しました。ここが、種子島宇宙センターです。",
-      "bg": "*.png",
+      "bg": "story/tanegashima_center.jpg",
       "char": "none"
     },
     {
       "speaker": "案内人",
       "text": "この先は、完成したロケットだけが入ることを許されます。",
-      "bg": "*.png",
+      "bg": "story/tanegashima_center.jpg",
       "char": "none"
     },
     {
       "speaker": "管制システム",
       "text": "入構前チェックを開始します。",
-      "bg": "*.png",
+      "bg": "story/tanegashima_center.jpg",
       "char": "none"
     },
     {
