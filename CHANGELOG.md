@@ -1,5 +1,9 @@
 # CHANGELOG of PBL-Game
 
+## v1.1.2 (2026-02-10)
+- 操作方法を十字キーに変更
+- 画面左上部のUIに移動の説明を追加
+
 ## v1.1.1 (2026-02-10)
 - 最終エンディング画面の "ending(demo).png" を "ending.png" に差し替え
 - ノベルパート "ending" 用に "tanegashima_center.jpg" を追加 (出典はphoto AC)

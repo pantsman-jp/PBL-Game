@@ -114,13 +114,13 @@ class Field:
 
         # キー入力受付
         pressed = pygame.key.get_pressed()
-        if pressed[pygame.K_w] and not self.map_display:
+        if pressed[pygame.K_UP] and not self.map_display:
             self.start_move(0, -1)
-        elif pressed[pygame.K_s] and not self.map_display:
+        elif pressed[pygame.K_DOWN] and not self.map_display:
             self.start_move(0, 1)
-        elif pressed[pygame.K_a] and not self.map_display:
+        elif pressed[pygame.K_LEFT] and not self.map_display:
             self.start_move(-1, 0)
-        elif pressed[pygame.K_d] and not self.map_display:
+        elif pressed[pygame.K_RIGHT] and not self.map_display:
             self.start_move(1, 0)
         elif keys.get("z") and not self.map_display:
             self.app.talk.try_talk()
