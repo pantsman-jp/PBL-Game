@@ -61,7 +61,7 @@ class App:
         # 3. 画面初期化
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption(
-            "THE JOURNEY TO ROCKET LAUNCH ~YOU CAN (NOT) TRY AGAIN~ Demo ver"
+            "THE JOURNEY TO ROCKET LAUNCH ~YOU CAN (NOT) TRY AGAIN~"
         )
         self.clock = pygame.time.Clock()
 
@@ -232,7 +232,7 @@ class App:
                 t_surf1, t_surf1.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 50))
             )
             t_surf2 = self.title_font.render(
-                "~YOU CAN (NOT) TRY AGAIN~ Demo ver", True, (255, 255, 150)
+                "~YOU CAN (NOT) TRY AGAIN~", True, (255, 255, 150)
             )
             self.screen.blit(
                 t_surf2, t_surf2.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 10))
