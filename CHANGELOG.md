@@ -3,11 +3,11 @@
 ## v0.43.0 (2026-02-10)
 - クイズシステムの追加
   - テキスト入力形式（今回は半角数字のみに限定）のクイズを追加
-  - `talk.py`のクイズ処理を三択問題とテキスト入力形式で分岐するように 
-  - "quiz_type"を"text"（テキスト入力問題）,"choice"（選択問題）で区別
-  - 入力は10文字まで、backspaceで削除、zで決定
-  - `utils.py`に(0,1,2,3,4,5,6,7,8,9,backspace,period)を追加
-  - `dialogue.json`に"npc_text_quiz"（テキスト入力問題確認用のnpc）を追加
+  - `talk.py` のクイズ処理を三択問題とテキスト入力形式で分岐するように
+  - "quiz_type" を "text"（テキスト入力問題）, "choice"（選択問題）で区別
+  - 入力は10文字まで、backspace で削除、z で決定
+  - `utils.py` に (0,1,2,3,4,5,6,7,8,9,backspace,period) を追加
+  - `dialogue.json` に "npc_text_quiz"（テキスト入力問題確認用のnpc）を追加
 
 ## v0.42.3 (2026-02-10)
 - ゲームタイトルから「Demo ver」を消去し、タイトルを修正
