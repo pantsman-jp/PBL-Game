@@ -2,11 +2,11 @@
   The Journey to Rocket Launch<br>- YOU CAN (NOT) TRY AGAIN -
 </h1>
 
-![Release-Build](https://github.com/pantsman-jp/PBL-Game/actions/workflows/official-release.yml/badge.svg)
-![GitHub release](https://img.shields.io/github/v/release/pantsman-jp/PBL-Game)
-![License](https://img.shields.io/github/license/pantsman-jp/PBL-Game)
-![Python](https://img.shields.io/badge/python-3.13%2B-blue)
-![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/pantsman-jp/PBL-Game/latest/total)
+[![Release-Build](https://github.com/pantsman-jp/PBL-Game/actions/workflows/official-release.yml/badge.svg)](https://github.com/pantsman-jp/PBL-Game/releases/latest)
+[![GitHub release](https://img.shields.io/github/v/release/pantsman-jp/PBL-Game)](https://github.com/pantsman-jp/PBL-Game/releases/latest)
+[![License](https://img.shields.io/github/license/pantsman-jp/PBL-Game)](https://github.com/pantsman-jp/PBL-Game/blob/main/LICENSE)
+[![Python](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org)
+[![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/pantsman-jp/PBL-Game/latest/total)](https://github.com/pantsman-jp/PBL-Game/releases/latest)
 
 ## 概要
 このゲームは、ロケット開発を題材にした探索・ノベル要素を含む 2D ゲームです。
