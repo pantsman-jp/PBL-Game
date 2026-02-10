@@ -349,14 +349,14 @@ class Talk:
 
             if quiz_type == "text":
                 # テキスト入力クイズの描画
-                display_lines = [
-                    q.get("question", ""),
-                    f"入力: {self.quiz_text_input}_",
-                ]
+                # 問題文は改行を含められるよう分割して表示
+                q_lines = q.get("question", "").splitlines()
+                display_lines = q_lines + [f"入力: {self.quiz_text_input}_"]
                 draw_window(screen, font, display_lines, rect)
             else:
                 # 3択クイズの描画
-                display_lines = [q.get("question", "")]
+                # 問題文を改行で分割して表示
+                display_lines = q.get("question", "").splitlines()
 
                 # 選択肢の構築
                 for i, choice in enumerate(q.get("choices", [])):
