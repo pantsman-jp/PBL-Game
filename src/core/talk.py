@@ -31,6 +31,7 @@ class Talk:
         self.current_quiz = None
         self.quiz_choice = 0
         self.quiz_index = 0  # 複数クイズのインデックス
+        self.quiz_text_input = ""  # テキスト入力モード時の入力内容
         self.wait_frames = 0
 
     def is_active(self):
@@ -152,6 +153,15 @@ class Talk:
         if not self.current_quiz:
             return
 
+        quiz_type = self.current_quiz.get("type", "choice")
+
+        if quiz_type == "text":
+            self._handle_text_quiz(keys)
+        else:  # デフォルトは choice
+            self._handle_choice_quiz(keys)
+
+    def _handle_choice_quiz(self, keys):
+        """3択問題の処理"""
         choices = self.current_quiz.get("choices", [])
 
         # 選択肢の移動
@@ -163,6 +173,26 @@ class Talk:
         # 決定
         elif keys.get("z"):
             self._evaluate_quiz_answer()
+
+    def _handle_text_quiz(self, keys):
+        """テキスト入力問題の処理"""
+        # 半角数字およびピリオドの入力
+        for ch in "0123456789.":
+            if keys.get(ch):
+                # ピリオドは1つまで
+                if ch == "." and "." in self.quiz_text_input:
+                    continue
+                # 入力文字数は10文字までに制限
+                if len(self.quiz_text_input) < 10:
+                    self.quiz_text_input += ch
+
+        # BackSpaceキーで入力削除
+        if keys.get("backspace"):
+            self.quiz_text_input = self.quiz_text_input[:-1]
+
+        # 決定（Zキー）
+        elif keys.get("z"):
+            self._evaluate_text_quiz_answer()
 
     def _evaluate_quiz_answer(self):
         """クイズの正誤判定"""
@@ -214,6 +244,60 @@ class Talk:
         self.quiz_result_mode = True
         self.wait_frames = 15
 
+    def _evaluate_text_quiz_answer(self):
+        """テキスト入力クイズの正誤判定"""
+        q = self.current_quiz
+        npc_data = self.dialogues.get(self.active, {})
+        quiz = npc_data.get("quiz")
+
+        # ユーザーの入力値と正解を比較
+        user_answer = self.quiz_text_input.strip()
+        correct_answer = str(q.get("answer", ""))
+
+        result_lines = []
+        if user_answer == correct_answer:
+            if isinstance(quiz, list):
+                self.quiz_index += 1
+                if self.quiz_index >= len(quiz):
+                    # すべて正解
+                    result_lines.append("全問正解だ！素晴らしい。")
+                    reward = npc_data.get("reward")
+                    if reward:
+                        for item_id in reward:
+                            result_lines.append(f"【{item_id}】を手に入れた。")
+                        self.app.items.extend(reward)
+                    npc_data["quiz_done"] = True
+                else:
+                    # 次のクイズへ
+                    result_lines.append("正解！次の問題だ。")
+                    self.current_quiz = quiz[self.quiz_index]
+                    self.quiz_text_input = ""
+                    self.window_lines = []
+                    self.wait_frames = 15
+                    return  # 結果表示せずに次のクイズへ
+            else:
+                result_lines.append("正解だ！素晴らしい。")
+                reward = q.get("reward")
+                if reward:
+                    for item_id in reward:
+                        result_lines.append(f"【{item_id}】を手に入れた。")
+                    self.app.items.extend(reward)
+                npc_data["quiz_done"] = True
+        else:
+            result_lines.append("残念、不正解だ。")
+            if isinstance(quiz, list):
+                result_lines.append("最初の問題からやり直しだ。")
+                self.quiz_index = 0
+                self.current_quiz = quiz[self.quiz_index]
+                self.quiz_text_input = ""
+            else:
+                result_lines.append("もう一度挑戦してくれたまえ。")
+
+        self.window_lines = result_lines
+        self.line_index = 0
+        self.quiz_result_mode = True
+        self.wait_frames = 15
+
     def try_talk(self):
         """プレイヤーの周囲にNPCがいるか確認し、会話を開始する"""
         if self.is_active() or self.wait_frames > 0:
@@ -236,6 +320,7 @@ class Talk:
         self.quiz_result_mode = False
         self.current_quiz = None
         self.quiz_index = 0
+        self.quiz_text_input = ""
         self.wait_frames = 15
 
     def _close_dialog(self):
@@ -246,6 +331,7 @@ class Talk:
         self.quiz_mode = False
         self.quiz_result_mode = False
         self.quiz_index = 0
+        self.quiz_text_input = ""
         self.wait_frames = 20
 
     def draw(self, screen, font):
@@ -259,14 +345,25 @@ class Talk:
 
         if self.quiz_mode and not self.quiz_result_mode:
             q = self.current_quiz
-            display_lines = [q.get("question", "")]
+            quiz_type = q.get("type", "choice")
 
-            # 選択肢の構築
-            for i, choice in enumerate(q.get("choices", [])):
-                cursor = ">" if i == self.quiz_choice else " "
-                display_lines.append(f"{cursor} {i + 1}. {choice}")
+            if quiz_type == "text":
+                # テキスト入力クイズの描画
+                display_lines = [
+                    q.get("question", ""),
+                    f"入力: {self.quiz_text_input}_",
+                ]
+                draw_window(screen, font, display_lines, rect)
+            else:
+                # 3択クイズの描画
+                display_lines = [q.get("question", "")]
 
-            draw_window(screen, font, display_lines, rect)
+                # 選択肢の構築
+                for i, choice in enumerate(q.get("choices", [])):
+                    cursor = ">" if i == self.quiz_choice else " "
+                    display_lines.append(f"{cursor} {i + 1}. {choice}")
+
+                draw_window(screen, font, display_lines, rect)
 
         elif self.window_lines:
             # 1行ずつ表示するための修正
