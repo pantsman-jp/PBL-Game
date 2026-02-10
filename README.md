@@ -2,6 +2,12 @@
   The Journey to Rocket Launch<br>- YOU CAN (NOT) TRY AGAIN -
 </h1>
 
+![Release-Build](https://github.com/pantsman-jp/PBL-Game/actions/workflows/official-release.yml/badge.svg)
+![GitHub release](https://img.shields.io/github/v/release/pantsman-jp/PBL-Game)
+![License](https://img.shields.io/github/license/pantsman-jp/PBL-Game)
+![Python](https://img.shields.io/badge/python-3.13%2B-blue)
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/pantsman-jp/PBL-Game/latest/total)
+
 ## 概要
 このゲームは、ロケット開発を題材にした探索・ノベル要素を含む 2D ゲームです。
 **宇宙工学・宇宙理学の面白さを高校生に紹介する** ことを目的として開発されました。
@@ -9,8 +15,8 @@
 プレイヤーは物語を通して、宇宙開発に関わる概念や考え方に触れていきます。
 
 ## 遊び方
-開発環境を用意せずに遊びたい場合は、[こちら](https://github.com/pantsman-jp/PBL-Game/releases)
-から最新リリースをダウンロードしてください。
+開発環境を用意せずに遊びたい場合は、[こちら](https://github.com/pantsman-jp/PBL-Game/releases/latest)
+から最新バージョンをダウンロードしてください。
 
 ゲーム開始後、プレイヤーはマップ上を移動し、NPC との会話やイベントを通じて物語を進行させます。
 物語の進行に伴い、ロケット開発に関する要素が段階的に提示されます。

@@ -416,5 +416,58 @@
             "speed": 0.0,
             "max_offset": 0
         }
+<<<<<<< HEAD
+=======
+    },
+    "npc_text_quiz": {
+        "position": [
+            220,
+            105
+        ],
+        "map_id": "world",
+        "image": "character/npc1.png",
+        "lines": [
+            "テキスト入力問題のテストだ。",
+            "簡単な計算問題を出すぞ。"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        },
+        "quiz": [
+            {
+                "type": "text",
+                "question": "1+1.1は？半角数字で入力してね。zキーで決定だ。",
+                "answer": "2.1"
+            },
+            {
+                "type": "text",
+                "question": "3×5は？半角数字で入力してね。zキーで決定だ。",
+                "answer": "15"
+            }
+        ],
+        "reward": [
+            "test_item"
+        ]
+    },
+        "door1": {
+        "position": [
+            214,
+            103
+        ],
+        "map_id": "world",
+        "image": "map/bluedoor.png"
+
+    },
+       "door2": {
+        "position": [
+            15,
+            17
+        ],
+        "map_id": "kyutech_campus",
+        "image": "map/door.png"
+
+>>>>>>> 892cc7ba9b1af60ef7b6aca32ecbff40b823d34b
     }
 }
