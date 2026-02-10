@@ -376,5 +376,37 @@
             "speed": 0.0,
             "max_offset": 0
         }
+    },
+    "npc_text_quiz": {
+        "position": [
+            220,
+            105
+        ],
+        "map_id": "world",
+        "image": "character/npc1.png",
+        "lines": [
+            "テキスト入力問題のテストだ。",
+            "簡単な計算問題を出すぞ。"
+        ],
+        "movement_x": {
+            "enabled": false,
+            "speed": 0.0,
+            "max_offset": 0
+        },
+        "quiz": [
+            {
+                "type": "text",
+                "question": "1+1は？半角数字で入力してね。zキーで決定だ。",
+                "answer": "2"
+            },
+            {
+                "type": "text",
+                "question": "3×5は？半角数字で入力してね。zキーで決定だ。",
+                "answer": "15"
+            }
+        ],
+        "reward": [
+            "test_item"
+        ]
     }
 }

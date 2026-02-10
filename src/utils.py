@@ -30,6 +30,17 @@ class KeyTracker:
         "s": pygame.K_s,
         "i": pygame.K_i,
         "m": pygame.K_m,
+        "0": pygame.K_0,
+        "1": pygame.K_1,
+        "2": pygame.K_2,
+        "3": pygame.K_3,
+        "4": pygame.K_4,
+        "5": pygame.K_5,
+        "6": pygame.K_6,
+        "7": pygame.K_7,
+        "8": pygame.K_8,
+        "9": pygame.K_9,
+        "backspace": pygame.K_BACKSPACE,
     }
 
     def __init__(self):
