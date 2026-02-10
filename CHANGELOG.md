@@ -1,5 +1,10 @@
 # CHANGELOG of PBL-Game
 
+## v1.1.1 (2026-02-11)
+- エンディングの画像の差し替え
+  - "ending(demo).png" を "ending.png" に変更
+- ノベルパート "ending" 用に "tanegashima_center.jpg" を追加
+
 ## v1.1.0 (2026-02-10)
 - 問題文改行機能の追加
   - `talk.py` の問題文表示の部分に、改行して表示する機能を追加
