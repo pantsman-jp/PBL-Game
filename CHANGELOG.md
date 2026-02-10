@@ -2,7 +2,7 @@
 
 ## v1.1.1 (2026-02-11)
 - 最終エンディング画面の "ending(demo).png" を "ending.png" に差し替え
-- ノベルパート "ending" 用に "tanegashima_center.jpg" を追加
+- ノベルパート "ending" 用に "tanegashima_center.jpg" を追加 (出典はphoto AC)
 
 ## v1.1.0 (2026-02-10)
 - 問題文改行機能の追加
