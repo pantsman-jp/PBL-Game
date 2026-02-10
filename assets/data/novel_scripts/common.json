@@ -230,5 +230,17 @@
       "text": "―――END――― YOU CAN (NOT) TRY AGAIN",
       "bg": "story/title.jpg"
     }
+  ],
+  "secret_route": [
+    {
+      "speaker": "？？？",
+      "text": "謎の人物からすべてのアイテムを手に入れた。",
+      "bg": "story/title.jpg"
+    },
+    {
+      "speaker": "？？？",
+      "text": "そして、突然別の場所にワープさせられた。",
+      "bg": "story/title.jpg"
+    }
   ]
 }

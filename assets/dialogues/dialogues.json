@@ -432,5 +432,28 @@
         ],
         "map_id": "kyutech_campus",
         "image": "map/door.png"
+    },
+    "npc_yamaguchi": {
+        "position": [
+            36,
+            116
+        ],
+        "map_id": "yamaguchi",
+        "image": "character/npc_yamaguchi.png",
+        "lines": [
+            "よく見つけたな！ここにいる私を見つけるとは。",
+            "君には特別に、お祝いとしてエンディングに必要なアイテムを全て与えよう。"
+        ],
+        "novel_trigger": "secret_route",
+        "map_trigger": "kagoshima",
+        "map_dest_x": 456,
+        "map_dest_y": 670,
+        "reward": [
+            "model_rocket_engine_c6_0",
+            "aichi_cfrp_sheet",
+            "kanagawa_control_unit",
+            "ibaraki_antenna_module",
+            "kagoshima_engine_unit"
+        ]
     }
 }
