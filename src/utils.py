@@ -41,6 +41,7 @@ class KeyTracker:
         "8": pygame.K_8,
         "9": pygame.K_9,
         "backspace": pygame.K_BACKSPACE,
+        ".": pygame.K_PERIOD,
     }
 
     def __init__(self):

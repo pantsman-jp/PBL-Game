@@ -29,7 +29,7 @@ class Talk:
         self.quiz_mode = False  # クイズ中か
         self.quiz_result_mode = False  # クイズ結果の表示中か
         self.current_quiz = None
-        self.quiz_choice = 0  # 3択時の選択番号
+        self.quiz_choice = 0
         self.quiz_index = 0  # 複数クイズのインデックス
         self.quiz_text_input = ""  # テキスト入力モード時の入力内容
         self.wait_frames = 0
@@ -176,12 +176,15 @@ class Talk:
 
     def _handle_text_quiz(self, keys):
         """テキスト入力問題の処理"""
-        # 数字キーの入力
-        for digit in "0123456789":
-            if keys.get(digit):
-                # 10文字まで入力可能
+        # 半角数字およびピリオドの入力
+        for ch in "0123456789.":
+            if keys.get(ch):
+                # ピリオドは1つまで
+                if ch == "." and "." in self.quiz_text_input:
+                    continue
+                # 入力文字数は10文字までに制限
                 if len(self.quiz_text_input) < 10:
-                    self.quiz_text_input += digit
+                    self.quiz_text_input += ch
 
         # BackSpaceキーで入力削除
         if keys.get("backspace"):
