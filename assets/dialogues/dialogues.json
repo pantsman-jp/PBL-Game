@@ -408,5 +408,23 @@
         "reward": [
             "test_item"
         ]
+    },
+        "door1": {
+        "position": [
+            214,
+            103
+        ],
+        "map_id": "world",
+        "image": "map/bluedoor.png"
+
+    },
+       "door2": {
+        "position": [
+            15,
+            17
+        ],
+        "map_id": "kyutech_campus",
+        "image": "map/door.png"
+
     }
 }
