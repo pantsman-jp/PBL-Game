@@ -396,8 +396,8 @@
         "quiz": [
             {
                 "type": "text",
-                "question": "1+1は？半角数字で入力してね。zキーで決定だ。",
-                "answer": "2"
+                "question": "1+1.1は？半角数字で入力してね。zキーで決定だ。",
+                "answer": "2.1"
             },
             {
                 "type": "text",
