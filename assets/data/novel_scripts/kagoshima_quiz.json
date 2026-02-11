@@ -1,0 +1,144 @@
+{
+  "kagoshima_quiz": [
+    {
+      "speaker": "燃料技師",
+      "text": "よくここまで来たな。鹿児島県、種子島。ロケットの心臓、つまり『燃料』の知識は不可欠だ。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "char": "character/npc4.png",
+      "char_scale": 2.0,
+      "char_offset_y": 400
+    },
+    {
+      "speaker": "燃料技師",
+      "text": "準備ができたらクイズに挑戦してくれ。全問正解すればエンジンユニットを渡そう。",
+      "bg": "story/tanegashima_rocket.jpg"
+    },
+    {
+      "label": "q1",
+      "speaker": "燃料技師",
+      "text": "Q1. 化学ロケットが推力を得る原理として正しいものはどれか。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "choices": [
+        {
+          "text": "空気を後方に押し出すことによる反力"
+        },
+        {
+          "text": "質量を高速で噴射することによる運動量保存"
+        },
+        {
+          "text": "重力を打ち消すことによる浮力"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "q2",
+      "jump_wrong": "wrong1"
+    },
+    {
+      "label": "wrong1",
+      "speaker": "燃料技師",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "jump_to": "q1"
+    },
+    {
+      "label": "q2",
+      "speaker": "燃料技師",
+      "text": "正解だ！\nQ2. ロケット燃料として一般的に用いられる酸化剤はどれか。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "choices": [
+        {
+          "text": "水素"
+        },
+        {
+          "text": "液体酸素"
+        },
+        {
+          "text": "窒素"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "q3",
+      "jump_wrong": "wrong2"
+    },
+    {
+      "label": "wrong2",
+      "speaker": "燃料技師",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "jump_to": "q2"
+    },
+    {
+      "label": "q3",
+      "speaker": "燃料技師",
+      "text": "正解だ！\nQ3. ロケットエンジンの推力効率を表す指標はどれか。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "choices": [
+        {
+          "text": "比推力"
+        },
+        {
+          "text": "燃費"
+        },
+        {
+          "text": "馬力"
+        }
+      ],
+      "answer": 0,
+      "jump_correct": "q4_intro",
+      "jump_wrong": "wrong3"
+    },
+    {
+      "label": "wrong3",
+      "speaker": "燃料技師",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "jump_to": "q3"
+    },
+    {
+      "label": "q4_intro",
+      "speaker": "燃料技師",
+      "text": "正解だ！ いよいよこれが最後の問題だ。難問だが、君になら解けるはずだ。",
+      "bg": "story/tanegashima_rocket.jpg"
+    },
+    {
+      "label": "q4",
+      "speaker": "燃料技師",
+      "text": "Q4. 1kgのペイロード＋構造質量2kgのロケットを4km/sまで加速させるのに\n必要な推進剤質量は？ (排気速度 u=3km/s、損失なし)\n※ Δv = u × ln(mi/mf)",
+      "bg": "story/tanegashima_rocket.jpg",
+      "choices": [
+        {
+          "text": "6.2 kg"
+        },
+        {
+          "text": "8.4 kg"
+        },
+        {
+          "text": "10.6 kg"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "correct",
+      "jump_wrong": "wrong4"
+    },
+    {
+      "label": "wrong4",
+      "speaker": "燃料技師",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/tanegashima_rocket.jpg",
+      "jump_to": "q4"
+    },
+    {
+      "label": "correct",
+      "speaker": "燃料技師",
+      "text": "全問正解だ！素晴らしい。約束通り、エンジンユニットを渡そう。",
+      "bg": "story/tanegashima_rocket.jpg"
+    },
+    {
+      "speaker": "システム",
+      "text": "【kagoshima_engine_unit】を手に入れた！",
+      "bg": "story/tanegashima_rocket.jpg",
+      "char": "none",
+      "reward": "kagoshima_engine_unit"
+    }
+  ]
+}

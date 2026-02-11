@@ -1,0 +1,144 @@
+{
+  "aichi_quiz": [
+    {
+      "speaker": "研究員",
+      "text": "ロケットの『構造』について詳しいかな？",
+      "bg": "story/concreteroom.jpg",
+      "char": "character/npc1.png",
+      "char_scale": 2.0,
+      "char_offset_y": 400
+    },
+    {
+      "speaker": "研究員",
+      "text": "今から出す問題に全問正解すれば、必要な材料を分けてあげよう。",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "label": "q1",
+      "speaker": "研究員",
+      "text": "Q1. CFRPがロケット構造材として用いられる主な理由として最も適切なものはどれか。",
+      "bg": "story/concreteroom.jpg",
+      "choices": [
+        {
+          "text": "高温で溶けやすいから"
+        },
+        {
+          "text": "比強度が高く、軽量だから"
+        },
+        {
+          "text": "電気伝導率が高いから"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "q2",
+      "jump_wrong": "wrong1"
+    },
+    {
+      "label": "wrong1",
+      "speaker": "研究員",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/concreteroom.jpg",
+      "jump_to": "q1"
+    },
+    {
+      "label": "q2",
+      "speaker": "研究員",
+      "text": "正解だ！\nQ2. ロケットの構造において、フェアリングの役割として正しいものはどれか。",
+      "bg": "story/concreteroom.jpg",
+      "choices": [
+        {
+          "text": "エンジンの冷却"
+        },
+        {
+          "text": "ペイロード（荷物）の保護"
+        },
+        {
+          "text": "燃料の貯蔵"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "q3",
+      "jump_wrong": "wrong2"
+    },
+    {
+      "label": "wrong2",
+      "speaker": "研究員",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/concreteroom.jpg",
+      "jump_to": "q2"
+    },
+    {
+      "label": "q3",
+      "speaker": "研究員",
+      "text": "正解だ！\nQ3. ロケットの構造において、フィンの主な役割はどれか。",
+      "bg": "story/concreteroom.jpg",
+      "choices": [
+        {
+          "text": "安定性の確保"
+        },
+        {
+          "text": "推進力の増加"
+        },
+        {
+          "text": "ペイロード（荷物）の保護"
+        }
+      ],
+      "answer": 0,
+      "jump_correct": "q4_intro",
+      "jump_wrong": "wrong3"
+    },
+    {
+      "label": "wrong3",
+      "speaker": "研究員",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/concreteroom.jpg",
+      "jump_to": "q3"
+    },
+    {
+      "label": "q4_intro",
+      "speaker": "研究員",
+      "text": "正解だ！ 次が最後の問題だ。",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "label": "q4",
+      "speaker": "研究員",
+      "text": "Q4. 許容応力が 300 MPa、実際の応力が 150 MPa のとき、安全率はいくつか。\n※ 安全率 = 材料の許容応力 ÷ 実際にかかる応力",
+      "bg": "story/concreteroom.jpg",
+      "choices": [
+        {
+          "text": "1.5"
+        },
+        {
+          "text": "2.0"
+        },
+        {
+          "text": "3.0"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "correct",
+      "jump_wrong": "wrong4"
+    },
+    {
+      "label": "wrong4",
+      "speaker": "研究員",
+      "text": "残念、不正解だ。もう一度考えてみろ。",
+      "bg": "story/concreteroom.jpg",
+      "jump_to": "q4"
+    },
+    {
+      "label": "correct",
+      "speaker": "研究員",
+      "text": "全問正解だ！素晴らしい。約束通り、材料を渡そう。",
+      "bg": "story/concreteroom.jpg"
+    },
+    {
+      "speaker": "システム",
+      "text": "【aichi_cfrp_sheet】を手に入れた！",
+      "bg": "story/concreteroom.jpg",
+      "char": "none",
+      "reward": "aichi_cfrp_sheet"
+    }
+  ]
+}
