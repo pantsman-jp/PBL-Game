@@ -1,0 +1,144 @@
+{
+  "kanagawa_quiz": [
+    {
+      "speaker": "技術者",
+      "text": "ロケットの『制御』は非常に緻密な世界だ。君にその知識があるか試させてもらうよ。",
+      "bg": "story/control_room.png",
+      "char": "character/npc2.png",
+      "char_scale": 2.0,
+      "char_offset_y": 400
+    },
+    {
+      "speaker": "技術者",
+      "text": "問題は全部で４問だ。全問正解すれば制御基板を渡そう。",
+      "bg": "story/control_room.png"
+    },
+    {
+      "label": "q1",
+      "speaker": "技術者",
+      "text": "Q1. ロケットの制御システムにおいて、ジャイロスコープの主な役割はどれか。",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "エンジンの点火"
+        },
+        {
+          "text": "姿勢の検知と制御"
+        },
+        {
+          "text": "燃料の供給"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "q2",
+      "jump_wrong": "wrong1"
+    },
+    {
+      "label": "wrong1",
+      "speaker": "技術者",
+      "text": "残念、不正解だ。もう一度考えてみたまえ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q1"
+    },
+    {
+      "label": "q2",
+      "speaker": "技術者",
+      "text": "正解だ！\nQ2. ロケットの軌道投入において重要な制御パラメータはどれか。",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "高度"
+        },
+        {
+          "text": "速度"
+        },
+        {
+          "text": "両方"
+        }
+      ],
+      "answer": 2,
+      "jump_correct": "q3",
+      "jump_wrong": "wrong2"
+    },
+    {
+      "label": "wrong2",
+      "speaker": "技術者",
+      "text": "残念、不正解だ。もう一度考えてみたまえ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q2"
+    },
+    {
+      "label": "q3",
+      "speaker": "技術者",
+      "text": "正解だ！\nQ3. ロケットの制御において、フィードバック制御の目的はどれか。",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "誤差を補正する"
+        },
+        {
+          "text": "エンジンを停止する"
+        },
+        {
+          "text": "燃料を節約する"
+        }
+      ],
+      "answer": 0,
+      "jump_correct": "q4_intro",
+      "jump_wrong": "wrong3"
+    },
+    {
+      "label": "wrong3",
+      "speaker": "技術者",
+      "text": "残念、不正解だ。もう一度考えてみたまえ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q3"
+    },
+    {
+      "label": "q4_intro",
+      "speaker": "技術者",
+      "text": "正解だ！ 次が最後の問題だ。",
+      "bg": "story/control_room.png"
+    },
+    {
+      "label": "q4",
+      "speaker": "技術者",
+      "text": "Q4. 現在の速度 7.3 km/s、目標速度 7.8 km/s のとき、\nゲイン 2.0 での補正量はいくつか。\n※ 補正量 = ゲイン × (目標速度 − 現在速度)",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "0.5"
+        },
+        {
+          "text": "1.0"
+        },
+        {
+          "text": "2.0"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "correct",
+      "jump_wrong": "wrong4"
+    },
+    {
+      "label": "wrong4",
+      "speaker": "技術者",
+      "text": "残念、不正解だ。もう一度考えてみたまえ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q4"
+    },
+    {
+      "label": "correct",
+      "speaker": "技術者",
+      "text": "全問正解だ！素晴らしい。約束通り、制御基板を渡そう。",
+      "bg": "story/control_room.png"
+    },
+    {
+      "speaker": "システム",
+      "text": "【kanagawa_control_unit】を手に入れた！",
+      "bg": "story/control_room.png",
+      "char": "none",
+      "reward": "kanagawa_control_unit"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ dialogues.json を読み込み、Z で進行、Q で離脱、矢印で選択、�
 """
 
 import os
+import pygame
 from src.ui import draw_window
 from src.utils import load_json, resource_path
 
@@ -349,23 +350,75 @@ class Talk:
 
             if quiz_type == "text":
                 # テキスト入力クイズの描画
-                # 問題文は改行を含められるよう分割して表示
                 q_lines = q.get("question", "").splitlines()
                 display_lines = q_lines + [f"入力: {self.quiz_text_input}_"]
                 draw_window(screen, font, display_lines, rect)
             else:
-                # 3択クイズの描画
-                # 問題文を改行で分割して表示
-                display_lines = q.get("question", "").splitlines()
+                # 問題文をウィンドウに描画
+                q_lines = q.get("question", "").splitlines()
+                draw_window(screen, font, q_lines, rect)
 
-                # 選択肢の構築
-                for i, choice in enumerate(q.get("choices", [])):
-                    cursor = ">" if i == self.quiz_choice else " "
-                    display_lines.append(f"{cursor} {i + 1}. {choice}")
-
-                draw_window(screen, font, display_lines, rect)
+                # VN風ボタンUIで選択肢を描画
+                choices = q.get("choices", [])
+                self._draw_quiz_buttons(screen, font, choices)
 
         elif self.window_lines:
-            # 1行ずつ表示するための修正
             idx = min(self.line_index, len(self.window_lines) - 1)
             draw_window(screen, font, [self.window_lines[idx]], rect)
+
+    def _draw_quiz_buttons(self, screen, font, choices):
+        """クイズ選択肢をVN風ボタンUIで描画"""
+        if not choices:
+            return
+
+        sw, sh = screen.get_size()
+        count = len(choices)
+        btn_w = 500
+        btn_h = 50
+        margin = 14
+        total_h = count * btn_h + (count - 1) * margin
+
+        # ウィンドウの上に配置（フィールド画面中央付近）
+        start_y = (sh - sh * 0.3 - 20) - total_h - 30
+        btn_x = (sw - btn_w) // 2
+
+        # 背景を少し暗くするオーバーレイ
+        overlay = pygame.Surface((sw, int(total_h + 40)), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 100))
+        screen.blit(overlay, (0, int(start_y - 10)))
+
+        for i, choice in enumerate(choices):
+            y = int(start_y + i * (btn_h + margin))
+            r = pygame.Rect(btn_x, y, btn_w, btn_h)
+            is_selected = i == self.quiz_choice
+
+            # 色設定
+            if is_selected:
+                bg_color = (60, 120, 180, 230)
+                border_color = (255, 255, 200)
+                text_color = (255, 255, 255)
+            else:
+                bg_color = (40, 40, 60, 200)
+                border_color = (150, 150, 150)
+                text_color = (200, 200, 200)
+
+            # ボタン背景
+            btn_surf = pygame.Surface((btn_w, btn_h), pygame.SRCALPHA)
+            btn_surf.fill(bg_color)
+            screen.blit(btn_surf, r.topleft)
+
+            # 枠線
+            pygame.draw.rect(screen, border_color, r, 3 if is_selected else 2)
+
+            # テキスト
+            text_surf = font.render(choice, True, text_color)
+            text_rect = text_surf.get_rect(center=r.center)
+            screen.blit(text_surf, text_rect)
+
+            # 選択中の矢印
+            if is_selected:
+                cursor_surf = font.render("▶", True, border_color)
+                screen.blit(
+                    cursor_surf,
+                    (r.left + 15, r.centery - cursor_surf.get_height() // 2),
+                )

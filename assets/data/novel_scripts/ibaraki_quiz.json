@@ -1,0 +1,144 @@
+{
+  "ibaraki_quiz": [
+    {
+      "speaker": "通信技官",
+      "text": "宇宙との『通信』が途絶えれば、ミッションは失敗する。",
+      "bg": "story/control_room.png",
+      "char": "character/npc3.png",
+      "char_scale": 2.0,
+      "char_offset_y": 400
+    },
+    {
+      "speaker": "通信技官",
+      "text": "通信についての問題に答えてみてくれ。４問とも正解すれば、必要な部品を渡そう。",
+      "bg": "story/control_room.png"
+    },
+    {
+      "label": "q1",
+      "speaker": "通信技官",
+      "text": "Q1. 地球低軌道（LEO）を周回する人工衛星の公転速度として最も近いものはどれか。",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "約1 km/s"
+        },
+        {
+          "text": "約3 km/s"
+        },
+        {
+          "text": "約8 km/s"
+        }
+      ],
+      "answer": 2,
+      "jump_correct": "q2",
+      "jump_wrong": "wrong1"
+    },
+    {
+      "label": "wrong1",
+      "speaker": "通信技官",
+      "text": "残念、不正解だ。もう一度考えてみてくれ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q1"
+    },
+    {
+      "label": "q2",
+      "speaker": "通信技官",
+      "text": "正解だ！\nQ2. ロケットと地上局間の通信で用いられる周波数帯として適切なものはどれか。",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "AMラジオ帯"
+        },
+        {
+          "text": "SバンドまたはKuバンド"
+        },
+        {
+          "text": "光ファイバー帯"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "q3",
+      "jump_wrong": "wrong2"
+    },
+    {
+      "label": "wrong2",
+      "speaker": "通信技官",
+      "text": "残念、不正解だ。もう一度考えてみてくれ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q2"
+    },
+    {
+      "label": "q3",
+      "speaker": "通信技官",
+      "text": "正解だ！\nQ3. 衛星通信におけるアンテナの役割として正しいものはどれか。",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "信号の増幅"
+        },
+        {
+          "text": "信号の送受信"
+        },
+        {
+          "text": "データの暗号化"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "q4_intro",
+      "jump_wrong": "wrong3"
+    },
+    {
+      "label": "wrong3",
+      "speaker": "通信技官",
+      "text": "残念、不正解だ。もう一度考えてみてくれ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q3"
+    },
+    {
+      "label": "q4_intro",
+      "speaker": "通信技官",
+      "text": "正解だ！ 次で最後だ。頑張ってくれ。",
+      "bg": "story/control_room.png"
+    },
+    {
+      "label": "q4",
+      "speaker": "通信技官",
+      "text": "Q4. 高度200kmを 7.8km/s で進む人工衛星が88分で地球を一周した。\n地球を球として半径を求めよ（小数点以下切り捨て）。\n※ヒント: 周長 = 速度 × 時間、周長 = 2πr（高度込み）",
+      "bg": "story/control_room.png",
+      "choices": [
+        {
+          "text": "6154 km"
+        },
+        {
+          "text": "6354 km"
+        },
+        {
+          "text": "6554 km"
+        }
+      ],
+      "answer": 1,
+      "jump_correct": "correct",
+      "jump_wrong": "wrong4"
+    },
+    {
+      "label": "wrong4",
+      "speaker": "通信技官",
+      "text": "残念、不正解だ。もう一度考えてみてくれ。",
+      "bg": "story/control_room.png",
+      "jump_to": "q4"
+    },
+    {
+      "label": "correct",
+      "speaker": "通信技官",
+      "text": "全問正解だ！素晴らしい。約束通り、アンテナモジュールを渡そう。",
+      "bg": "story/control_room.png"
+    },
+    {
+      "speaker": "システム",
+      "text": "【ibaraki_antenna_module】を手に入れた！",
+      "bg": "story/control_room.png",
+      "char": "none",
+      "reward": "ibaraki_antenna_module"
+    }
+  ]
+}
