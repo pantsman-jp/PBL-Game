@@ -2,7 +2,7 @@
   The Journey to Rocket Launch<br>- YOU CAN (NOT) TRY AGAIN -
 </h1>
 
-[![Release-Build](https://github.com/pantsman-jp/PBL-Game/actions/workflows/official-release.yml/badge.svg)](https://github.com/pantsman-jp/PBL-Game/releases/latest)
+[![Release-Build](https://github.com/pantsman-jp/PBL-Game/actions/workflows/official-release.yml/badge.svg)](https://github.com/pantsman-jp/PBL-Game/actions/workflows/official-release.yml)
 [![GitHub release](https://img.shields.io/github/v/release/pantsman-jp/PBL-Game)](https://github.com/pantsman-jp/PBL-Game/releases/latest)
 [![License](https://img.shields.io/github/license/pantsman-jp/PBL-Game)](https://github.com/pantsman-jp/PBL-Game/blob/main/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org)
