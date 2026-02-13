@@ -1,14 +1,14 @@
 # CHANGELOG of PBL-Game
 
-## v1.2.2 (2026-02-11)
+## [v1.2.2](https://github.com/pantsman-jp/PBL-Game/releases/tag/v1.2.2) (2026-02-11)
 - 鹿児島県NPCのクイズ内容にヒントを追記
 
-## v1.2.1 (2026-02-11)
+## [v1.2.1](https://github.com/pantsman-jp/PBL-Game/releases/tag/v1.2.1) (2026-02-11)
 - クイズパートの変更
   - C6-0を入手するときのクイズパートのGUIに統一
   - 正規ルートで一回ゲームクリアまでテスト済み
 
-## v1.2.0 (2026-02-10)
+## [v1.2.0](https://github.com/pantsman-jp/PBL-Game/releases/tag/v1.2.0) (2026-02-10)
 - 山口県に隠しルート追加
   - 山口県左上部(36,116)に新規NPCを追加
   - 話すとすべてのアイテムを入手し、鹿児島県のエンディングNPC付近へ遷移し、クリアが可能
@@ -16,15 +16,15 @@
   - NPC画像ファイル `npc_yamaguchi.png` を追加（出典は他のNPCと同様）
   - `common.json` に "secret_route" を追加
 
-## v1.1.2 (2026-02-10)
+## [v1.1.2](https://github.com/pantsman-jp/PBL-Game/releases/tag/v1.1.2) (2026-02-10)
 - 操作方法を十字キーに変更
 - 画面左上部のUIに移動の説明を追加
 
-## v1.1.1 (2026-02-10)
+## [v1.1.1](https://github.com/pantsman-jp/PBL-Game/releases/tag/v1.1.1) (2026-02-10)
 - 最終エンディング画面の "ending(demo).png" を "ending.png" に差し替え
 - ノベルパート "ending" 用に "tanegashima_center.jpg" を追加 (出典はphoto AC)
 
-## v1.1.0 (2026-02-10)
+## [v1.1.0](https://github.com/pantsman-jp/PBL-Game/releases/tag/v1.1.0) (2026-02-10)
 - 問題文改行機能の追加
   - `talk.py` の問題文表示の部分に、改行して表示する機能を追加
   - `dialogue.json` の "question" を読み込む際に、 "\n" で改行をするように
@@ -34,7 +34,7 @@
   - 各分野の最終問題に行く際の文言を追加（「次が最後の問題だ。」等）
   - "npc_text_quiz"（テキスト入力問題確認用のnpc）を消去
 
-## v1.0.0 (2026-02-10)
+## [v1.0.0](https://github.com/pantsman-jp/PBL-Game/releases/tag/v1.0.0) (2026-02-10)
 - リリース
 
 ## v0.43.1 (2026-02-10)
@@ -53,7 +53,7 @@
 ## v0.42.3 (2026-02-10)
 - ゲームタイトルから「Demo ver」を消去し、タイトルを修正
 
-## v0.42.2 (2026-01-27)
+## [v0.42.2](https://github.com/pantsman-jp/PBL-Game/releases/tag/demo) (2026-01-27)
 - 新規NPC画像の追加
   - `npc2.png` の画像ファイルを老人（青）から中年男性（青）に差し替え
   - `npc3.png` を中年男性（緑）に差し替え
