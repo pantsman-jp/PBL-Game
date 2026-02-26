@@ -8,6 +8,12 @@
 [![Python](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org)
 [![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/pantsman-jp/PBL-Game/latest/total)](https://github.com/pantsman-jp/PBL-Game/releases/latest)
 
+> [!WARNING]
+> このリポジトリはアーカイブ済みです。  
+> 本ゲームは開発を終了しており、以下の対応は行いません。
+> - 機能追加やバグ修正
+> - Issue や Pull Request の受け付け
+
 ## 概要
 このゲームは、ロケット開発を題材にした探索・ノベル要素を含む 2D ゲームです。
 **宇宙工学・宇宙理学の面白さを高校生に紹介する** ことを目的として開発されました。
